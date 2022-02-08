@@ -163,7 +163,7 @@ input:where([type='search']) {
   --space: 2rem;
   display: grid;
   grid-auto-rows: min-content;
-  gap: var(--gap);
+  //gap: var(--gap);
   padding-top: var(--space);
   padding-bottom: var(--space);
 }

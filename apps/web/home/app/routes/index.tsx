@@ -1,9 +1,19 @@
 import type { MetaFunction, LoaderFunction } from 'remix';
 import { useLoaderData, json, Link } from 'remix';
+import { Planet } from '../components/planet';
+import faker from '@faker-js/faker';
+import elements from './elements.json';
+
+export type TPlanet = {
+  name: string;
+  colors: string[];
+  rulingFamily: string;
+  opposingFamilies: string[];
+  resources: Array<[string, number, string]>;
+};
 
 type IndexData = {
-  resources: Array<{ name: string; url: string }>;
-  demos: Array<{ name: string; to: string }>;
+  planets: Array<TPlanet>;
 };
 
 // Loaders provide data to components and are only ever called on the server, so
@@ -11,35 +21,51 @@ type IndexData = {
 // to the component that renders it.
 // https://remix.run/api/conventions#loader
 export let loader: LoaderFunction = () => {
+  const elementNames = elements.map((e: { name: string }) => e.name);
+
+  const capitalizeAllFirstWords = (s: string[]) => {
+    return s
+      .slice(0, 2)
+      .join(' ')
+      .toLowerCase()
+      .split(' ')
+      .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+      .join(' ');
+  };
+
+  const twoRandomStrings = () => {
+    const words = [
+      faker.name.firstName(),
+      faker.name.lastName(),
+      faker.lorem.word(),
+      faker.random.word(),
+      faker.random.alpha(),
+    ].sort(() => 0.5 - Math.random());
+
+    return capitalizeAllFirstWords(words);
+  };
+
+  const randomHouse = () =>
+    capitalizeAllFirstWords([faker.name.lastName(), faker.lorem.word()]);
+
+  const randomResource = (): [string, number, string] => {
+    return [
+      faker.helpers.randomize(['+', '-']),
+      faker.datatype.number({ max: 3000, min: 100 }),
+      faker.helpers.randomize(elementNames),
+    ];
+  };
+
+  const randomPlanet = (): TPlanet => ({
+    name: twoRandomStrings(),
+    colors: [faker.internet.color(), faker.internet.color()],
+    opposingFamilies: [randomHouse(), randomHouse()],
+    rulingFamily: randomHouse(),
+    resources: [randomResource(), randomResource()],
+  });
+
   let data: IndexData = {
-    resources: [
-      {
-        name: 'Remix Docs',
-        url: 'https://remix.run/docs',
-      },
-      {
-        name: 'React Router Docs',
-        url: 'https://reactrouter.com/docs',
-      },
-      {
-        name: 'Remix Discord',
-        url: 'https://discord.gg/VBePs6d',
-      },
-    ],
-    demos: [
-      {
-        to: 'demos/actions',
-        name: 'Actions',
-      },
-      {
-        to: 'demos/about',
-        name: 'Nested Routes, CSS loading/unloading',
-      },
-      {
-        to: 'demos/params',
-        name: 'URL Params and Error Boundaries',
-      },
-    ],
+    planets: [randomPlanet(), randomPlanet(), randomPlanet(), randomPlanet()],
   };
 
   // https://remix.run/api/remix#json
@@ -59,42 +85,10 @@ export default function Index() {
   let data = useLoaderData<IndexData>();
 
   return (
-    <div className="remix__page">
-      <main>
-        <h2>Welcome to Remix!</h2>
-        <p>We're stoked that you're here. 🥳</p>
-        <p>
-          Feel free to take a look around the code to see how Remix does things,
-          it might be a bit different than what you’re used to. When you're
-          ready to dive deeper, we've got plenty of resources to get you
-          up-and-running quickly.
-        </p>
-        <p>
-          Check out all the demos in this starter, and then just delete the{' '}
-          <code>app/routes/demos</code> and <code>app/styles/demos</code>{' '}
-          folders when you're ready to turn this into your next project.
-        </p>
-      </main>
-      <aside>
-        <h2>Demos In This App</h2>
-        <ul>
-          {data.demos.map((demo) => (
-            <li key={demo.to} className="remix__page__resource">
-              <Link to={demo.to} prefetch="intent">
-                {demo.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <h2>Resources</h2>
-        <ul>
-          {data.resources.map((resource) => (
-            <li key={resource.url} className="remix__page__resource">
-              <a href={resource.url}>{resource.name}</a>
-            </li>
-          ))}
-        </ul>
-      </aside>
-    </div>
+    <main className="remix__page flex justify-center">
+      {data.planets.map((planet) => (
+        <Planet planet={planet} />
+      ))}
+    </main>
   );
 }

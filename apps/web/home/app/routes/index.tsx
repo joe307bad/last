@@ -2,7 +2,7 @@ import type { MetaFunction, LoaderFunction } from 'remix';
 import { useLoaderData, json, Link } from 'remix';
 import { Planet } from '../components/planet';
 import faker from '@faker-js/faker';
-import elements from './elements.json';
+import elements from '../elements.json';
 
 export type TPlanet = {
   name: string;

@@ -1,5 +1,5 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { ObjectType, Field } from '@nestjs/graphql';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 
 @ObjectType()
 @Entity()
@@ -8,7 +8,11 @@ export class Planet {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  @Column({ nullable: false })
-  exampleField: number;
+  @Field(() => String)
+  @Column()
+  name: string;
+
+  @Field(() => String)
+  @Column()
+  description: string;
 }

@@ -23,8 +23,7 @@ import { PlanetsModule } from '../planets/planets.module';
       password: 'secret',
       database: 'last',
       entities: [Planet],
-      synchronize: true,
-      dropSchema: true
+      synchronize: true
     }),
     PlanetsModule
   ],

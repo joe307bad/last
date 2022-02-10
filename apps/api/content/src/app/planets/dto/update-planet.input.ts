@@ -4,6 +4,5 @@ import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 @InputType()
 export class UpdatePlanetInput extends PartialType(CreatePlanetInput) {
   @Field(() => Int)
-  id: string;
-  
+  id: number;
 }

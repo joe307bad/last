@@ -4,9 +4,8 @@
 
 type Planet {
   id: String!
-
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
+  description: String!
 }
 
 type Query {

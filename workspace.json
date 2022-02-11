@@ -1,8 +1,7 @@
 {
   "version": 2,
   "projects": {
-    "api-content": "apps/api/content",
-    "api-timeline": "apps/api/timeline",
+    "api-graphql": "apps/api/graphql",
     "web/home": "apps/web/home"
   }
 }

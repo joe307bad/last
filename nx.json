@@ -40,6 +40,5 @@
         "projects": "self"
       }
     ]
-  },
-  "defaultProject": "api-timeline"
+  }
 }

@@ -1,9 +1,19 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import { PlanetEntity } from '../planets/planet.entity';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { PlanetEntity } from '../planet/planet.entity';
 
 @Entity()
 export class PlanetarySystemEntity {
-  @PrimaryGeneratedColumn("uuid")
+  constructor(partial: Partial<PlanetarySystemEntity>) {
+    Object.assign(this, partial);
+  }
+  @PrimaryGeneratedColumn('uuid')
   id!: string;
 
   @Column()

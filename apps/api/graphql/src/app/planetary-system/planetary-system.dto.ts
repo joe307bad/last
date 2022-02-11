@@ -1,6 +1,16 @@
-import { FilterableField, IDField, UnPagedRelation } from '@nestjs-query/query-graphql';
-import { Field, GraphQLISODateTime, ID, ObjectType } from '@nestjs/graphql';
-import { PlanetDto } from '../planets/planet.dto';
+import {
+  FilterableField,
+  IDField,
+  UnPagedRelation,
+} from '@nestjs-query/query-graphql';
+import {
+  Field,
+  GraphQLISODateTime,
+  ID,
+  InputType,
+  ObjectType,
+} from '@nestjs/graphql';
+import { PlanetDto } from '../planet/planet.dto';
 
 @ObjectType('PlanetarySystem')
 @UnPagedRelation('planets', () => PlanetDto, { disableRemove: true })
@@ -23,6 +33,12 @@ export class PlanetarySystemDto {
 
   @FilterableField()
   suns!: number;
+}
+
+@InputType()
+export class PlanetarySystemRelationInput {
+  @Field()
+  id!: string;
 }
 
 // Planets

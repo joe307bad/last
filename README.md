@@ -9,3 +9,8 @@ docker run -p 3306:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=secret -d mysql:lat
 ```
 https://doug-martin.github.io/nestjs-query/docs/introduction/getting-started
 ```
+
+### API Gateway using Tyk and Keycloak
+```
+https://tyk.io/docs/tyk-developer-portal/keycloak-dcr/
+```

@@ -2,16 +2,34 @@ import { Module } from '@nestjs/common';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PlanetModule } from './planets/planet.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { PlanetarySystemModule } from './planetary-system/planetary-system.module';
+import { NestjsQueryGraphQLModule } from '@nestjs-query/query-graphql';
+import { NestjsQueryTypeOrmModule } from '@nestjs-query/query-typeorm';
+import { PlanetarySystemEntity } from './planetary-system/planetary-system.entity';
+import { PlanetEntity } from './planet/planet.entity';
+import { PlanetarySystemDto } from './planetary-system/planetary-system.dto';
+import { PlanetDto, PlanetInput } from './planet/planet.dto';
 
 @Module({
   imports: [
-    PlanetModule,
-    PlanetarySystemModule,
+    NestjsQueryGraphQLModule.forFeature({
+      imports: [
+        NestjsQueryTypeOrmModule.forFeature([
+          PlanetarySystemEntity,
+          PlanetEntity,
+        ]),
+      ],
+      resolvers: [
+        { DTOClass: PlanetarySystemDto, EntityClass: PlanetarySystemEntity },
+        {
+          DTOClass: PlanetDto,
+          EntityClass: PlanetEntity,
+          CreateDTOClass: PlanetInput
+        },
+      ],
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       database: 'last',

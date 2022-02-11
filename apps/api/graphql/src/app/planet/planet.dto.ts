@@ -1,5 +1,5 @@
 import { FilterableField, IDField, Relation } from '@nestjs-query/query-graphql';
-import { Field, GraphQLISODateTime, ID, ObjectType } from '@nestjs/graphql';
+import { Field, GraphQLISODateTime, ID, InputType, ObjectType, OmitType, PartialType } from '@nestjs/graphql';
 import { PlanetarySystemDto } from '../planetary-system/planetary-system.dto';
 
 @ObjectType('Planet')
@@ -31,6 +31,19 @@ export class PlanetDto {
 
   @FilterableField()
   planetarySystemId!: string;
+}
+
+@InputType()
+export class RelationInput {
+  @Field(() => ID)
+  id: string;
+}
+
+@InputType()
+export class PlanetInput extends PartialType(PlanetDto, InputType) {
+
+  @Field(() => RelationInput)
+  planetarySystem: RelationInput;
 }
 
 // Planets

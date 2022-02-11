@@ -39,7 +39,7 @@ export class PlanetEntity {
   @ManyToOne(
     (): ObjectType<PlanetarySystemEntity> => PlanetarySystemEntity,
     (ps) => ps.planets,
-    { onDelete: 'CASCADE', nullable: true }
+    { onDelete: 'CASCADE', nullable: true, cascade: true }
   )
   @JoinColumn()
   planetarySystem!: PlanetarySystemEntity;

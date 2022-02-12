@@ -4,6 +4,7 @@ import {
   JoinColumn,
   JoinTable,
   ManyToMany,
+  ManyToOne,
   ObjectType,
   OneToOne,
 } from 'typeorm';
@@ -18,9 +19,13 @@ export class PlanetEntity extends BaseEntity {
   @Column({ nullable: true })
   level!: number;
 
-  @OneToOne((): ObjectType<PlanetarySystemEntity> => PlanetarySystemEntity, {
-    nullable: true,
-  })
+  @ManyToOne(
+    (): ObjectType<PlanetarySystemEntity> => PlanetarySystemEntity,
+    (pse) => pse.planets,
+    {
+      nullable: true,
+    }
+  )
   @JoinColumn()
   planetarySystem!: PlanetarySystemEntity;
 

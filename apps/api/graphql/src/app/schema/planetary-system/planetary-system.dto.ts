@@ -1,7 +1,7 @@
 import { FilterableField, UnPagedRelation } from '@nestjs-query/query-graphql';
 import { ObjectType } from '@nestjs/graphql';
-import { PlanetDto } from '../planet/planet.dto';
-import { BaseDto } from '../base.dto';
+import { PlanetDto } from '../dtos';
+import { BaseDto } from '../../core';
 
 @ObjectType('PlanetarySystem')
 @UnPagedRelation('planets', () => PlanetDto, { disableRemove: true })

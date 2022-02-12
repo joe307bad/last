@@ -1,6 +1,6 @@
 import { Column, Entity, OneToMany } from 'typeorm';
-import { PlanetEntity } from '../planet/planet.entity';
-import { BaseEntity } from '../base.entity';
+import { PlanetEntity } from '../entities';
+import { BaseEntity } from '../../core';
 
 @Entity()
 export class PlanetarySystemEntity extends BaseEntity {
@@ -10,6 +10,10 @@ export class PlanetarySystemEntity extends BaseEntity {
   @Column({ nullable: true })
   suns!: number;
 
-  @OneToMany(() => PlanetEntity, (planetEntity) => planetEntity.planetarySystem, { nullable: true })
+  @OneToMany(
+    () => PlanetEntity,
+    (planetEntity) => planetEntity.planetarySystem,
+    { nullable: true }
+  )
   planets!: PlanetEntity[];
 }

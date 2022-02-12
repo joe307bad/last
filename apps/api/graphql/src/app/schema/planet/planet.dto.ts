@@ -1,4 +1,8 @@
-import { FilterableField, Relation, UnPagedRelation } from '@nestjs-query/query-graphql';
+import {
+  FilterableField,
+  Relation,
+  UnPagedRelation,
+} from '@nestjs-query/query-graphql';
 import {
   Field,
   InputType,
@@ -6,11 +10,8 @@ import {
   OmitType,
   PartialType,
 } from '@nestjs/graphql';
-import { PlanetarySystemDto } from '../planetary-system/planetary-system.dto';
-import { RelationInput } from '../relation.input';
-import { BaseDto } from '../base.dto';
-import { HouseDto } from '../house/house.dto';
-import { FocusDto } from '../focus/focus.dto';
+import { RelationInput, BaseDto } from '../../core';
+import { HouseDto, FocusDto, PlanetarySystemDto } from '../dtos';
 
 @ObjectType('Planet')
 @Relation('planetarySystem', () => PlanetarySystemDto, {

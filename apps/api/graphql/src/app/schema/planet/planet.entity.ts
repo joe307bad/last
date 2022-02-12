@@ -7,11 +7,8 @@ import {
   ObjectType,
   OneToOne,
 } from 'typeorm';
-import { PlanetarySystemEntity } from '../planetary-system/planetary-system.entity';
-import { BaseEntity } from '../base.entity';
-import { HouseEntity } from '../house/house.entity';
-import { FocusDto } from '../focus/focus.dto';
-import { FocusEntity } from '../focus/focus.entity';
+import { BaseEntity } from '../../core';
+import { HouseEntity, FocusEntity, PlanetarySystemEntity } from '../entities';
 
 @Entity()
 export class PlanetEntity extends BaseEntity {
@@ -31,7 +28,9 @@ export class PlanetEntity extends BaseEntity {
   @JoinColumn()
   rulingHouse!: HouseEntity;
 
-  @ManyToMany((): ObjectType<FocusEntity> => FocusEntity, (fe) => fe.planets, {nullable: true})
+  @ManyToMany((): ObjectType<FocusEntity> => FocusEntity, (fe) => fe.planets, {
+    nullable: true,
+  })
   @JoinTable()
-  foci: FocusDto[];
+  foci: FocusEntity[];
 }

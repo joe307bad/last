@@ -1,6 +1,6 @@
 import { Entity, ManyToMany } from 'typeorm';
-import { BaseEntity } from '../base.entity';
-import { PlanetEntity } from '../planet/planet.entity';
+import { BaseEntity } from '../../core';
+import { PlanetEntity } from '../entities';
 
 @Entity()
 export class FocusEntity extends BaseEntity {

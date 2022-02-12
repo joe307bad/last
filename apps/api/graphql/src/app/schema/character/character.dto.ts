@@ -6,9 +6,8 @@ import {
   OmitType,
   PartialType,
 } from '@nestjs/graphql';
-import { HouseDto } from '../house/house.dto';
-import { RelationInput } from '../relation.input';
-import { BaseDto } from '../base.dto';
+import { HouseDto } from '../dtos';
+import { RelationInput, BaseDto } from '../../core';
 
 @ObjectType('Character')
 @Relation('house', () => HouseDto, { disableRemove: true })

@@ -1,7 +1,6 @@
 import { Entity, OneToMany, OneToOne } from 'typeorm';
-import { CharacterEntity } from '../character/character.entity';
-import { BaseEntity } from '../base.entity';
-import { PlanetEntity } from '../planet/planet.entity';
+import { BaseEntity } from '../../core';
+import { PlanetEntity, CharacterEntity } from '../entities';
 
 @Entity()
 export class HouseEntity extends BaseEntity {

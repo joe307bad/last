@@ -11,6 +11,12 @@ import { PlanetarySystemEntity } from './planetary-system/planetary-system.entit
 import { PlanetEntity } from './planet/planet.entity';
 import { PlanetarySystemDto } from './planetary-system/planetary-system.dto';
 import { PlanetDto, PlanetInput } from './planet/planet.dto';
+import { HouseEntity } from './house/house.entity';
+import { CharacterDto, CharacterInput } from './character/character.dto';
+import { CharacterEntity } from './character/character.entity';
+import { HouseDto } from './house/house.dto';
+import { FocusEntity } from './focus/focus.entity';
+import { FocusDto } from './focus/focus.dto';
 
 @Module({
   imports: [
@@ -19,14 +25,24 @@ import { PlanetDto, PlanetInput } from './planet/planet.dto';
         NestjsQueryTypeOrmModule.forFeature([
           PlanetarySystemEntity,
           PlanetEntity,
+          HouseEntity,
+          CharacterEntity,
+          FocusEntity,
         ]),
       ],
       resolvers: [
+        { DTOClass: FocusDto, EntityClass: FocusEntity },
+        { DTOClass: HouseDto, EntityClass: HouseEntity },
+        {
+          DTOClass: CharacterDto,
+          EntityClass: CharacterEntity,
+          CreateDTOClass: CharacterInput,
+        },
         { DTOClass: PlanetarySystemDto, EntityClass: PlanetarySystemEntity },
         {
           DTOClass: PlanetDto,
           EntityClass: PlanetEntity,
-          CreateDTOClass: PlanetInput
+          CreateDTOClass: PlanetInput,
         },
       ],
     }),
@@ -39,7 +55,6 @@ import { PlanetDto, PlanetInput } from './planet/planet.dto';
       logging: true,
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
-      // set to true to automatically generate schema
       autoSchemaFile: true,
       driver: ApolloDriver,
     }),

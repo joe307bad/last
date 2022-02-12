@@ -1,49 +1,53 @@
-import { FilterableField, IDField, Relation } from '@nestjs-query/query-graphql';
-import { Field, GraphQLISODateTime, ID, InputType, ObjectType, OmitType, PartialType } from '@nestjs/graphql';
+import { FilterableField, Relation, UnPagedRelation } from '@nestjs-query/query-graphql';
+import {
+  Field,
+  InputType,
+  ObjectType,
+  OmitType,
+  PartialType,
+} from '@nestjs/graphql';
 import { PlanetarySystemDto } from '../planetary-system/planetary-system.dto';
+import { RelationInput } from '../relation.input';
+import { BaseDto } from '../base.dto';
+import { HouseDto } from '../house/house.dto';
+import { FocusDto } from '../focus/focus.dto';
 
 @ObjectType('Planet')
-@Relation('planetarySystem', () => PlanetarySystemDto, { disableRemove: true })
-export class PlanetDto {
-  @Field()
-  @IDField(() => ID)
-  id!: string;
-
-  @FilterableField()
-  name!: string;
-
-  @Field(() => GraphQLISODateTime)
-  created!: Date;
-
-  @Field(() => GraphQLISODateTime)
-  updated!: Date;
-
-  description!: string;
-
-  @FilterableField()
+@Relation('planetarySystem', () => PlanetarySystemDto, {
+  disableRemove: true,
+  nullable: true,
+})
+@Relation('rulingHouse', () => HouseDto, {
+  disableRemove: true,
+  nullable: true,
+})
+@UnPagedRelation('foci', () => FocusDto, {
+  disableRemove: true,
+  nullable: true,
+})
+export class PlanetDto extends BaseDto {
+  @FilterableField({ nullable: true })
   population!: number;
 
-  @FilterableField()
+  @FilterableField({ nullable: true })
   level!: number;
 
-  @FilterableField()
-  enabled!: boolean;
-
-  @FilterableField()
+  @FilterableField({ nullable: true })
   planetarySystemId!: string;
+
+  @FilterableField({ nullable: true })
+  rulingHouseId!: string;
 }
 
 @InputType()
-export class RelationInput {
-  @Field(() => ID)
-  id: string;
-}
+export class PlanetInput extends PartialType(
+  OmitType(PlanetDto, ['id', 'planetarySystemId', 'rulingHouseId'], InputType)
+) {
+  @Field(() => RelationInput, { nullable: true })
+  planetarySystem!: RelationInput;
 
-@InputType()
-export class PlanetInput extends PartialType(PlanetDto, InputType) {
-
-  @Field(() => RelationInput)
-  planetarySystem: RelationInput;
+  @Field(() => RelationInput, { nullable: true })
+  rulingHouse!: RelationInput;
 }
 
 // Planets

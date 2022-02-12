@@ -1,46 +1,37 @@
 import {
   Column,
-  CreateDateColumn,
   Entity,
   JoinColumn,
-  ManyToOne,
+  JoinTable,
+  ManyToMany,
   ObjectType,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
+  OneToOne,
 } from 'typeorm';
 import { PlanetarySystemEntity } from '../planetary-system/planetary-system.entity';
+import { BaseEntity } from '../base.entity';
+import { HouseEntity } from '../house/house.entity';
+import { FocusDto } from '../focus/focus.dto';
+import { FocusEntity } from '../focus/focus.entity';
 
 @Entity()
-export class PlanetEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id!: string;
-
-  @Column()
-  name!: string;
-
-  @CreateDateColumn()
-  created!: Date;
-
-  @UpdateDateColumn()
-  updated!: Date;
-
-  @Column({ nullable: true })
-  description!: string;
-
-  @Column()
-  enabled!: boolean;
-
+export class PlanetEntity extends BaseEntity {
   @Column({ nullable: true })
   population!: number;
 
   @Column({ nullable: true })
   level!: number;
 
-  @ManyToOne(
-    (): ObjectType<PlanetarySystemEntity> => PlanetarySystemEntity,
-    (ps) => ps.planets,
-    { onDelete: 'CASCADE', nullable: true, cascade: true }
-  )
+  @OneToOne((): ObjectType<PlanetarySystemEntity> => PlanetarySystemEntity, {
+    nullable: true,
+  })
   @JoinColumn()
   planetarySystem!: PlanetarySystemEntity;
+
+  @OneToOne((): ObjectType<HouseEntity> => HouseEntity, { nullable: true })
+  @JoinColumn()
+  rulingHouse!: HouseEntity;
+
+  @ManyToMany((): ObjectType<FocusEntity> => FocusEntity, (fe) => fe.planets, {nullable: true})
+  @JoinTable()
+  foci: FocusDto[];
 }

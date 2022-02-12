@@ -1,36 +1,15 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  OneToMany,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { PlanetEntity } from '../planet/planet.entity';
+import { BaseEntity } from '../base.entity';
 
 @Entity()
-export class PlanetarySystemEntity {
-  constructor(partial: Partial<PlanetarySystemEntity>) {
-    Object.assign(this, partial);
-  }
-  @PrimaryGeneratedColumn('uuid')
-  id!: string;
-
-  @Column()
-  name!: string;
-
-  @CreateDateColumn()
-  created!: Date;
-
-  @UpdateDateColumn()
-  updated!: Date;
-
-  @Column()
+export class PlanetarySystemEntity extends BaseEntity {
+  @Column({ nullable: true })
   asteroidBelts!: number;
 
-  @Column()
+  @Column({ nullable: true })
   suns!: number;
 
-  @OneToMany(() => PlanetEntity, (planetEntity) => planetEntity.planetarySystem)
+  @OneToMany(() => PlanetEntity, (planetEntity) => planetEntity.planetarySystem, { nullable: true })
   planets!: PlanetEntity[];
 }

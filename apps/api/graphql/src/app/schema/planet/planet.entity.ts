@@ -6,7 +6,6 @@ import {
   ManyToMany,
   ManyToOne,
   ObjectType,
-  OneToOne,
 } from 'typeorm';
 import { BaseEntity } from '../../core';
 import { HouseEntity, FocusEntity, PlanetarySystemEntity } from '../entities';
@@ -29,9 +28,15 @@ export class PlanetEntity extends BaseEntity {
   @JoinColumn()
   planetarySystem!: PlanetarySystemEntity;
 
-  @OneToOne((): ObjectType<HouseEntity> => HouseEntity, { nullable: true })
+  @ManyToOne((): ObjectType<HouseEntity> => HouseEntity, { nullable: true })
   @JoinColumn()
   rulingHouse!: HouseEntity;
+
+  @ManyToMany((): ObjectType<HouseEntity> => HouseEntity, (he) => he.planets, {
+    nullable: true,
+  })
+  @JoinTable()
+  houses: HouseEntity[];
 
   @ManyToMany((): ObjectType<FocusEntity> => FocusEntity, (fe) => fe.planets, {
     nullable: true,

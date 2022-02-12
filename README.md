@@ -92,6 +92,7 @@ name: string
 description: string
 members: Character[]
 colors: Color[]
+planets: Planet[]
 ```
 
 ### Character

@@ -26,6 +26,10 @@ import { HouseDto, FocusDto, PlanetarySystemDto } from '../dtos';
   disableRemove: true,
   nullable: true,
 })
+@UnPagedRelation('houses', () => HouseDto, {
+  disableRemove: true,
+  nullable: true,
+})
 export class PlanetDto extends BaseDto {
   @FilterableField({ nullable: true })
   population!: number;
@@ -52,4 +56,7 @@ export class PlanetInput extends PartialType(
 
   @Field(() => [RelationInput!]!, { nullable: true })
   foci!: RelationInput[];
+
+  @Field(() => [RelationInput!]!, { nullable: true })
+  houses!: RelationInput[];
 }

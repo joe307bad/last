@@ -1,4 +1,4 @@
-import { Entity, OneToMany, OneToOne } from 'typeorm';
+import { Entity, ManyToMany, OneToMany, OneToOne } from 'typeorm';
 import { BaseEntity } from '../../core';
 import { PlanetEntity, CharacterEntity } from '../entities';
 
@@ -11,6 +11,6 @@ export class HouseEntity extends BaseEntity {
   )
   characters!: CharacterEntity[];
 
-  @OneToOne(() => PlanetEntity, { nullable: true })
-  planet!: PlanetEntity;
+  @ManyToMany(() => PlanetEntity, (pe) => pe.houses, { nullable: true })
+  planets!: PlanetEntity[];
 }

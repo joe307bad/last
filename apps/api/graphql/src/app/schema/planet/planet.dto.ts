@@ -1,6 +1,7 @@
 import {
-  FilterableField, FilterableUnPagedRelation,
-  Relation
+  FilterableField,
+  FilterableUnPagedRelation,
+  Relation,
 } from '@nestjs-query/query-graphql';
 import {
   Field,
@@ -17,6 +18,7 @@ import {
   HouseDto,
   FocusDto,
   PlanetarySystemDto,
+  TerrainDto,
   ResourceDto,
 } from '../dtos';
 import { ColorDto } from '../color/color.dto';
@@ -34,22 +36,46 @@ import { ColorDto } from '../color/color.dto';
   disableRemove: true,
   nullable: true,
 })
-@Relation('foci', () => FocusDto, {
-  disableRemove: true,
-  nullable: true,
-})
-@FilterableUnPagedRelation('houses', () => HouseDto, {
-  disableRemove: true,
-  nullable: true,
-})
-@Relation('colors', () => ColorDto, {
-  disableRemove: true,
-  nullable: true,
-})
-@Relation('resources', () => ResourceDto, {
-  disableRemove: true,
-  nullable: true,
-})
+@FilterableUnPagedRelation(
+  'foci',
+  () => FocusDto,
+  {
+    disableRemove: true,
+    nullable: true,
+  }
+)
+@FilterableUnPagedRelation(
+  'houses',
+  () => HouseDto,
+  {
+    disableRemove: true,
+    nullable: true,
+  }
+)
+@FilterableUnPagedRelation(
+  'colors',
+  () => ColorDto,
+  {
+    disableRemove: true,
+    nullable: true,
+  }
+)
+@FilterableUnPagedRelation(
+  'resources',
+  () => ResourceDto,
+  {
+    disableRemove: true,
+    nullable: true,
+  }
+)
+@FilterableUnPagedRelation(
+  'terrains',
+  () => TerrainDto,
+  {
+    disableRemove: true,
+    nullable: true,
+  }
+)
 export class PlanetDto extends BaseDto {
   @FilterableField({ nullable: true })
   population!: number;
@@ -97,4 +123,9 @@ export class PlanetInput extends PartialType(
     nullable: true,
   })
   resources!: RelationInput[];
+
+  @Field(() => [RelationInput!]!, {
+    nullable: true,
+  })
+  terrains!: RelationInput[];
 }

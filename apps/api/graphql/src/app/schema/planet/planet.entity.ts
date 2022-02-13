@@ -12,9 +12,10 @@ import {
   HouseEntity,
   FocusEntity,
   PlanetarySystemEntity,
+  ColorEntity,
+  TerrainEntity,
+  ResourceEntity,
 } from '../entities';
-import { ColorEntity } from '../color/color.entity';
-import { ResourceEntity } from '../resource/resource.entity';
 
 @Entity()
 export class PlanetEntity extends BaseEntity {
@@ -83,4 +84,15 @@ export class PlanetEntity extends BaseEntity {
   )
   @JoinTable()
   resources: ResourceEntity[];
+
+  @ManyToMany(
+    (): ObjectType<TerrainEntity> =>
+      TerrainEntity,
+    (fe) => fe.planets,
+    {
+      nullable: true,
+    }
+  )
+  @JoinTable()
+  terrains: TerrainEntity[];
 }

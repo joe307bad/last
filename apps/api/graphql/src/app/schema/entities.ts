@@ -5,3 +5,4 @@ export * from './character/character.entity';
 export * from './planetary-system/planetary-system.entity';
 export * from './color/color.entity';
 export * from './resource/resource.entity';
+export * from './terrain/terrain.entity';

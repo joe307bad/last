@@ -5,3 +5,4 @@ export * from './character/character.dto';
 export * from './planetary-system/planetary-system.dto';
 export * from './color/color.dto';
 export * from './resource/resource.dto';
+export * from './terrain/terrain.dto';

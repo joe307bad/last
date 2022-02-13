@@ -16,6 +16,7 @@ import {
   CharacterEntity,
   FocusEntity,
   ColorEntity,
+  TerrainEntity,
   ResourceEntity,
 } from './schema/entities';
 import {
@@ -27,8 +28,9 @@ import {
   CharacterInput,
   PlanetInput,
   ColorDto,
-  ResourceDto,
+  TerrainDto,
   HouseInput,
+  ResourceDto,
 } from './schema/dtos';
 
 @Module({
@@ -42,6 +44,7 @@ import {
           CharacterEntity,
           FocusEntity,
           ColorEntity,
+          TerrainEntity,
           ResourceEntity,
         ]),
       ],
@@ -49,6 +52,10 @@ import {
         {
           DTOClass: ResourceDto,
           EntityClass: ResourceEntity,
+        },
+        {
+          DTOClass: TerrainDto,
+          EntityClass: TerrainEntity,
         },
         {
           DTOClass: FocusDto,

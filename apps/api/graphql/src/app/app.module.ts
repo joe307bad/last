@@ -3,7 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import {
+  ApolloDriver,
+  ApolloDriverConfig,
+} from '@nestjs/apollo';
 import { NestjsQueryGraphQLModule } from '@nestjs-query/query-graphql';
 import { NestjsQueryTypeOrmModule } from '@nestjs-query/query-typeorm';
 import {
@@ -13,6 +16,7 @@ import {
   CharacterEntity,
   FocusEntity,
   ColorEntity,
+  ResourceEntity,
 } from './schema/entities';
 import {
   PlanetarySystemDto,
@@ -23,6 +27,8 @@ import {
   CharacterInput,
   PlanetInput,
   ColorDto,
+  ResourceDto,
+  HouseInput,
 } from './schema/dtos';
 
 @Module({
@@ -36,18 +42,36 @@ import {
           CharacterEntity,
           FocusEntity,
           ColorEntity,
+          ResourceEntity,
         ]),
       ],
       resolvers: [
-        { DTOClass: FocusDto, EntityClass: FocusEntity },
-        { DTOClass: ColorDto, EntityClass: ColorEntity },
-        { DTOClass: HouseDto, EntityClass: HouseEntity },
+        {
+          DTOClass: ResourceDto,
+          EntityClass: ResourceEntity,
+        },
+        {
+          DTOClass: FocusDto,
+          EntityClass: FocusEntity,
+        },
+        {
+          DTOClass: ColorDto,
+          EntityClass: ColorEntity,
+        },
+        {
+          DTOClass: HouseDto,
+          EntityClass: HouseEntity,
+          CreateDTOClass: HouseInput,
+        },
         {
           DTOClass: CharacterDto,
           EntityClass: CharacterEntity,
           CreateDTOClass: CharacterInput,
         },
-        { DTOClass: PlanetarySystemDto, EntityClass: PlanetarySystemEntity },
+        {
+          DTOClass: PlanetarySystemDto,
+          EntityClass: PlanetarySystemEntity,
+        },
         {
           DTOClass: PlanetDto,
           EntityClass: PlanetEntity,

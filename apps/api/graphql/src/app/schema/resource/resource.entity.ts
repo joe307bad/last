@@ -3,10 +3,10 @@ import { BaseEntity } from '../../core';
 import { PlanetEntity } from '../entities';
 
 @Entity()
-export class FocusEntity extends BaseEntity {
+export class ResourceEntity extends BaseEntity {
   @ManyToMany(
     () => PlanetEntity,
-    (pe) => pe.foci,
+    (pe) => pe.resources,
     { nullable: true }
   )
   planets!: PlanetEntity[];

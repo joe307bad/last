@@ -1,6 +1,16 @@
-import { Entity, JoinTable, ManyToMany, ObjectType, OneToMany, OneToOne } from 'typeorm';
+import {
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ObjectType,
+  OneToMany,
+} from 'typeorm';
 import { BaseEntity } from '../../core';
-import { PlanetEntity, CharacterEntity, ColorEntity } from '../entities';
+import {
+  PlanetEntity,
+  CharacterEntity,
+  ColorEntity,
+} from '../entities';
 
 @Entity()
 export class HouseEntity extends BaseEntity {
@@ -11,7 +21,11 @@ export class HouseEntity extends BaseEntity {
   )
   characters!: CharacterEntity[];
 
-  @ManyToMany(() => PlanetEntity, (pe) => pe.houses, { nullable: true })
+  @ManyToMany(
+    () => PlanetEntity,
+    (pe) => pe.houses,
+    { nullable: true }
+  )
   planets!: PlanetEntity[];
 
   @ManyToMany(

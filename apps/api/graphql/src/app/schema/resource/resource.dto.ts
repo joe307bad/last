@@ -3,8 +3,8 @@ import { BaseDto } from '../../core';
 import { Relation } from '@nestjs-query/query-graphql';
 import { PlanetDto } from '../dtos';
 
-@ObjectType('Focus')
+@ObjectType('Resource')
 @Relation('planets', () => PlanetDto, {
   disableRemove: true,
 })
-export class FocusDto extends BaseDto {}
+export class ResourceDto extends BaseDto {}

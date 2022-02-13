@@ -2,15 +2,15 @@ import { ObjectType } from '@nestjs/graphql';
 import { BaseDto } from '../../core';
 import {
   FilterableField,
-  UnPagedRelation,
+  Relation,
 } from '@nestjs-query/query-graphql';
 import { HouseDto, PlanetDto } from '../dtos';
 
 @ObjectType('Color')
-@UnPagedRelation('planets', () => PlanetDto, {
+@Relation('planets', () => PlanetDto, {
   disableRemove: true,
 })
-@UnPagedRelation('houses', () => HouseDto, {
+@Relation('houses', () => HouseDto, {
   disableRemove: true,
 })
 export class ColorDto extends BaseDto {

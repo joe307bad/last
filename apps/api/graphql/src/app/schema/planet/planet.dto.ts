@@ -1,7 +1,6 @@
 import {
-  FilterableField,
-  Relation,
-  UnPagedRelation,
+  FilterableField, FilterableUnPagedRelation,
+  Relation
 } from '@nestjs-query/query-graphql';
 import {
   Field,
@@ -10,28 +9,44 @@ import {
   OmitType,
   PartialType,
 } from '@nestjs/graphql';
-import { RelationInput, BaseDto } from '../../core';
-import { HouseDto, FocusDto, PlanetarySystemDto } from '../dtos';
+import {
+  RelationInput,
+  BaseDto,
+} from '../../core';
+import {
+  HouseDto,
+  FocusDto,
+  PlanetarySystemDto,
+  ResourceDto,
+} from '../dtos';
 import { ColorDto } from '../color/color.dto';
 
 @ObjectType('Planet')
-@Relation('planetarySystem', () => PlanetarySystemDto, {
-  disableRemove: true,
-  nullable: true,
-})
+@Relation(
+  'planetarySystem',
+  () => PlanetarySystemDto,
+  {
+    disableRemove: true,
+    nullable: true,
+  }
+)
 @Relation('rulingHouse', () => HouseDto, {
   disableRemove: true,
   nullable: true,
 })
-@UnPagedRelation('foci', () => FocusDto, {
+@Relation('foci', () => FocusDto, {
   disableRemove: true,
   nullable: true,
 })
-@UnPagedRelation('houses', () => HouseDto, {
+@FilterableUnPagedRelation('houses', () => HouseDto, {
   disableRemove: true,
   nullable: true,
 })
-@UnPagedRelation('colors', () => ColorDto, {
+@Relation('colors', () => ColorDto, {
+  disableRemove: true,
+  nullable: true,
+})
+@Relation('resources', () => ResourceDto, {
   disableRemove: true,
   nullable: true,
 })
@@ -51,7 +66,11 @@ export class PlanetDto extends BaseDto {
 
 @InputType()
 export class PlanetInput extends PartialType(
-  OmitType(PlanetDto, ['id', 'planetarySystemId', 'rulingHouseId'], InputType)
+  OmitType(
+    PlanetDto,
+    ['id', 'planetarySystemId', 'rulingHouseId'],
+    InputType
+  )
 ) {
   @Field(() => RelationInput, { nullable: true })
   planetarySystem!: RelationInput;
@@ -59,12 +78,23 @@ export class PlanetInput extends PartialType(
   @Field(() => RelationInput, { nullable: true })
   rulingHouse!: RelationInput;
 
-  @Field(() => [RelationInput!]!, { nullable: true })
+  @Field(() => [RelationInput!]!, {
+    nullable: true,
+  })
   foci!: RelationInput[];
 
-  @Field(() => [RelationInput!]!, { nullable: true })
+  @Field(() => [RelationInput!]!, {
+    nullable: true,
+  })
   houses!: RelationInput[];
 
-  @Field(() => [RelationInput!]!, { nullable: true })
+  @Field(() => [RelationInput!]!, {
+    nullable: true,
+  })
   colors!: RelationInput[];
+
+  @Field(() => [RelationInput!]!, {
+    nullable: true,
+  })
+  resources!: RelationInput[];
 }

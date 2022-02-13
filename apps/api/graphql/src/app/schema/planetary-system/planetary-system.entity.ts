@@ -1,4 +1,8 @@
-import { Column, Entity, OneToMany } from 'typeorm';
+import {
+  Column,
+  Entity,
+  OneToMany,
+} from 'typeorm';
 import { PlanetEntity } from '../entities';
 import { BaseEntity } from '../../core';
 
@@ -12,7 +16,8 @@ export class PlanetarySystemEntity extends BaseEntity {
 
   @OneToMany(
     () => PlanetEntity,
-    (planetEntity) => planetEntity.planetarySystem,
+    (planetEntity) =>
+      planetEntity.planetarySystem,
     { nullable: true }
   )
   planets!: PlanetEntity[];

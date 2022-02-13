@@ -12,6 +12,7 @@ import {
 } from '@nestjs/graphql';
 import { RelationInput, BaseDto } from '../../core';
 import { HouseDto, FocusDto, PlanetarySystemDto } from '../dtos';
+import { ColorDto } from '../color/color.dto';
 
 @ObjectType('Planet')
 @Relation('planetarySystem', () => PlanetarySystemDto, {
@@ -27,6 +28,10 @@ import { HouseDto, FocusDto, PlanetarySystemDto } from '../dtos';
   nullable: true,
 })
 @UnPagedRelation('houses', () => HouseDto, {
+  disableRemove: true,
+  nullable: true,
+})
+@UnPagedRelation('colors', () => ColorDto, {
   disableRemove: true,
   nullable: true,
 })
@@ -59,4 +64,7 @@ export class PlanetInput extends PartialType(
 
   @Field(() => [RelationInput!]!, { nullable: true })
   houses!: RelationInput[];
+
+  @Field(() => [RelationInput!]!, { nullable: true })
+  colors!: RelationInput[];
 }

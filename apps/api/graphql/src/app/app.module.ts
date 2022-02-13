@@ -12,6 +12,7 @@ import {
   HouseEntity,
   CharacterEntity,
   FocusEntity,
+  ColorEntity,
 } from './schema/entities';
 import {
   PlanetarySystemDto,
@@ -21,6 +22,7 @@ import {
   FocusDto,
   CharacterInput,
   PlanetInput,
+  ColorDto,
 } from './schema/dtos';
 
 @Module({
@@ -33,10 +35,12 @@ import {
           HouseEntity,
           CharacterEntity,
           FocusEntity,
+          ColorEntity,
         ]),
       ],
       resolvers: [
         { DTOClass: FocusDto, EntityClass: FocusEntity },
+        { DTOClass: ColorDto, EntityClass: ColorEntity },
         { DTOClass: HouseDto, EntityClass: HouseEntity },
         {
           DTOClass: CharacterDto,

@@ -19,7 +19,7 @@ rulingHouse: House
 
 foci: Focus[]
 houses: House[]
-resources: PlanetResource[]
+resources: Resource[]
 colors: Color[]
 terrains: Terrain[]
 timeline: Event[]
@@ -79,7 +79,7 @@ Desert, ice, tropical, dry, temperate, continental, polar, Canyons, Forest, Glac
 hex: string
 ```
 
-### PlanetResource
+### Resource
 ```
 name: string
 resource: Resource

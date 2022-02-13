@@ -8,7 +8,12 @@ import {
   ObjectType,
 } from 'typeorm';
 import { BaseEntity } from '../../core';
-import { HouseEntity, FocusEntity, PlanetarySystemEntity } from '../entities';
+import {
+  HouseEntity,
+  FocusEntity,
+  PlanetarySystemEntity,
+} from '../entities';
+import { ColorEntity } from '../color/color.entity';
 
 @Entity()
 export class PlanetEntity extends BaseEntity {
@@ -19,7 +24,8 @@ export class PlanetEntity extends BaseEntity {
   level!: number;
 
   @ManyToOne(
-    (): ObjectType<PlanetarySystemEntity> => PlanetarySystemEntity,
+    (): ObjectType<PlanetarySystemEntity> =>
+      PlanetarySystemEntity,
     (pse) => pse.planets,
     {
       nullable: true,
@@ -28,19 +34,40 @@ export class PlanetEntity extends BaseEntity {
   @JoinColumn()
   planetarySystem!: PlanetarySystemEntity;
 
-  @ManyToOne((): ObjectType<HouseEntity> => HouseEntity, { nullable: true })
+  @ManyToOne(
+    (): ObjectType<HouseEntity> => HouseEntity,
+    { nullable: true }
+  )
   @JoinColumn()
   rulingHouse!: HouseEntity;
 
-  @ManyToMany((): ObjectType<HouseEntity> => HouseEntity, (he) => he.planets, {
-    nullable: true,
-  })
+  @ManyToMany(
+    (): ObjectType<HouseEntity> => HouseEntity,
+    (he) => he.planets,
+    {
+      nullable: true,
+    }
+  )
   @JoinTable()
   houses: HouseEntity[];
 
-  @ManyToMany((): ObjectType<FocusEntity> => FocusEntity, (fe) => fe.planets, {
-    nullable: true,
-  })
+  @ManyToMany(
+    (): ObjectType<ColorEntity> => ColorEntity,
+    (ce) => ce.planets,
+    {
+      nullable: true,
+    }
+  )
+  @JoinTable()
+  colors: ColorEntity[];
+
+  @ManyToMany(
+    (): ObjectType<FocusEntity> => FocusEntity,
+    (fe) => fe.planets,
+    {
+      nullable: true,
+    }
+  )
   @JoinTable()
   foci: FocusEntity[];
 }

@@ -1,5 +1,6 @@
-import { generateStory } from '@last/story/gen';
+import { generateStoryTemplate } from '@last/story/gen';
 import { promises } from 'fs';
+import { parse } from 'yaml';
 
 (async () => {
   const [structure, output] = process.argv.reduce(
@@ -17,9 +18,15 @@ import { promises } from 'fs';
     },
     ['', '']
   );
-  const story = await generateStory(
-    structure,
-    output
+
+  const storyStructure = parse(
+    (
+      await promises.readFile(structure)
+    ).toString()
+  );
+
+  const story = await generateStoryTemplate(
+    storyStructure
   );
 
   await promises.writeFile(output, story);

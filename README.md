@@ -1,11 +1,18 @@
 # Last
-
+## Development
 ### run MySQL docker container
 ```
 docker run -p 3306:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=secret -d mysql:latest --default-authentication-plugin=mysql_native_password
 ```
+## Resources
+- [API Gateway using Tyk and Keycloak](https://tyk.io/docs/tyk-developer-portal/keycloak-dcr/)
 
-### [API Gateway using Tyk and Keycloak](https://tyk.io/docs/tyk-developer-portal/keycloak-dcr/)
+## CLI
+
+### Generate `story.yml` from structure template
+```
+nx start cli-story --structure=stories/01-romeo-juliet/story-structure.yml --output=stories/01-romeo-juliet/story.yml
+```
 
 ### Planet
 ```

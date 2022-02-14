@@ -1,4 +1,4 @@
-import { Relation } from '@nestjs-query/query-graphql';
+import { FilterableUnPagedRelation, Relation } from '@nestjs-query/query-graphql';
 import {
   Field,
   InputType,
@@ -17,13 +17,13 @@ import {
 } from '../../core';
 
 @ObjectType('House')
-@Relation('characters', () => CharacterDto, {
+@FilterableUnPagedRelation('characters', () => CharacterDto, {
   disableRemove: true,
 })
-@Relation('planets', () => PlanetDto, {
+@FilterableUnPagedRelation('planets', () => PlanetDto, {
   disableRemove: true,
 })
-@Relation('colors', () => ColorDto, {
+@FilterableUnPagedRelation('colors', () => ColorDto, {
   disableRemove: true,
 })
 export class HouseDto extends BaseDto {}
@@ -36,4 +36,9 @@ export class HouseInput extends PartialType(
     nullable: true,
   })
   colors!: RelationInput[];
+
+  @Field(() => [RelationInput], {
+    nullable: true,
+  })
+  characters!: RelationInput[];
 }

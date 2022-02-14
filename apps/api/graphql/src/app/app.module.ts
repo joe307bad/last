@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import {
@@ -32,6 +31,7 @@ import {
   HouseInput,
   ResourceDto,
 } from './schema/dtos';
+import { GeneratorService } from './generator/generator.service';
 
 @Module({
   imports: [
@@ -100,6 +100,6 @@ import {
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [GeneratorService],
 })
 export class AppModule {}

@@ -1,0 +1,17 @@
+conditions:
+  characters:
+    CHAR_1:
+      - brawn
+      - mercy
+    CHAR_2:
+      - intelligence
+      - foolishness
+    CHAR_3:
+      - hesitance
+      - decisivness
+  resources:
+    amount: 4
+    max: 100
+    decision_brackets: 2
+
+

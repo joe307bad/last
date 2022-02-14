@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@last/story/gen": [
+        "libs/story/gen/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -1,13 +1,15 @@
 import { Controller, Get } from '@nestjs/common';
 
-import { AppService } from './app.service';
+import { GeneratorService } from './generator/generator.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private readonly generatorService: GeneratorService
+  ) {}
 
   @Get()
   getData() {
-    return this.appService.getData();
+    return this.generatorService.createPlanets();
   }
 }

@@ -2,6 +2,8 @@
   "version": 2,
   "projects": {
     "api-graphql": "apps/api/graphql",
+    "cli-story": "apps/cli/story",
+    "story-gen": "libs/story/gen",
     "web/home": "apps/web/home"
   }
 }

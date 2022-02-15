@@ -1,0 +1,45 @@
+# stories can be played multiple times, just with different characters
+setup: ""
+conditions:
+  characters:
+    CHAR_1:
+      - daring
+      - calculated
+    CHAR_2:
+      - humble
+      - hostile
+    CHAR_3:
+      - greedy
+      - lonely
+  possible_outcomes:
+    building_built: "conservation center"
+    building_built: "center for biodiversity research"
+    building_built: "institute for phenology"
+    building_built: "society for the preservation of life"
+    building_built: "global national park"
+    building_built: "dedicated reserves for agriculture"
+    building_built: "center for natural stewardship"
+    building_built: "the institue for the human impact on biodiversity"
+    relationship_created: "character takes on a animal sidekick"
+    relationship_created: "reunited with relative who was thought to have been lost"
+    species_population_boon: ""
+    population_boon: "conservation efforts result in better life on planet"
+    resource_boon: "focus on well being of planet has made using resources more efficient"
+    species_saved: ""
+    ecological_disaster_averted: ""
+    character_powers_gained: "ability to forsee cataclysmic natural events"
+    character_powers_gained: "talk to animals"
+    character_powers_gained: "ecological communication: bringing plant, animals, and humans closer"
+    biodiversity_increase: ""
+    abolished_mineral_mining: ""
+    increased_global_habitat_stability: ""
+    sequester_carbon_in_growing_forests: "",
+    started_locally_sustainable_natural_resource_based_economy: ""
+    providing_outdoor_recreational_opportunities_that_are_consistent_with_conservation_objectives: ""
+    earn_respect_as_exemplary_land_stewards_from_other_houses: ""
+  resources:
+    amount: 4
+    max: 100
+    decision_brackets: 2
+
+

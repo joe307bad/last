@@ -11,7 +11,7 @@ docker run -p 3306:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=secret -d mysql:lat
 
 ### Generate `story.yml` from structure template
 ```
-nx start cli-story --structure=stories/01-romeo-juliet/story-structure.yml --output=stories/01-romeo-juliet/story.yml
+nx run cli-story:start --storyNo=02
 ```
 
 ## Schema

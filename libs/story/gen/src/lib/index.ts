@@ -1,22 +1,36 @@
 import { CartesianProduct } from 'js-combinatorics';
 import { stringify } from 'json-to-pretty-yaml';
+import { random } from 'rambdax';
 
 export const generateStoryTemplate =
   async (inputStoryStructure: {
-    conditions: {
-      characters: any;
-      resources: any;
+    title: string;
+    foci: any;
+    planets: any;
+    characters: {
+      [key: string]: {
+        possible_traits: string[];
+        house: string;
+      };
     };
+    possible_outcomes: any;
   }) => {
-    const { characters, resources } =
-      inputStoryStructure.conditions;
+    const {
+      title,
+      foci,
+      planets,
+      characters,
+      possible_outcomes,
+    } = inputStoryStructure;
+
+    const outcomesStack = [...possible_outcomes];
 
     const characterPossibilities = Object.keys(
       characters
     ).map((characterKey) => {
       const cp = new CartesianProduct(
         [characterKey],
-        characters[characterKey]
+        characters[characterKey].possible_traits
       );
       return Array.from(cp);
     });
@@ -27,27 +41,55 @@ export const generateStoryTemplate =
           ...characterPossibilities
         )
       )
-        .map((cp) => cp.map((cf) => cf.join('_')))
+        .map((cp) =>
+          cp.map(
+            (cf) =>
+              `${cf.join('_')}_${
+                characters[cf[0]].house
+              }`
+          )
+        )
         .map((cf) => cf.join('___'))
         .reduce(
           (acc: [object, number], item) => {
-            const choiceResults = {
-              text: '',
-              character_relationship_created: '',
-              population_change: '',
-              resource_change: '',
-              character_deaths: '',
-              character_births: '',
-              ruling_house_change: '',
+            const possibleOutcome = () => {
+              if (outcomesStack.length > 0) {
+                return outcomesStack.pop();
+              } else {
+                return possible_outcomes[
+                  random(
+                    0,
+                    possible_outcomes.length - 1
+                  )
+                ];
+              }
             };
             const possibleResults = acc[1] + 3;
             const yaml = {
               ...acc[0],
               [item]: {
                 text: '',
-                choice_1: choiceResults,
-                choice_2: choiceResults,
-                choice_3: choiceResults,
+                choice_1: {
+                  text: '',
+                  [possibleOutcome()]: {
+                    text: '',
+                    lql: '',
+                  },
+                },
+                choice_2: {
+                  text: '',
+                  [possibleOutcome()]: {
+                    text: '',
+                    lql: '',
+                  },
+                },
+                choice_3: {
+                  text: '',
+                  [possibleOutcome()]: {
+                    text: '',
+                    lql: '',
+                  },
+                },
               },
             };
 
@@ -56,9 +98,20 @@ export const generateStoryTemplate =
           [{}, 0]
         );
 
+    const permutationKeys =
+      Object.keys(permutations);
+
     return stringify({
-      setup: '',
+      title,
       possible_results,
+      planets: planets.reduce((acc, item) => {
+        return {
+          ...acc,
+          [item]: permutationKeys.length,
+        };
+      }, {}),
+      foci,
+      openings: permutationKeys.map((_) => ''),
       character_possibilities: permutations,
     });
   };

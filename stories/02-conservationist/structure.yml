@@ -1,0 +1,51 @@
+title: "The Conservationist"
+planets:
+  - PLANET_1
+foci:
+  - ecology
+  - biodiversity
+  - conservationism
+characters:
+  CHAR_1:
+    house: HOUSE_1
+    possible_traits:
+      - daring
+      - calculated
+  CHAR_2:
+    house: HOUSE_2
+    possible_traits:
+      - humble
+      - hostile
+  CHAR_3:
+    house: HOUSE_3
+    possible_traits:
+      - greedy
+      - lonely
+possible_outcomes:
+  - building_built
+  - building_built
+  - building_built
+  - building_built
+  - building_built
+  - building_built
+  - building_built
+  - building_built
+  - relationship_created
+  - relationship_created
+  - species_population_boon
+  - population_boon
+  - resource_boon
+  - species_saved
+  - ecological_disaster_averted
+  - character_powers_gained
+  - character_powers_gained
+  - character_powers_gained
+  - biodiversity_increase
+  - abolished_mineral_mining
+  - increased_global_habitat_stability
+  - sequester_carbon_in_growing_forests
+  - started_locally_sustainable_natural_resource_based_economy
+  - respect_from_other_houses
+  - respect_from_other_houses
+
+

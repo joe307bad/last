@@ -1,0 +1,154 @@
+title: 'The Conservationist'
+possible_results: 24
+planets:
+  PLANET_1: 8
+foci:
+  - 'ecology'
+  - 'biodiversity'
+  - 'conservationism'
+openings:
+  - '${PLANET_1} has long been a beacon for biodiversity and conservation. But not all things are long for this world. Help ${PLANET_1} ensure the safety of their planets ecology.'
+  - 'Nothing is more important than the life of a planet. Without life, the universe becomes an empty chasm of darkness. Help ${PLANET_1} continue to be the beacon of biodiversity it was meant to be.'
+  - 'Conservation and ecology are important pieces to the universal puzzle. You have the power to help ${PLANET_1} be a light of hope  in a desolate universe. Be apart of the universal effort for the preservation of biodiversity'
+  - 'Enhance the efforts of conservationism for ${PLANET_1}. The population of this planet can use your efforts to improve their biodiversity and promote sustainable practices for their environment.'
+  - 'In an ever expanding universe of death and destruction, it is important to preserve biodiversity for future generations. Conservationism and the study of ecology ad essential for thi preservation. Help ${PLANET_1} soar to new heights of conservationism.'
+  - "Even the smallest effort can help preserve the life that has been gifted the universe. Give ${PLANET_1} the assistance it needs to preserve it's biodiversity."
+  - 'The conservation of life is essential to the sustainable management of any planet. Guide ${PLANET_1} into a bright future that includes new species and dedicated research in preserving biodiversity for future generations.'
+  - 'Human activity is affecting the biodiversity of ${PLANET_1}. With the right guidance and knowledge, ${PLANET_1} can enjoy a bright future of sustainable environmental preservation.'
+character_possibilities:
+  CHAR_1_daring_HOUSE_1___CHAR_2_humble_HOUSE_2___CHAR_3_greedy_HOUSE_3:
+    text: '${CHAR_1} is being led to the execution block. They have been tried and found guilty of assassination. They killed ${CHAR_2}, the kingpin for an interplanetary poaching ring. ${CHAR_3} is seeking to be the next kingpin an watches on with a sly grin.'
+    choice_1:
+      text: '${CHAR_1} is executed without incident. The planet continues a cycle of violence. Punish the dissenters.'
+      respect_from_other_houses:
+        text: "$"
+        lql: ""
+    choice_2:
+      text: ""
+      respect_from_other_houses:
+        text: ""
+        lql: ""
+    choice_3:
+      text: ""
+      started_locally_sustainable_natural_resource_based_economy:
+        text: ""
+        lql: ""
+  CHAR_1_calculated___CHAR_2_humble___CHAR_3_greedy:
+    text: ""
+    choice_1:
+      text: ""
+      sequester_carbon_in_growing_forests:
+        text: ""
+        lql: ""
+    choice_2:
+      text: ""
+      increased_global_habitat_stability:
+        text: ""
+        lql: ""
+    choice_3:
+      text: ""
+      abolished_mineral_mining:
+        text: ""
+        lql: ""
+  CHAR_1_daring___CHAR_2_hostile___CHAR_3_greedy:
+    text: ""
+    choice_1:
+      text: ""
+      biodiversity_increase:
+        text: ""
+        lql: ""
+    choice_2:
+      text: ""
+      character_powers_gained:
+        text: ""
+        lql: ""
+    choice_3:
+      text: ""
+      character_powers_gained:
+        text: ""
+        lql: ""
+  CHAR_1_calculated___CHAR_2_hostile___CHAR_3_greedy:
+    text: ""
+    choice_1:
+      text: ""
+      character_powers_gained:
+        text: ""
+        lql: ""
+    choice_2:
+      text: ""
+      ecological_disaster_averted:
+        text: ""
+        lql: ""
+    choice_3:
+      text: ""
+      species_saved:
+        text: ""
+        lql: ""
+  CHAR_1_daring___CHAR_2_humble___CHAR_3_lonely:
+    text: ""
+    choice_1:
+      text: ""
+      resource_boon:
+        text: ""
+        lql: ""
+    choice_2:
+      text: ""
+      population_boon:
+        text: ""
+        lql: ""
+    choice_3:
+      text: ""
+      species_population_boon:
+        text: ""
+        lql: ""
+  CHAR_1_calculated___CHAR_2_humble___CHAR_3_lonely:
+    text: ""
+    choice_1:
+      text: ""
+      relationship_created:
+        text: ""
+        lql: ""
+    choice_2:
+      text: ""
+      relationship_created:
+        text: ""
+        lql: ""
+    choice_3:
+      text: ""
+      building_built:
+        text: ""
+        lql: ""
+  CHAR_1_daring___CHAR_2_hostile___CHAR_3_lonely:
+    text: ""
+    choice_1:
+      text: ""
+      building_built:
+        text: ""
+        lql: ""
+    choice_2:
+      text: ""
+      building_built:
+        text: ""
+        lql: ""
+    choice_3:
+      text: ""
+      building_built:
+        text: ""
+        lql: ""
+  CHAR_1_calculated___CHAR_2_hostile___CHAR_3_lonely:
+    text: ""
+    choice_1:
+      text: ""
+      building_built:
+        text: ""
+        lql: ""
+    choice_2:
+      text: ""
+      building_built:
+        text: ""
+        lql: ""
+    choice_3:
+      text: ""
+      building_built:
+        text: ""
+        lql: ""

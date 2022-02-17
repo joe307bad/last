@@ -88,6 +88,11 @@ export class PlanetDto extends BaseDto {
 
   @FilterableField({ nullable: true })
   rulingHouseId!: string;
+
+  @Field(() => [String], {
+    nullable: true,
+  })
+  events!: string[];
 }
 
 @InputType()

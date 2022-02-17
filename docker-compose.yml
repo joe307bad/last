@@ -6,7 +6,14 @@ services:
     environment:
       - "POSTGRES_USER=root"
       - "POSTGRES_DB=last"
-    expose:
-      - "5432"
     ports:
       - "5432:5432"
+  couchdb:
+    image: couchdb:latest
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=password
+    ports:
+      - '5984:5984'
+      - '4369:4369'
+      - '9100:9100'

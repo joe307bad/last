@@ -2,7 +2,7 @@ import {
   FilterableField,
   Relation,
 } from '@nestjs-query/query-graphql';
-import { ObjectType } from '@nestjs/graphql';
+import { Field, ObjectType } from '@nestjs/graphql';
 import { PlanetDto } from '../dtos';
 import { BaseDto } from '../../core';
 
@@ -16,4 +16,9 @@ export class PlanetarySystemDto extends BaseDto {
 
   @FilterableField({ nullable: true })
   suns!: number;
+
+  @Field(() => [String], {
+    nullable: true,
+  })
+  events!: string[];
 }

@@ -14,6 +14,13 @@ export class PlanetarySystemEntity extends BaseEntity {
   @Column({ nullable: true })
   suns!: number;
 
+  @Column({
+    array: true,
+    type: 'text',
+    nullable: true,
+  })
+  events!: string[];
+
   @OneToMany(
     () => PlanetEntity,
     (planetEntity) =>

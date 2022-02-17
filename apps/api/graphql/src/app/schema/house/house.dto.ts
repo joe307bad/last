@@ -26,7 +26,12 @@ import {
 @FilterableUnPagedRelation('colors', () => ColorDto, {
   disableRemove: true,
 })
-export class HouseDto extends BaseDto {}
+export class HouseDto extends BaseDto {
+  @Field(() => [String], {
+    nullable: true,
+  })
+  events!: string[];
+}
 
 @InputType()
 export class HouseInput extends PartialType(

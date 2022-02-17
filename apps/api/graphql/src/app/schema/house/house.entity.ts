@@ -1,9 +1,10 @@
 import {
+  Column,
   Entity,
   JoinTable,
   ManyToMany,
   ObjectType,
-  OneToMany,
+  OneToMany
 } from 'typeorm';
 import { BaseEntity } from '../../core';
 import {
@@ -14,6 +15,13 @@ import {
 
 @Entity()
 export class HouseEntity extends BaseEntity {
+  @Column({
+    array: true,
+    type: 'text',
+    nullable: true,
+  })
+  events!: string[];
+
   @OneToMany(
     () => CharacterEntity,
     (characterEntity) => characterEntity.house,

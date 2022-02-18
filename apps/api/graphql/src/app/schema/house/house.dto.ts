@@ -1,4 +1,7 @@
-import { FilterableUnPagedRelation, Relation } from '@nestjs-query/query-graphql';
+import {
+  FilterableUnPagedRelation,
+  Relation,
+} from '@nestjs-query/query-graphql';
 import {
   Field,
   InputType,
@@ -17,21 +20,28 @@ import {
 } from '../../core';
 
 @ObjectType('House')
-@FilterableUnPagedRelation('characters', () => CharacterDto, {
-  disableRemove: true,
-})
-@FilterableUnPagedRelation('planets', () => PlanetDto, {
-  disableRemove: true,
-})
-@FilterableUnPagedRelation('colors', () => ColorDto, {
-  disableRemove: true,
-})
-export class HouseDto extends BaseDto {
-  @Field(() => [String], {
-    nullable: true,
-  })
-  events!: string[];
-}
+@FilterableUnPagedRelation(
+  'characters',
+  () => CharacterDto,
+  {
+    disableRemove: true,
+  }
+)
+@FilterableUnPagedRelation(
+  'planets',
+  () => PlanetDto,
+  {
+    disableRemove: true,
+  }
+)
+@FilterableUnPagedRelation(
+  'colors',
+  () => ColorDto,
+  {
+    disableRemove: true,
+  }
+)
+export class HouseDto extends BaseDto {}
 
 @InputType()
 export class HouseInput extends PartialType(

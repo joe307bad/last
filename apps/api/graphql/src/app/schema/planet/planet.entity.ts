@@ -25,13 +25,6 @@ export class PlanetEntity extends BaseEntity {
   @Column({ nullable: true })
   level!: number;
 
-  @Column({
-    array: true,
-    type: 'text',
-    nullable: true,
-  })
-  events!: string[];
-
   @ManyToOne(
     (): ObjectType<PlanetarySystemEntity> =>
       PlanetarySystemEntity,

@@ -20,10 +20,6 @@ import {
   disableRemove: true,
 })
 export class CharacterDto extends BaseDto {
-  @Field(() => [String], {
-    nullable: true,
-  })
-  events!: string[];
 
   @FilterableField({ nullable: true })
   houseId!: string;

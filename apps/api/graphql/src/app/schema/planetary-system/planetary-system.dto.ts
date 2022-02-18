@@ -16,9 +16,4 @@ export class PlanetarySystemDto extends BaseDto {
 
   @FilterableField({ nullable: true })
   suns!: number;
-
-  @Field(() => [String], {
-    nullable: true,
-  })
-  events!: string[];
 }

@@ -36,7 +36,9 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/api/graphql/**/*.ts"]
+        "lintFilePatterns": [
+          "apps/api/graphql/**/*.ts"
+        ]
       }
     },
     "test": {

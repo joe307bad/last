@@ -1,4 +1,5 @@
 import {
+  FilterableField,
   FilterableUnPagedRelation,
   Relation,
 } from '@nestjs-query/query-graphql';
@@ -41,7 +42,10 @@ import {
     disableRemove: true,
   }
 )
-export class HouseDto extends BaseDto {}
+export class HouseDto extends BaseDto {
+  @FilterableField({ defaultValue: 0 })
+  initialAlignment!: number;
+}
 
 @InputType()
 export class HouseInput extends PartialType(

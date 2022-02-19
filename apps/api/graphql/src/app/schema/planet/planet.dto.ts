@@ -77,6 +77,9 @@ import { ColorDto } from '../color/color.dto';
   }
 )
 export class PlanetDto extends BaseDto {
+  @FilterableField({ defaultValue: 0 })
+  initialAlignment!: number;
+
   @FilterableField({ nullable: true })
   population!: number;
 

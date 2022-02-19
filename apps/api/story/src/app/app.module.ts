@@ -4,6 +4,7 @@ import { CouchDbModule } from 'nest-couchdb';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { StoryEventModule } from '../story-event/story-event.module';
+import { StatsModule } from '../stats/stats.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { StoryEventModule } from '../story-event/story-event.module';
       requestDefaults: { jar: true },
     }),
     StoryEventModule,
+    StatsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

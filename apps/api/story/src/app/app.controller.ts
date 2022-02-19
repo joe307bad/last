@@ -1,6 +1,11 @@
-import { Controller, Get } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Post,
+} from '@nestjs/common';
 
 import { AppService } from './app.service';
+import { StoryEventEntity } from '../story-event/story-event.entity';
 
 @Controller()
 export class AppController {
@@ -8,8 +13,12 @@ export class AppController {
     private readonly appService: AppService
   ) {}
 
-  @Get()
-  getData() {
-    return this.appService.getData();
+  @Post()
+  insertStoryEvents(
+    @Body() storyEvent: StoryEventEntity[]
+  ) {
+    return this.appService.insertStoryEvents(
+      storyEvent
+    );
   }
 }

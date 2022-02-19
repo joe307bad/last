@@ -20,6 +20,8 @@ import {
   disableRemove: true,
 })
 export class CharacterDto extends BaseDto {
+  @FilterableField({ defaultValue: 0 })
+  initialAlignment!: number;
 
   @FilterableField({ nullable: true })
   houseId!: string;

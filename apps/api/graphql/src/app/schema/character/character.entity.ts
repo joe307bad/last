@@ -9,6 +9,8 @@ import { BaseEntity } from '../../core';
 
 @Entity()
 export class CharacterEntity extends BaseEntity {
+  @Column({ default: 0 })
+  initialAlignment!: number;
 
   @ManyToOne(
     () => HouseEntity,

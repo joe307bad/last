@@ -15,6 +15,9 @@ import {
 
 @Entity()
 export class HouseEntity extends BaseEntity {
+  @Column({ default: 0 })
+  initialAlignment!: number;
+
   @OneToMany(
     () => CharacterEntity,
     (characterEntity) => characterEntity.house,

@@ -19,6 +19,9 @@ import {
 
 @Entity()
 export class PlanetEntity extends BaseEntity {
+  @Column({ default: 0 })
+  initialAlignment!: number;
+
   @Column({ nullable: true })
   population!: number;
 

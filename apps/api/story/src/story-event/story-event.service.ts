@@ -12,11 +12,11 @@ export class StoryEventService {
     private readonly storyEventRepo: Repository<StoryEventEntity>
   ) {}
 
-  createTest() {
-    return this.storyEventRepo.insert({
-      entityId: 'hey there',
-      eventData: 'hey',
-      entityType: 'planet',
+  insertMany(
+    storyEventEntities: StoryEventEntity[]
+  ) {
+    return this.storyEventRepo.bulk({
+      docs: storyEventEntities,
     });
   }
 }

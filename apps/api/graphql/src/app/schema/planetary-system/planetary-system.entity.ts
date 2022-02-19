@@ -8,6 +8,9 @@ import { BaseEntity } from '../../core';
 
 @Entity()
 export class PlanetarySystemEntity extends BaseEntity {
+  @Column({ default: 0 })
+  initialAlignment!: number;
+
   @Column({ nullable: true })
   asteroidBelts!: number;
 

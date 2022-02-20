@@ -1,9 +1,9 @@
-import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/api-gateway';
-import { formatJSONResponse } from '@libs/api-gateway';
-import { middyfy } from '@libs/lambda';
+import type { ValidatedEventAPIGatewayProxyEvent } from '../../libs/api-gateway';
+import { formatJSONResponse } from '../../libs/api-gateway';
+import { middyfy } from '../../libs/lambda';
 
 import schema from './schema';
-import { createPlanetStoryEvent } from '@functions/calculate-entity-stats/entity-types/planet';
+import { calculatePlanetStats } from './entity-types/planet';
 
 const calculateEntityStats: ValidatedEventAPIGatewayProxyEvent<
   typeof schema
@@ -21,7 +21,7 @@ const calculateEntityStats: ValidatedEventAPIGatewayProxyEvent<
   switch (entityType) {
     case 'planet':
       return formatJSONResponse({
-        planets: await createPlanetStoryEvent(entityId),
+        planets: await calculatePlanetStats(entityId),
       });
       break;
   }

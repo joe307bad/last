@@ -5,6 +5,7 @@
     "api-stats": "apps/api/stats",
     "api-story": "apps/api/story",
     "cli-story": "apps/cli/story",
+    "shared-types": "libs/shared/types",
     "story-gen": "libs/story/gen",
     "web/home": "apps/web/home"
   }

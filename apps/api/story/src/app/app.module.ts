@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { CouchDbModule } from 'nest-couchdb';
 
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { StoryEventModule } from '../story-event/story-event.module';
 import { StatsModule } from '../stats/stats.module';
 
@@ -18,6 +17,6 @@ import { StatsModule } from '../stats/stats.module';
     StatsModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [],
 })
 export class AppModule {}

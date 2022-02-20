@@ -1,6 +1,6 @@
 import type { AWS } from '@serverless/typescript';
 
-import calculateEntityStats from '@functions/calculate-entity-stats';
+import { calculateEntityStats } from '@last/functions';
 
 const serverlessConfiguration: AWS = {
   service: 'stats',
@@ -15,7 +15,8 @@ const serverlessConfiguration: AWS = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
-      NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
+      NODE_OPTIONS:
+        '--enable-source-maps --stack-trace-limit=1000',
     },
   },
   // import the function via paths

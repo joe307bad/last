@@ -3,12 +3,12 @@
   "sourceRoot": "apps/api/stats/src",
   "projectType": "application",
   "targets": {
-    "serve": {
+    "calculateEntityStats": {
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
       "options": {
         "cwd": "apps/api/stats",
-        "command": "sls invoke local -f calculateEntityStats"
+        "command": "sls invoke local -f calculateEntityStats --data=\"[\\\"59698166-27c0-492f-9c0a-85a27113939f\\\", \\\"planet\\\"]\""
       }
     }
   },

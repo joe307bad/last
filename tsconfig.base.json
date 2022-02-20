@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@last/shared/types": [
+        "libs/shared/types/src/index.ts"
+      ],
       "@last/story/gen": [
         "libs/story/gen/src/index.ts"
       ]

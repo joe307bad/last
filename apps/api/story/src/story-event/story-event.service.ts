@@ -12,11 +12,17 @@ export class StoryEventService {
     private readonly storyEventRepo: Repository<StoryEventEntity>
   ) {}
 
-  insertMany(
+  insertManyStoryEvents(
     storyEventEntities: StoryEventEntity[]
   ) {
     return this.storyEventRepo.bulk({
       docs: storyEventEntities,
+    });
+  }
+
+  getStoryEventsByEntity(entityId: string) {
+    return this.storyEventRepo.find({
+      selector: { entityId: { $eq: entityId } },
     });
   }
 }

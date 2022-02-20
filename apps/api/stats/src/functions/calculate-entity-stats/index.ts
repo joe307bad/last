@@ -7,7 +7,7 @@ export default {
     {
       http: {
         method: 'post',
-        path: 'hello',
+        path: 'calculate-entity-stats',
         request: {
           schemas: {
             'application/json': schema,

@@ -1,4 +1,7 @@
-import type { MetaFunction, LoaderFunction } from 'remix';
+import type {
+  MetaFunction,
+  LoaderFunction,
+} from 'remix';
 import { useLoaderData, json, Link } from 'remix';
 import { Planet } from '../components/planet';
 import faker from '@faker-js/faker';
@@ -21,15 +24,23 @@ type IndexData = {
 // to the component that renders it.
 // https://remix.run/api/conventions#loader
 export let loader: LoaderFunction = () => {
-  const elementNames = elements.map((e: { name: string }) => e.name);
+  const elementNames = elements.map(
+    (e: { name: string }) => e.name
+  );
 
-  const capitalizeAllFirstWords = (s: string[]) => {
+  const capitalizeAllFirstWords = (
+    s: string[]
+  ) => {
     return s
       .slice(0, 2)
       .join(' ')
       .toLowerCase()
       .split(' ')
-      .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+      .map(
+        (s) =>
+          s.charAt(0).toUpperCase() +
+          s.substring(1)
+      )
       .join(' ');
   };
 
@@ -46,26 +57,50 @@ export let loader: LoaderFunction = () => {
   };
 
   const randomHouse = () =>
-    capitalizeAllFirstWords([faker.name.lastName(), faker.lorem.word()]);
+    capitalizeAllFirstWords([
+      faker.name.lastName(),
+      faker.lorem.word(),
+    ]);
 
-  const randomResource = (): [string, number, string] => {
+  const randomResource = (): [
+    string,
+    number,
+    string
+  ] => {
     return [
       faker.helpers.randomize(['+', '-']),
-      faker.datatype.number({ max: 3000, min: 100 }),
+      faker.datatype.number({
+        max: 3000,
+        min: 100,
+      }),
       faker.helpers.randomize(elementNames),
     ];
   };
 
   const randomPlanet = (): TPlanet => ({
     name: twoRandomStrings(),
-    colors: [faker.internet.color(), faker.internet.color()],
-    opposingFamilies: [randomHouse(), randomHouse()],
+    colors: [
+      faker.internet.color(),
+      faker.internet.color(),
+    ],
+    opposingFamilies: [
+      randomHouse(),
+      randomHouse(),
+    ],
     rulingFamily: randomHouse(),
-    resources: [randomResource(), randomResource()],
+    resources: [
+      randomResource(),
+      randomResource(),
+    ],
   });
 
   let data: IndexData = {
-    planets: [randomPlanet(), randomPlanet(), randomPlanet(), randomPlanet()],
+    planets: [
+      randomPlanet(),
+      randomPlanet(),
+      randomPlanet(),
+      randomPlanet(),
+    ],
   };
 
   // https://remix.run/api/remix#json
@@ -80,15 +115,51 @@ export let meta: MetaFunction = () => {
   };
 };
 
+const exampleEvents = (createDate: any) => [
+  {
+    entityId:
+      '59698166-27c0-492f-9c0a-85a27113939f',
+    entityType: 'planet',
+    eventType: 'resource_boon',
+    valueChange: '+80',
+    secondaryEntityId:
+      '83234f21-c8f7-41d8-91a3-59bd83d0a143',
+    createDate,
+  },
+];
+
+const creatExampleEvents = async () => {
+  await fetch('http://localhost:3077/api', {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(
+      exampleEvents(Date.now())
+    ),
+  }).then((r) => console.log(r.json()));
+};
+
 // https://remix.run/guides/routing#index-routes
 export default function Index() {
   let data = useLoaderData<IndexData>();
 
   return (
-    <main className="remix__page flex justify-center">
-      {data.planets.map((planet) => (
-        <Planet planet={planet} />
-      ))}
+    <main>
+      <div className="p-2 bg-white text-black">
+        <button
+          onClick={creatExampleEvents}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Create example events
+        </button>
+      </div>
+      <div className="remix__page flex justify-center">
+        {data.planets.map((planet, i) => (
+          <Planet key={i} planet={planet} />
+        ))}
+      </div>
     </main>
   );
 }

@@ -8,7 +8,7 @@
       "outputs": [],
       "options": {
         "cwd": "apps/api/stats",
-        "command": "sls invoke local -f hello"
+        "command": "sls invoke local -f calculateEntityStats"
       }
     }
   },

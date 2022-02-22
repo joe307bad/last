@@ -5,9 +5,10 @@ import {
   Param,
   Post,
 } from '@nestjs/common';
-
-import { StoryEventEntity } from '../story-event/story-event.entity';
-import { StoryEventService } from '../story-event/story-event.service';
+import {
+  StoryEventEntity,
+  StoryEventService,
+} from './modules/story-event';
 
 @Controller()
 export class AppController {
@@ -17,10 +18,10 @@ export class AppController {
 
   @Post()
   insertStoryEvents(
-    @Body() storyEvent: StoryEventEntity[]
+    @Body() storyEvents: StoryEventEntity[]
   ) {
     return this.storyEventService.insertManyStoryEvents(
-      storyEvent
+      storyEvents
     );
   }
 

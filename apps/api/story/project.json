@@ -10,7 +10,7 @@
         "outputPath": "dist/apps/api/story",
         "main": "apps/api/story/src/main.ts",
         "tsConfig": "apps/api/story/tsconfig.app.json",
-        "assets": ["apps/api/story/src/assets"]
+        "assets": []
       },
       "configurations": {
         "production": {

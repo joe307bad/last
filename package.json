@@ -8,7 +8,8 @@
     "gen-story": "ts-node libs/story/gen/src/lib/index.ts",
     "postinstall": "remix setup node",
     "start": "nx serve",
-    "test": "nx test"
+    "test": "nx test",
+    "serve:apis": "concurrently \"nx serve api-story\" \"nx serve api-graphql\""
   },
   "resolutions": {
     "nano": "9.0.3"

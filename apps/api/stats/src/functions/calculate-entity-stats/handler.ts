@@ -26,7 +26,6 @@ const calculateEntityStats: ValidatedEventAPIGatewayProxyEvent<
           entityId
         ) //.catch((e) => callback(e, null)),
       });
-      break;
   }
 };
 

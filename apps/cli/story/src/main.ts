@@ -20,7 +20,7 @@ const storiesDir = 'stories';
     ['']
   );
   const storyDir = glob.sync(
-    path.resolve(`stories/${storyNumber}-*`)
+    path.resolve(`${storiesDir}/${storyNumber}-*`)
   );
 
   const storyStructure = parse(

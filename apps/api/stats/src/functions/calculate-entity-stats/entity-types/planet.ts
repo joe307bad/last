@@ -70,7 +70,13 @@ export const calculatePlanetStats = async (
               (pr) =>
                 pr.resource.id ===
                 planetEvent.secondaryEntityId
+            ) || {};
+
+          if (!initialAmount || !resource) {
+            throw new Error(
+              `This resource: ${planetEvent.secondaryEntityId} was not found for this planet ${planetEvent.entityId}`
             );
+          }
           const resourceExistsInStats =
             acc.resources.has(resource.id);
 

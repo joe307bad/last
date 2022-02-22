@@ -6,3 +6,4 @@ export * from './planetary-system/planetary-system.dto';
 export * from './color/color.dto';
 export * from './resource/resource.dto';
 export * from './terrain/terrain.dto';
+export * from './planet-resource/planet-resource.dto';

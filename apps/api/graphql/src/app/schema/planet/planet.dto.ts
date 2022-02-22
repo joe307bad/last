@@ -5,6 +5,7 @@ import {
 } from '@nestjs-query/query-graphql';
 import {
   Field,
+  ID,
   InputType,
   ObjectType,
   OmitType,
@@ -20,8 +21,9 @@ import {
   PlanetarySystemDto,
   TerrainDto,
   ResourceDto,
+  ColorDto,
+  PlanetResourceDto,
 } from '../dtos';
-import { ColorDto } from '../color/color.dto';
 
 @ObjectType('Planet')
 @Relation(
@@ -61,11 +63,10 @@ import { ColorDto } from '../color/color.dto';
   }
 )
 @FilterableUnPagedRelation(
-  'resources',
-  () => ResourceDto,
+  'planetResources',
+  () => PlanetResourceDto,
   {
     disableRemove: true,
-    nullable: true,
   }
 )
 @FilterableUnPagedRelation(
@@ -122,13 +123,25 @@ export class PlanetInput extends PartialType(
   })
   colors!: RelationInput[];
 
-  @Field(() => [RelationInput!]!, {
+  @Field(() => [PlanetResourceInput!]!, {
     nullable: true,
   })
-  resources!: RelationInput[];
+  planetResources!: PlanetResourceInput[];
 
-  @Field(() => [RelationInput!]!, {
+  @Field(() => [PlanetResourceInput!]!, {
     nullable: true,
   })
   terrains!: RelationInput[];
+}
+
+@InputType()
+export class PlanetResourceInput {
+  @Field()
+  resourceId: string;
+
+  @Field()
+  name: string;
+
+  @Field()
+  initialAmount: number;
 }

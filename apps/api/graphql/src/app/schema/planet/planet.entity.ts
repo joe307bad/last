@@ -1,11 +1,14 @@
 import {
+  AfterInsert,
   Column,
   Entity,
+  getConnection,
   JoinColumn,
   JoinTable,
   ManyToMany,
   ManyToOne,
   ObjectType,
+  OneToMany,
 } from 'typeorm';
 import { BaseEntity } from '../../core';
 import {
@@ -14,11 +17,30 @@ import {
   PlanetarySystemEntity,
   ColorEntity,
   TerrainEntity,
-  ResourceEntity,
+  PlanetResourceEntity,
 } from '../entities';
 
 @Entity()
 export class PlanetEntity extends BaseEntity {
+  // @AfterInsert()
+  // public async handleAfterInsert() {
+  //   const planetResource =
+  //     new PlanetResourceEntity();
+  //   const resource = new ResourceEntity();
+  //   planetResource.planet = this;
+  //   planetResource.planetId = this.id;
+  //   console.log(this.id);
+  //   resource.id =
+  //     '2e3f9ca7-3d86-4456-a210-28aec6cedc07';
+  //   planetResource.resourceId =
+  //     '2e3f9ca7-3d86-4456-a210-28aec6cedc07';
+  //   planetResource.resource = resource;
+  //   planetResource.name = 'erfre';
+  //   await getConnection().manager.save(
+  //     planetResource
+  //   );
+  // }
+
   @Column({ default: 0 })
   initialAlignment!: number;
 
@@ -78,17 +100,6 @@ export class PlanetEntity extends BaseEntity {
   foci: FocusEntity[];
 
   @ManyToMany(
-    (): ObjectType<ResourceEntity> =>
-      ResourceEntity,
-    (fe) => fe.planets,
-    {
-      nullable: true,
-    }
-  )
-  @JoinTable()
-  resources: ResourceEntity[];
-
-  @ManyToMany(
     (): ObjectType<TerrainEntity> =>
       TerrainEntity,
     (fe) => fe.planets,
@@ -98,4 +109,19 @@ export class PlanetEntity extends BaseEntity {
   )
   @JoinTable()
   terrains: TerrainEntity[];
+
+  @OneToMany(
+    () => PlanetResourceEntity,
+    (pre) => pre.planet,
+    {
+      cascade: [
+        'insert',
+        'recover',
+        'remove',
+        'update',
+        'soft-remove',
+      ],
+    }
+  )
+  planetResources: PlanetResourceEntity[];
 }

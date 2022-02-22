@@ -17,6 +17,7 @@ import {
   ColorEntity,
   TerrainEntity,
   ResourceEntity,
+  PlanetResourceEntity,
 } from './schema/entities';
 import {
   PlanetarySystemDto,
@@ -30,6 +31,7 @@ import {
   TerrainDto,
   HouseInput,
   ResourceDto,
+  PlanetResourceDto,
 } from './schema/dtos';
 import { GeneratorService } from './generator/generator.service';
 
@@ -46,9 +48,14 @@ import { GeneratorService } from './generator/generator.service';
           ColorEntity,
           TerrainEntity,
           ResourceEntity,
+          PlanetResourceEntity,
         ]),
       ],
       resolvers: [
+        {
+          DTOClass: PlanetResourceDto,
+          EntityClass: PlanetResourceEntity,
+        },
         {
           DTOClass: ResourceDto,
           EntityClass: ResourceEntity,

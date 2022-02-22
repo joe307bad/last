@@ -1,17 +1,13 @@
-import { Column, Entity, ManyToMany } from 'typeorm';
+import { Column, Entity, ManyToMany, OneToMany } from 'typeorm';
 import { BaseEntity } from '../../core';
 import { PlanetEntity } from '../entities';
+import { PlanetResourceEntity } from '../planet-resource/planet-resource.entity';
 
 @Entity()
 export class ResourceEntity extends BaseEntity {
-  @Column({ default: 0 })
-  initialAmount!: number;
-
-  @ManyToMany(
-    () => PlanetEntity,
-    (pe) => pe.resources,
-    { nullable: true }
+  @OneToMany(
+    () => PlanetResourceEntity,
+    (pre) => pre.planet
   )
-  planets!: PlanetEntity[];
-
+  planetResources: PlanetResourceEntity[];
 }

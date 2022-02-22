@@ -118,12 +118,12 @@ export let meta: MetaFunction = () => {
 const exampleEvents = (createDate: any) => [
   {
     entityId:
-      '59698166-27c0-492f-9c0a-85a27113939f',
+      '3512846e-7454-4603-be1d-7f2adfbd4e63',
     entityType: 'planet',
     eventType: 'resource_boon',
-    valueChange: '+80',
+    valueChange: '-1180',
     secondaryEntityId:
-      '83234f21-c8f7-41d8-91a3-59bd83d0a143',
+      '027882a9-d7c7-4709-aea8-ae316e474c68',
     createDate,
   },
 ];

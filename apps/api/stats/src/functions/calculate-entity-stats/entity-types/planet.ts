@@ -1,6 +1,7 @@
 import got from 'got';
 import { PlanetStoryEventResponse } from '@last/shared/types';
-// nx calculateEntityStats api-stats --data="[\"59698166-27c0-492f-9c0a-85a27113939f\", \"planet\"]"
+import { evaluate, parse } from 'mathjs';
+
 export const calculatePlanetStats = async (
   planetId: string
 ) => {
@@ -10,16 +11,99 @@ export const calculatePlanetStats = async (
     )
     .json<PlanetStoryEventResponse>();
 
+  if (planetEvents.docs.length === 0) {
+    throw new Error(
+      `No planet events found for ${planetId} from api-story`
+    );
+  }
+
+  const plantInfoQuery = `
+  query {
+    planet(
+      id: "${planetId}"
+    ) {
+      name,
+      planetResources {
+        initialAmount
+        resource {
+          id
+          name
+        }
+      }
+    }
+  }
+ `;
+
   const planetInfo = await got
     .post('http://localhost:3333/graphql', {
       json: {
-        query: `{ planet(id: "${planetId}") { name }}`,
+        query: plantInfoQuery,
       },
     })
     .json<{
-      data: { planet: { name: string } };
+      data: {
+        planet: {
+          name: string;
+          planetResources: {
+            initialAmount: number;
+            resource: {
+              name: string;
+              id: string;
+            };
+          }[];
+        };
+      };
     }>();
-  debugger;
 
-  return {};
+  if (planetInfo.data === null) {
+    throw new Error(
+      `No planet data found for ${planetId} from api-graphql`
+    );
+  }
+
+  const stats = planetEvents.docs.reduce(
+    (acc, planetEvent) => {
+      switch (planetEvent.eventType) {
+        case 'resource_boon':
+          const { initialAmount, resource } =
+            planetInfo.data.planet.planetResources.find(
+              (pr) =>
+                pr.resource.id ===
+                planetEvent.secondaryEntityId
+            );
+          const resourceExistsInStats =
+            acc.resources.has(resource.id);
+
+          if (!resourceExistsInStats) {
+            acc.resources.set(
+              resource.id,
+              evaluate(
+                parse(
+                  `${initialAmount}${planetEvent.valueChange}`
+                ).toString()
+              )
+            );
+          } else {
+            acc.resources.set(
+              resource.id,
+              evaluate(
+                parse(
+                  `${acc.resources.get(
+                    resource.id
+                  )}${planetEvent.valueChange}`
+                ).toString()
+              )
+            );
+          }
+          break;
+      }
+
+      return acc;
+    },
+    { resources: new Map() }
+  );
+
+  return {
+    resources: Array.from(stats.resources),
+  };
 };

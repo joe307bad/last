@@ -12,6 +12,7 @@ import {
 
 @Entity()
 export class PlanetResourceEntity extends BaseEntity {
+
   @Column()
   planetId: number;
 
@@ -22,14 +23,14 @@ export class PlanetResourceEntity extends BaseEntity {
   initialAmount: number;
 
   @ManyToOne(
-    (type) => PlanetEntity,
+    () => PlanetEntity,
     (p) => p.planetResources
   )
   @JoinColumn()
   planet: PlanetEntity;
 
   @ManyToOne(
-    (type) => ResourceEntity,
+    () => ResourceEntity,
     (r) => r.planetResources
   )
   @JoinColumn()

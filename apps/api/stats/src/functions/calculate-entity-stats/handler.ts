@@ -7,7 +7,7 @@ import { calculatePlanetStats } from './entity-types/planet';
 
 const calculateEntityStats: ValidatedEventAPIGatewayProxyEvent<
   typeof schema
-> = async (event) => {
+> = async (event, _context, _callback) => {
   const [entityId, entityType] =
     event as unknown as [
       string,
@@ -18,10 +18,13 @@ const calculateEntityStats: ValidatedEventAPIGatewayProxyEvent<
         | 'character'
       )
     ];
+
   switch (entityType) {
     case 'planet':
       return formatJSONResponse({
-        planets: await calculatePlanetStats(entityId),
+        planets: await calculatePlanetStats(
+          entityId
+        ) //.catch((e) => callback(e, null)),
       });
       break;
   }

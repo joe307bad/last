@@ -140,8 +140,5 @@ export class PlanetResourceInput {
   resourceId: string;
 
   @Field()
-  name: string;
-
-  @Field()
   initialAmount: number;
 }

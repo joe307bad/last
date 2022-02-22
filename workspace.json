@@ -7,6 +7,6 @@
     "cli-story": "apps/cli/story",
     "shared-types": "libs/shared/types",
     "story-gen": "libs/story/gen",
-    "web/home": "apps/web/home"
+    "web-home": "apps/web/home"
   }
 }

@@ -1,8 +1,6 @@
 import {
-  AfterInsert,
   Column,
   Entity,
-  getConnection,
   JoinColumn,
   JoinTable,
   ManyToMany,
@@ -22,25 +20,6 @@ import {
 
 @Entity()
 export class PlanetEntity extends BaseEntity {
-  // @AfterInsert()
-  // public async handleAfterInsert() {
-  //   const planetResource =
-  //     new PlanetResourceEntity();
-  //   const resource = new ResourceEntity();
-  //   planetResource.planet = this;
-  //   planetResource.planetId = this.id;
-  //   console.log(this.id);
-  //   resource.id =
-  //     '2e3f9ca7-3d86-4456-a210-28aec6cedc07';
-  //   planetResource.resourceId =
-  //     '2e3f9ca7-3d86-4456-a210-28aec6cedc07';
-  //   planetResource.resource = resource;
-  //   planetResource.name = 'erfre';
-  //   await getConnection().manager.save(
-  //     planetResource
-  //   );
-  // }
-
   @Column({ default: 0 })
   initialAlignment!: number;
 

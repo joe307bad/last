@@ -1,5 +1,5 @@
 import got from 'got';
-import { PlanetStoryEventResponse } from '@last/shared/types';
+import { EventTypes, PlanetStoryEventResponse } from '@last/shared/types';
 import { evaluate, parse } from 'mathjs';
 
 export const calculatePlanetStats = async (
@@ -64,7 +64,7 @@ export const calculatePlanetStats = async (
   const stats = planetEvents.docs.reduce(
     (acc, planetEvent) => {
       switch (planetEvent.eventType) {
-        case 'resource_boon':
+        case EventTypes.resource_change:
           const { initialAmount, resource } =
             planetInfo.data.planet.planetResources.find(
               (pr) =>

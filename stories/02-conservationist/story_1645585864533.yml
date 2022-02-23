@@ -1,0 +1,154 @@
+title: "The Conservationist"
+possible_results: 24
+planets:
+  PLANET_1: 8
+foci:
+  - "ecology"
+  - "biodiversity"
+  - "conservationism"
+openings:
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+character_possibilities:
+  CHAR_1_daring_HOUSE_1___CHAR_2_humble_HOUSE_2___CHAR_3_greedy_HOUSE_3:
+    text: ""
+    choice_1:
+      text: ""
+      respect_from_other_houses:
+        text: ""
+        lql: ""
+    choice_2:
+      text: ""
+      respect_from_other_houses:
+        text: ""
+        lql: ""
+    choice_3:
+      text: ""
+      started_locally_sustainable_natural_resource_based_economy:
+        text: ""
+        lql: ""
+  CHAR_1_calculated_HOUSE_1___CHAR_2_humble_HOUSE_2___CHAR_3_greedy_HOUSE_3:
+    text: ""
+    choice_1:
+      text: ""
+      sequester_carbon_in_growing_forests:
+        text: ""
+        lql: ""
+    choice_2:
+      text: ""
+      increased_global_habitat_stability:
+        text: ""
+        lql: ""
+    choice_3:
+      text: ""
+      abolished_mineral_mining:
+        text: ""
+        lql: ""
+  CHAR_1_daring_HOUSE_1___CHAR_2_hostile_HOUSE_2___CHAR_3_greedy_HOUSE_3:
+    text: ""
+    choice_1:
+      text: ""
+      biodiversity_increase:
+        text: ""
+        lql: ""
+    choice_2:
+      text: ""
+      character_powers_gained:
+        text: ""
+        lql: ""
+    choice_3:
+      text: ""
+      character_powers_gained:
+        text: ""
+        lql: ""
+  CHAR_1_calculated_HOUSE_1___CHAR_2_hostile_HOUSE_2___CHAR_3_greedy_HOUSE_3:
+    text: ""
+    choice_1:
+      text: ""
+      character_powers_gained:
+        text: ""
+        lql: ""
+    choice_2:
+      text: ""
+      ecological_disaster_averted:
+        text: ""
+        lql: ""
+    choice_3:
+      text: ""
+      species_saved:
+        text: ""
+        lql: ""
+  CHAR_1_daring_HOUSE_1___CHAR_2_humble_HOUSE_2___CHAR_3_lonely_HOUSE_3:
+    text: ""
+    choice_1:
+      text: ""
+      resource_change:
+        text: ""
+        lql: ""
+    choice_2:
+      text: ""
+      population_change:
+        text: ""
+        lql: ""
+    choice_3:
+      text: ""
+      species_change:
+        text: ""
+        lql: ""
+  CHAR_1_calculated_HOUSE_1___CHAR_2_humble_HOUSE_2___CHAR_3_lonely_HOUSE_3:
+    text: ""
+    choice_1:
+      text: ""
+      relationship_change:
+        text: ""
+        lql: ""
+    choice_2:
+      text: ""
+      relationship_change:
+        text: ""
+        lql: ""
+    choice_3:
+      text: ""
+      structure_change:
+        text: ""
+        lql: ""
+  CHAR_1_daring_HOUSE_1___CHAR_2_hostile_HOUSE_2___CHAR_3_lonely_HOUSE_3:
+    text: ""
+    choice_1:
+      text: ""
+      structure_change:
+        text: ""
+        lql: ""
+    choice_2:
+      text: ""
+      structure_change:
+        text: ""
+        lql: ""
+    choice_3:
+      text: ""
+      structure_change:
+        text: ""
+        lql: ""
+  CHAR_1_calculated_HOUSE_1___CHAR_2_hostile_HOUSE_2___CHAR_3_lonely_HOUSE_3:
+    text: ""
+    choice_1:
+      text: ""
+      structure_change:
+        text: ""
+        lql: ""
+    choice_2:
+      text: ""
+      structure_change:
+        text: ""
+        lql: ""
+    choice_3:
+      text: ""
+      structure_change:
+        text: ""
+        lql: ""

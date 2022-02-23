@@ -9,7 +9,10 @@
     "target": "ES2019",
     "strict": true,
     "paths": {
-      "~/*": ["./app/*"]
+      "~/*": ["./app/*"],
+      "@last/shared/types": [
+        "../../../libs/shared/types/src/index.ts"
+      ]
     },
     // Remix takes care of building everything in `remix build`.
     "noEmit": true

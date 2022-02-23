@@ -73,21 +73,18 @@ export const generateStoryTemplate =
                   text: '',
                   [possibleOutcome()]: {
                     text: '',
-                    lql: '',
                   },
                 },
                 choice_2: {
                   text: '',
                   [possibleOutcome()]: {
                     text: '',
-                    lql: '',
                   },
                 },
                 choice_3: {
                   text: '',
                   [possibleOutcome()]: {
                     text: '',
-                    lql: '',
                   },
                 },
               },

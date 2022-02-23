@@ -2,10 +2,11 @@ import type {
   MetaFunction,
   LoaderFunction,
 } from 'remix';
-import { useLoaderData, json, Link } from 'remix';
+import { useLoaderData, json } from 'remix';
 import { Planet } from '../components/planet';
 import faker from '@faker-js/faker';
 import elements from '../elements.json';
+import { EventTypes } from '@last/shared/types';
 
 export type TPlanet = {
   name: string;
@@ -120,7 +121,7 @@ const exampleEvents = (createDate: any) => [
     entityId:
       '3512846e-7454-4603-be1d-7f2adfbd4e63',
     entityType: 'planet',
-    eventType: 'resource_boon',
+    eventType: EventTypes.resource_change,
     valueChange: '-1180',
     secondaryEntityId:
       '027882a9-d7c7-4709-aea8-ae316e474c68',

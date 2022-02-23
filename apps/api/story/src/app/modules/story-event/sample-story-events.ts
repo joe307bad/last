@@ -1,9 +1,11 @@
+import { EventTypes } from '@last/shared/types';
+
 export const examples = [
   // planet receives more resources
   {
     "entityId": "planet_id",
     "entityType": "planet",
-    "eventType": "resource_boon",
+    "eventType": EventTypes.resource_change,
     "valueChange": "+80",
     "secondaryEntityId": "resource_id"
   },

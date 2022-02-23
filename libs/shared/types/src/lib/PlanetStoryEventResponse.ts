@@ -1,9 +1,10 @@
 import { CouchDbEntity } from 'nest-couchdb';
+import { EventTypes } from './EventTypes';
 
 export type PlanetStoryEvent = {
   entityId: string;
   entityType: 'planet';
-  eventType: 'resource_boon';
+  eventType: EventTypes;
   valueChange: string;
   secondaryEntityId: string;
   createData: number;

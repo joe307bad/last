@@ -1,2 +1,2 @@
-export * from './lib/shared-types';
 export * from './lib/PlanetStoryEventResponse';
+export * from './lib/EventTypes';

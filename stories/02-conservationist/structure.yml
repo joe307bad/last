@@ -22,19 +22,19 @@ characters:
       - greedy
       - lonely
 possible_outcomes:
-  - building_built
-  - building_built
-  - building_built
-  - building_built
-  - building_built
-  - building_built
-  - building_built
-  - building_built
-  - relationship_created
-  - relationship_created
-  - species_population_boon
-  - population_boon
-  - resource_boon
+  - structure_change
+  - structure_change
+  - structure_change
+  - structure_change
+  - structure_change
+  - structure_change
+  - structure_change
+  - structure_change
+  - relationship_change
+  - relationship_change
+  - species_change
+  - population_change
+  - resource_change
   - species_saved
   - ecological_disaster_averted
   - character_powers_gained

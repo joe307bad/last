@@ -1,6 +1,9 @@
 import got from 'got';
-import { EventTypes, PlanetStoryEventResponse } from '@last/shared/types';
-import { evaluate, parse } from 'mathjs';
+import {
+  EventTypes,
+  PlanetStoryEventResponse,
+} from '@last/shared/types';
+import { parseResourceChange } from '../event-types/resource-change';
 
 export const calculatePlanetStats = async (
   planetId: string
@@ -65,42 +68,11 @@ export const calculatePlanetStats = async (
     (acc, planetEvent) => {
       switch (planetEvent.eventType) {
         case EventTypes.resource_change:
-          const { initialAmount, resource } =
-            planetInfo.data.planet.planetResources.find(
-              (pr) =>
-                pr.resource.id ===
-                planetEvent.secondaryEntityId
-            ) || {};
-
-          if (!initialAmount || !resource) {
-            throw new Error(
-              `This resource: ${planetEvent.secondaryEntityId} was not found for this planet ${planetEvent.entityId}`
-            );
-          }
-          const resourceExistsInStats =
-            acc.resources.has(resource.id);
-
-          if (!resourceExistsInStats) {
-            acc.resources.set(
-              resource.id,
-              evaluate(
-                parse(
-                  `${initialAmount}${planetEvent.valueChange}`
-                ).toString()
-              )
-            );
-          } else {
-            acc.resources.set(
-              resource.id,
-              evaluate(
-                parse(
-                  `${acc.resources.get(
-                    resource.id
-                  )}${planetEvent.valueChange}`
-                ).toString()
-              )
-            );
-          }
+          acc.resources = parseResourceChange(
+            acc.resources,
+            planetInfo,
+            planetEvent
+          );
           break;
       }
 

@@ -1,9 +1,9 @@
 import {
   Body,
   Controller,
-  Get,
+  Get, NotImplementedException,
   Param,
-  Post,
+  Post
 } from '@nestjs/common';
 import {
   StoryEventEntity,
@@ -23,6 +23,15 @@ export class AppController {
     return this.storyEventService.insertManyStoryEvents(
       storyEvents
     );
+  }
+
+  @Post()
+  insertStatsForEntity(
+    @Body() storyEvents: StoryEventEntity[]
+  ) {
+    // TODO ability to get stats for entity. How should stats be structured
+    // so that we can calculate a leaderboard easily? Do we need a leaderboard service?
+    throw new Error("Not implemented")
   }
 
   @Get('story-event/entity/:id')

@@ -1,4 +1,56 @@
 # Last
+## Domains
+### Generating story templates
+Provide authors with the tools to make customized stories with different characters, houses, and custom story event outcomes
+#### Apps and libs
+```
+/apps/cli/story
+/libs/story
+```
+### Generating and managing characters, planets, houses, and other content
+Facilitate the creation of a universe worth of relational data
+#### Apps and libs
+```
+/apps/api/graphql
+```
+### Calculate stats on a series of story events
+Performant system to consume story events associated with entities and cache a set of stats based on the story events
+#### Apps and libs
+```
+/apps/api/stats
+```
+### Build a timeline of story events
+Record the denormalized data that comprises a universal timeline
+### Apps and libs
+```
+/apps/api/story
+```
+### Complete stories and quests, browse planets, explore the Last universe
+A user experience that promotes a seamless user journey; making it obvious how to continue exploration
+### Apps and libs
+```
+/apps/web/home
+```
+### Socialize and show off
+Create communities, challenge other houses which have been claimed by other users, and explore the void with friends
+### Apps and libs
+```
+```
+### Manage and track
+Classic administration tools to claim planets, visualize trends for claimed entities, see progress, pin planets
+### Apps and libs
+```
+```
+### Mini-games and daily engagement
+How do we keep users engaged on a daily basis? Pipe connecting games, path drawing, risk style to challenge other houses and planets
+### Apps and libs
+```
+```
+
+
+
+
+
 ## Development
 ### run MySQL docker container
 ```
@@ -6,14 +58,12 @@ docker run -p 3306:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=secret -d mysql:lat
 ```
 ## Resources
 - [API Gateway using Tyk and Keycloak](https://tyk.io/docs/tyk-developer-portal/keycloak-dcr/)
-
 ## CLI
 
 ### Generate `story.yml` from structure template
 ```
 nx run cli-story:start --storyNo=02
 ```
-
 ## Schema
 ### Planet
 ```

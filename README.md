@@ -1,4 +1,7 @@
 # Last
+## Current ToDos
+- [ ] Integrate `@nestjs/bull` to consume messages from `api-story`. After `insertMantStoryEvents`, we should queue a message. That message should trigger the `calculateEntityStats` function.
+- [ ] When a new entity's stat is calculated, send the new info to the clients listening on websockets. Clients will receive and entityId and a set of stats. The client can then determine "do i have this entity in my local cache?" and update the entity's stat accordingly. Same with the leaderboard. Websocket clients will receive an entityId and the leaderboard value. The client can ask "do I have this entity on my local leaderboards?" and update the leaderboard accordingly. 
 ## Domains
 ### Generating story templates
 Provide authors with the tools to make customized stories with different characters, houses, and custom story event outcomes

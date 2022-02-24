@@ -82,6 +82,8 @@ export const calculatePlanetStats = async (
   );
 
   return {
-    resources: Array.from(stats.resources),
+    resources: Array.from<[string, number]>(
+      stats.resources
+    ),
   };
 };

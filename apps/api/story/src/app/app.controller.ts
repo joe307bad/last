@@ -1,19 +1,24 @@
 import {
   Body,
   Controller,
-  Get, NotImplementedException,
+  Get,
   Param,
-  Post
+  Post,
 } from '@nestjs/common';
 import {
   StoryEventEntity,
   StoryEventService,
 } from './modules/story-event';
+import {
+  StatsEntity,
+  StatsService,
+} from './modules/stats';
 
 @Controller()
 export class AppController {
   constructor(
-    private readonly storyEventService: StoryEventService
+    private readonly storyEventService: StoryEventService,
+    private readonly statsService: StatsService
   ) {}
 
   @Post()
@@ -25,13 +30,13 @@ export class AppController {
     );
   }
 
-  @Post()
-  insertStatsForEntity(
-    @Body() storyEvents: StoryEventEntity[]
+  @Post('stats')
+  upsertManyStatsForEntity(
+    @Body() stats: StatsEntity[]
   ) {
-    // TODO ability to get stats for entity. How should stats be structured
-    // so that we can calculate a leaderboard easily? Do we need a leaderboard service?
-    throw new Error("Not implemented")
+    return this.statsService.upsertManyStats(
+      stats
+    );
   }
 
   @Get('story-event/entity/:id')

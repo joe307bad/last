@@ -6,5 +6,6 @@ import {
 @Entity('stats')
 export class StatsEntity extends CouchDbEntity {
   entityId: string;
+  stats: string;
   [key: string]: any;
 }

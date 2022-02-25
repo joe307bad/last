@@ -1,9 +1,13 @@
-import { Module } from '@nestjs/common';
+import {
+  Module,
+  OnModuleInit,
+} from '@nestjs/common';
 import { CouchDbModule } from 'nest-couchdb';
 
 import { AppController } from './app.controller';
 import { StoryEventModule } from './modules/story-event';
 import { StatsModule } from './modules/stats';
+import { BullModule } from '@nestjs/bull';
 
 @Module({
   imports: [
@@ -13,6 +17,15 @@ import { StatsModule } from './modules/stats';
       userpass: 'password',
       requestDefaults: { jar: true },
     }),
+    BullModule.forRoot({
+      redis: {
+        host: 'localhost',
+        port: 6379,
+        no_ready_check: true,
+        auth_pass: 'password',
+      },
+    }),
+
     StoryEventModule,
     StatsModule,
   ],

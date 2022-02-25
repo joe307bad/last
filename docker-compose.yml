@@ -1,13 +1,13 @@
-version: "3"
+version: '3'
 
 services:
   postgres:
-    image: "postgres:11.5"
+    image: 'postgres:11.5'
     environment:
-      - "POSTGRES_USER=root"
-      - "POSTGRES_DB=last"
+      - 'POSTGRES_USER=root'
+      - 'POSTGRES_DB=last'
     ports:
-      - "5432:5432"
+      - '5432:5432'
   couchdb:
     image: couchdb:latest
     volumes:
@@ -20,3 +20,10 @@ services:
       - '5984:5984'
       - '4369:4369'
       - '9100:9100'
+  redis:
+    image: redis:6.2-alpine
+    ports:
+      - '6379:6379'
+volumes:
+  couchdb_data:
+    driver: local

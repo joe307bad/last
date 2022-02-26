@@ -45,4 +45,11 @@ export class AppController {
       params.id
     );
   }
+
+  @Get('stats/entity/:id')
+  getStatsByEntityId(@Param() params) {
+    return this.statsService.getStatsByEntityId(
+      params.id
+    );
+  }
 }

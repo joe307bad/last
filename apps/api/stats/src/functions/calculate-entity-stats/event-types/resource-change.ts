@@ -22,26 +22,30 @@ export const parseResourceChange = (
   const resourceExistsInStats =
     existingResources.has(resource.id);
 
-  if (!resourceExistsInStats) {
-    existingResources.set(
-      resource.id,
-      evaluate(
-        parse(
-          `${initialAmount}${planetEvent.valueChange}`
-        ).toString()
-      )
-    );
-  } else {
-    existingResources.set(
-      resource.id,
-      evaluate(
-        parse(
-          `${existingResources.get(resource.id)}${
-            planetEvent.valueChange
-          }`
-        ).toString()
-      )
-    );
+  try {
+    if (!resourceExistsInStats) {
+      existingResources.set(
+        resource.id,
+        evaluate(
+          parse(
+            `${initialAmount}${planetEvent.valueChange}`
+          ).toString()
+        )
+      );
+    } else {
+      existingResources.set(
+        resource.id,
+        evaluate(
+          parse(
+            `${existingResources.get(resource.id)}${
+              planetEvent.valueChange
+            }`
+          ).toString()
+        )
+      );
+    }
+  } catch(e) {
+    return existingResources;
   }
 
   return existingResources;

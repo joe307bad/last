@@ -23,14 +23,16 @@ export class StoryEventService {
       .bulk({
         docs: storyEventEntities,
       })
-      .then(() =>
-        this.statsQueue.add(
-          'calculation-request',
-          {
-            foo: 'bar',
-          }
-        )
-      );
+      .then((res) => {
+        storyEventEntities.forEach(
+          async (see) =>
+            await this.statsQueue.add(
+              'calculation-request',
+              [see.entityId, see.entityType]
+            )
+        );
+        return res;
+      });
   }
 
   getStoryEventsByEntity(entityId: string) {

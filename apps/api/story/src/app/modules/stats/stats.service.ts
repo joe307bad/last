@@ -12,6 +12,14 @@ export class StatsService {
     private readonly statsRepo: Repository<StatsEntity>
   ) {}
 
+  async getStatsByEntityId(id: string) {
+    return this.statsRepo.find({
+      selector: {
+        entityId: { $eq: id },
+      },
+    });
+  }
+
   async upsertManyStats(stats: StatsEntity[]) {
     const entityIds = stats.map(
       (stat) => stat.entityId

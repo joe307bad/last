@@ -10,6 +10,14 @@
         "cwd": "apps/api/stats",
         "command": "sls invoke local -f calculateEntityStats --data=\"[\\\"3512846e-7454-4603-be1d-7f2adfbd4e63\\\", \\\"planet\\\"]\""
       }
+    },
+    "serve": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "cwd": "apps/api/stats",
+        "command": "sls offline --httpPort 3078"
+      }
     }
   },
   "tags": []

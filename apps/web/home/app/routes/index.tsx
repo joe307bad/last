@@ -6,7 +6,7 @@ import { useLoaderData, json } from 'remix';
 import { Planet } from '../components/planet';
 import faker from '@faker-js/faker';
 import elements from '../elements.json';
-import { EventTypes } from '@last/shared/types';
+import { EventTypes } from '../../../../../libs/shared/types/src';
 
 export type TPlanet = {
   name: string;
@@ -139,7 +139,7 @@ const creatExampleEvents = async () => {
     body: JSON.stringify(
       exampleEvents(Date.now())
     ),
-  }).then((r) => console.log(r.json()));
+  });
 };
 
 // https://remix.run/guides/routing#index-routes

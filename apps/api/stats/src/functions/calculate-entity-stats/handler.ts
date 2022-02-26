@@ -9,8 +9,9 @@ import got from 'got';
 const calculateEntityStats: ValidatedEventAPIGatewayProxyEvent<
   typeof schema
 > = async (event, _context, _callback) => {
+
   const [entityId, entityType] =
-    event as unknown as [
+    event.body as unknown as [
       string,
       (
         | 'planet'

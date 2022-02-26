@@ -58,7 +58,7 @@ export const calculatePlanetStats = async (
       };
     }>();
 
-  if (planetInfo.data === null) {
+  if (!planetInfo?.data?.planet) {
     throw new Error(
       `No planet data found for ${planetId} from api-graphql`
     );

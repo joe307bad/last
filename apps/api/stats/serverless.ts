@@ -5,7 +5,10 @@ import { calculateEntityStats } from '@last/functions';
 const serverlessConfiguration: AWS = {
   service: 'stats',
   frameworkVersion: '3',
-  plugins: ['serverless-esbuild'],
+  plugins: [
+    'serverless-esbuild',
+    'serverless-offline',
+  ],
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',

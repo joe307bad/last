@@ -1,9 +1,6 @@
-import {
-  Module,
-  OnModuleInit,
-} from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { CouchDbModule } from 'nest-couchdb';
-
+import { AppGateway } from './app.gateway';
 import { AppController } from './app.controller';
 import { StoryEventModule } from './modules/story-event';
 import { StatsModule } from './modules/stats';
@@ -30,6 +27,6 @@ import { BullModule } from '@nestjs/bull';
     StatsModule,
   ],
   controllers: [AppController],
-  providers: [],
+  providers: [AppGateway],
 })
 export class AppModule {}

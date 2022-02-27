@@ -82,6 +82,7 @@ export const calculatePlanetStats = async (
   );
 
   return {
+    planetId,
     resources: Array.from<[string, number]>(
       stats.resources
     ),

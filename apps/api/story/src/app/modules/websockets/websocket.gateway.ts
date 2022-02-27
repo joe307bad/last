@@ -4,16 +4,28 @@ import {
   SubscribeMessage,
   OnGatewayConnection,
   OnGatewayDisconnect,
+  OnGatewayInit,
 } from '@nestjs/websockets';
+import { Server } from 'socket.io';
+import { WebsocketService } from './websocket.service';
 
 @WebSocketGateway(3079)
-export class AppGateway
+export class WebsocketGateway
   implements
     OnGatewayConnection,
-    OnGatewayDisconnect
+    OnGatewayDisconnect,
+    OnGatewayInit
 {
+  constructor(
+    private websocketService: WebsocketService
+  ) {}
+
   @WebSocketServer() server;
   users: number = 0;
+
+  afterInit(server: Server) {
+    this.websocketService.socket = server;
+  }
 
   async handleConnection() {
     // A client has connected
@@ -31,8 +43,8 @@ export class AppGateway
     this.server.emit('users', this.users);
   }
 
-  @SubscribeMessage('chat')
+  @SubscribeMessage('stats')
   async onChat(client, message) {
-    client.broadcast.emit('chat', message);
+    client.broadcast.emit('stats', message);
   }
 }

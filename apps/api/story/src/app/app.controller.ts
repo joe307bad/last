@@ -13,12 +13,14 @@ import {
   StatsEntity,
   StatsService,
 } from './modules/stats';
+import { WebsocketService } from './modules/websockets/websocket.service';
 
 @Controller()
 export class AppController {
   constructor(
     private readonly storyEventService: StoryEventService,
-    private readonly statsService: StatsService
+    private readonly statsService: StatsService,
+    private readonly websocketService: WebsocketService
   ) {}
 
   @Post()
@@ -51,5 +53,14 @@ export class AppController {
     return this.statsService.getStatsByEntityId(
       params.id
     );
+  }
+
+  @Post('emit-stats')
+  emitStats(@Body() stats: StatsEntity[]) {
+    this.websocketService.socket.emit(
+      'stats',
+      stats
+    );
+    return stats;
   }
 }

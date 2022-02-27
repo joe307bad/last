@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { CouchDbModule } from 'nest-couchdb';
-import { AppGateway } from './app.gateway';
 import { AppController } from './app.controller';
 import { StoryEventModule } from './modules/story-event';
 import { StatsModule } from './modules/stats';
 import { BullModule } from '@nestjs/bull';
+import { WebsocketModule } from './modules/websockets';
 
 @Module({
   imports: [
@@ -22,11 +22,11 @@ import { BullModule } from '@nestjs/bull';
         auth_pass: 'password',
       },
     }),
-
     StoryEventModule,
     StatsModule,
+    WebsocketModule,
   ],
   controllers: [AppController],
-  providers: [AppGateway],
+  providers: [],
 })
 export class AppModule {}

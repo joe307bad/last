@@ -9,7 +9,6 @@ import got from 'got';
 const calculateEntityStats: ValidatedEventAPIGatewayProxyEvent<
   typeof schema
 > = async (event, _context, _callback) => {
-
   const [entityId, entityType] =
     event.body as unknown as [
       string,
@@ -24,11 +23,9 @@ const calculateEntityStats: ValidatedEventAPIGatewayProxyEvent<
   const entityStats = await (async () => {
     switch (entityType) {
       case 'planet':
-        return {
-          planet: await calculatePlanetStats(
-            entityId
-          ), //.catch((e) => callback(e, null)),
-        };
+        return await calculatePlanetStats(
+          entityId
+        );
     }
   })();
 
@@ -45,13 +42,23 @@ const calculateEntityStats: ValidatedEventAPIGatewayProxyEvent<
       .json<any>();
   };
 
-  switch (entityType) {
-    case 'planet':
-      await upsertStatsEntry({
-        resources: entityStats.planet.resources,
-      });
-      break;
-  }
+  await (async () => {
+    switch (entityType) {
+      case 'planet':
+        return upsertStatsEntry({
+          resources: entityStats.resources,
+        });
+    }
+  })().then(() => {
+    return got
+      .post(
+        `http://localhost:3077/api/emit-stats`,
+        {
+          json: entityStats,
+        }
+      )
+      .json<any>();
+  });
 
   return formatJSONResponse({ entityStats });
 };

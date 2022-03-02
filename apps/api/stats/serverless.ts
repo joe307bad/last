@@ -1,6 +1,6 @@
 import type { AWS } from '@serverless/typescript';
 
-import { calculateEntityStats } from '@last/functions';
+import { calculateEntityStats } from '~last/functions';
 
 const serverlessConfiguration: AWS = {
   service: 'stats',

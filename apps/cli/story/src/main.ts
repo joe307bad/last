@@ -1,4 +1,4 @@
-import { generateStoryTemplate } from '@last/story/gen';
+import { generateStoryTemplate } from '~last/story/gen';
 import { promises } from 'fs';
 import { parse } from 'yaml';
 import { glob } from 'glob';

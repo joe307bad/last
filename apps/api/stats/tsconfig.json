@@ -10,10 +10,10 @@
     "outDir": "lib",
     "baseUrl": ".",
     "paths": {
-      "@last/functions": [
+      "~last/functions": [
         "src/functions/index.ts"
       ],
-      "@last/shared/types": [
+      "~last/shared/types": [
         "../../../libs/shared/types/src/index.ts"
       ]
     }

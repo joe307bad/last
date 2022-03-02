@@ -2,67 +2,19 @@ import type {
   MetaFunction,
   LoaderFunction,
 } from 'remix';
-import { useLoaderData, json } from 'remix';
-import got from 'got';
+import { useLoaderData } from 'remix';
+import {
+  AllPlanetsResponse,
+  Planet,
+} from '~last/shared/types';
+import { getAllPlanets } from '~last/request/node';
 
-export type TPlanet = {
-  name: string;
-  colors: string[];
-  rulingFamily: string;
-  opposingFamilies: string[];
-  resources: Array<[string, number, string]>;
-};
-
-type IndexData = {
-  data: {
-    planets: { edges: { node: TPlanet }[] };
-  };
-};
-
-// Loaders provide data to components and are only ever called on the server, so
-// you can connect to a database or run any server side code you want right next
-// to the component that renders it.
-// https://remix.run/api/conventions#loader
 export let loader: LoaderFunction = async () => {
-  const plantInfoQuery = `
-  query {
-    planets {
-      edges {
-        node {
-          id
-          name
-        }
-      }
-    }
-  }
- `;
-
-  const planets = await got
-    .post('http://localhost:3333/graphql', {
-      json: {
-        query: plantInfoQuery,
-      },
-    })
-    .json<{
-      data: {
-        edges: {
-          node: {
-            name: string;
-            planetResources: {
-              initialAmount: number;
-              resource: {
-                name: string;
-                id: string;
-              };
-            };
-          }[];
-        }[];
-      };
-    }>();
-  return json(planets);
+  return getAllPlanets();
 };
 
-// https://remix.run/api/conventions#meta
+type IndexData = AllPlanetsResponse;
+
 export let meta: MetaFunction = () => {
   return {
     title: 'Remix Starter',
@@ -70,10 +22,9 @@ export let meta: MetaFunction = () => {
   };
 };
 
-// https://remix.run/guides/routing#index-routes
 export default function Index() {
   let data = useLoaderData<IndexData>();
-  console.log(data.data.planets.edges);
+  console.log(data);
 
   if (!data?.data?.planets?.edges) {
     return <></>;
@@ -86,7 +37,7 @@ export default function Index() {
           ({ node }, i) => (
             <div key={i}>
               {Object.keys(node).map(
-                (planetKey, i) => (
+                (planetKey: string, i) => (
                   <div key={i}>
                     <div
                       style={{ color: 'white' }}
@@ -94,7 +45,7 @@ export default function Index() {
                       {planetKey}:{' '}
                       {
                         node[
-                          planetKey as keyof TPlanet
+                          planetKey as keyof Planet
                         ]
                       }
                     </div>

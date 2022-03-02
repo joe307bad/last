@@ -1,4 +1,4 @@
-import { EventTypes } from '@last/shared/types';
+import { EventTypes } from '~last/shared/types';
 
 export const examples = [
   // planet receives more resources

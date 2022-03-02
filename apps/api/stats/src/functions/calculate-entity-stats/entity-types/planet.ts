@@ -2,7 +2,7 @@ import got from 'got';
 import {
   EventTypes,
   PlanetStoryEventResponse,
-} from '@last/shared/types';
+} from '~last/shared/types';
 import { parseResourceChange } from '../event-types/resource-change';
 
 export const calculatePlanetStats = async (

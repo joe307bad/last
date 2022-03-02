@@ -4,24 +4,51 @@ import { AllPlanetsResponse } from '~last/shared/types';
 export const getAllPlanets =
   async (): Promise<AllPlanetsResponse> => {
     const plantInfoQuery = `
-  query {
-    planets {
-      edges {
-        node {
-          id
+query {
+  planets {
+    edges {
+      node {
+        id
+        name
+        description
+        enabled
+        created
+        updated
+        initialAlignment
+        population
+        level
+        planetarySystem {
+          name
+        }
+        rulingHouse {
+          name
+        }
+        houses {
+          name
+        }
+        foci {
+          name
+        }
+        colors {
+          hex
+        }
+        terrains {
+          name
+        }
+        planetResources {
           name
         }
       }
     }
   }
+}
  `;
 
-    const planets = await got
+    return got
       .post('http://localhost:3333/graphql', {
         json: {
           query: plantInfoQuery,
         },
       })
       .json<AllPlanetsResponse>();
-    return planets;
   };

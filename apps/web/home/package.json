@@ -7,7 +7,7 @@
     "dev": "npx remix dev",
     "build": "yarn build:css && npx remix build",
     "postinstall": "npx remix setup node",
-    "start": "npx concurrently \"yarn dev:css\" \"yarn dev\"",
+    "start": "NODE_ENV=development npx concurrently \"yarn dev:css\" \"yarn dev\"",
     "build:css": "npx tailwindcss -o ./app/tailwind.css",
     "dev:css": "npx tailwindcss -o ./app/tailwind.css --watch"
   },

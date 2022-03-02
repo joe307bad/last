@@ -1,4 +1,4 @@
-import { TPlanet } from '../routes/index';
+import { Planet as TPlanet } from '~last/shared/types';
 
 export const Planet = ({
   planet,
@@ -30,12 +30,14 @@ export const Planet = ({
           Ruling Family
         </div>
         <div className="flex justify-between items-center">
-          <span>{planet.rulingFamily}</span>
+          <span>{planet.rulingHouse}</span>
           <div className="flex">
             {planet.colors.map((color, i) => (
               <div
                 key={i}
-                style={{ backgroundColor: color }}
+                style={{
+                  backgroundColor: color.hex,
+                }}
                 className="w-5 h-5 mr-1 rounded-full bg-red-400"
               />
             ))}
@@ -55,18 +57,16 @@ export const Planet = ({
           Opposing Families
         </div>
         <ul className="marker:text-green list-outside list-disc ml-6">
-          {planet.opposingFamilies.map(
-            (of, i) => (
-              <li
-                key={i}
-                className="text-green-400"
-              >
-                <div className="text-gray-500">
-                  {of}
-                </div>
-              </li>
-            )
-          )}
+          {planet.houses.map((of, i) => (
+            <li
+              key={i}
+              className="text-green-400"
+            >
+              <div className="text-gray-500">
+                {of}
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
       <div className="px-6 py-4">
@@ -74,8 +74,9 @@ export const Planet = ({
           Resources
         </div>
         <div className="flex text-gray-500 flex-col">
-          {planet.resources.map(
-            ([prefix, amount, type], i) => {
+          {planet.planetResources.map(
+            (resource, i) => {
+              const prefix = '+';
               const badge = `inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-${
                 prefix === '-' ? 'red' : 'green'
               }-600 rounded-full mr-2`;
@@ -85,10 +86,9 @@ export const Planet = ({
                   className="flex items-center mb-2"
                 >
                   <div className={badge}>
-                    {prefix}
-                    {amount}
+                    +{123}
                   </div>
-                  <div>{type}</div>
+                  <div>{resource.name}</div>
                 </div>
               );
             }

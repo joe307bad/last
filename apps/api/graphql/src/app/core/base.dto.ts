@@ -1,5 +1,13 @@
-import { FilterableField, IDField } from '@nestjs-query/query-graphql';
-import { Field, GraphQLISODateTime, ID, ObjectType } from '@nestjs/graphql';
+import {
+  FilterableField,
+  IDField,
+} from '@nestjs-query/query-graphql';
+import {
+  Field,
+  GraphQLISODateTime,
+  ID,
+  ObjectType,
+} from '@nestjs/graphql';
 
 @ObjectType()
 export abstract class BaseDto {
@@ -7,10 +15,10 @@ export abstract class BaseDto {
   @IDField(() => ID)
   id!: string;
 
-  @FilterableField()
+  @FilterableField({ nullable: true })
   name!: string;
 
-  @Field()
+  @Field({ nullable: true })
   description!: string;
 
   @Field()

@@ -23,6 +23,8 @@ export let meta: MetaFunction = () => {
 
 export default function Index() {
   let data = useLoaderData<IndexData>();
+  console.log(data);
+  // return <></>;
 
   if (!data?.data?.planets?.edges) {
     return <></>;

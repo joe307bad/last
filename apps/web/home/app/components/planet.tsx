@@ -30,7 +30,7 @@ export const Planet = ({
           Ruling Family
         </div>
         <div className="flex justify-between items-center">
-          <span>{planet.rulingHouse}</span>
+          <span>{planet.rulingHouse.name}</span>
           <div className="flex">
             {planet.colors.map((color, i) => (
               <div
@@ -57,13 +57,13 @@ export const Planet = ({
           Opposing Families
         </div>
         <ul className="marker:text-green list-outside list-disc ml-6">
-          {planet.houses.map((of, i) => (
+          {planet.houses.map((house, i) => (
             <li
               key={i}
               className="text-green-400"
             >
               <div className="text-gray-500">
-                {of}
+                {house.name}
               </div>
             </li>
           ))}
@@ -76,7 +76,12 @@ export const Planet = ({
         <div className="flex text-gray-500 flex-col">
           {planet.planetResources.map(
             (resource, i) => {
-              const prefix = '+';
+              const prefix = Number(
+                resource.initialAmount >
+                  0
+              )
+                ? '+'
+                : '-';
               const badge = `inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-${
                 prefix === '-' ? 'red' : 'green'
               }-600 rounded-full mr-2`;
@@ -86,9 +91,14 @@ export const Planet = ({
                   className="flex items-center mb-2"
                 >
                   <div className={badge}>
-                    +{123}
+                    +
+                    {
+                      resource.initialAmount.toString()
+                    }
                   </div>
-                  <div>{resource.name}</div>
+                  <div>
+                    {resource.resource.name}
+                  </div>
                 </div>
               );
             }

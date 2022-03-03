@@ -100,6 +100,7 @@ import { GeneratorService } from './generator/generator.service';
       autoLoadEntities: true,
       synchronize: true,
       logging: true,
+      // dropSchema: true,
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       autoSchemaFile: true,

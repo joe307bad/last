@@ -8,9 +8,14 @@ export type Planet = {
   description: string;
   initialAlignment: number;
   colors: { hex: string }[];
-  rulingHouse: { name: string }[];
+  rulingHouse: { name: string };
   houses: { name: string }[];
-  planetResources: { name: string }[];
+  planetResources: {
+    initialAmount: number;
+    resource: {
+      name: string;
+    };
+  }[];
   foci: { name: string }[];
   terrains: { name: string }[];
 };

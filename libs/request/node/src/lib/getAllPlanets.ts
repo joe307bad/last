@@ -36,7 +36,10 @@ query {
           name
         }
         planetResources {
-          name
+          initialAmount
+          resource {
+            name
+          }
         }
       }
     }

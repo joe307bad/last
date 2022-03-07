@@ -12,7 +12,7 @@ export let loader: LoaderFunction = async () => {
   const allPlanets = await getAllPlanets();
   return sampleSize(
     allPlanets.data?.planets?.edges || [],
-    8
+    6
   );
 };
 
@@ -33,7 +33,7 @@ export default function Index() {
 
   return (
     <main className="remix__page flex  justify-center">
-      <div className="grid grid-cols-4 grid-rows-2 gap-4">
+      <div className="grid grid-cols-6 gap-4">
         {planets.map(({ node }, i) => (
           <Planet key={i} planet={node} />
         ))}

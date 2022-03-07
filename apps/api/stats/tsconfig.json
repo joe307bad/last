@@ -15,6 +15,9 @@
       ],
       "~last/shared/types": [
         "../../../libs/shared/types/src/index.ts"
+      ],
+      "~last/request/node": [
+        "../../../libs/request/node/src/index.ts"
       ]
     }
   },

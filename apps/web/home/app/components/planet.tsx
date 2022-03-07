@@ -18,12 +18,6 @@ export const Planet = ({
         <div className="font-bold text-xl mb-2">
           {planet.name}
         </div>
-        <p className="text-gray-500 text-base">
-          Lorem ipsum dolor sit amet, consectetur
-          adipisicing elit. Voluptatibus quia,
-          nulla! Maiores et perferendis eaque,
-          exercitationem praesentium nihil.
-        </p>
       </div>
       <div className="px-6 py-4">
         <div className="font-bold text-xl w-full mb-2">
@@ -41,20 +35,12 @@ export const Planet = ({
                 className="w-5 h-5 mr-1 rounded-full bg-red-400"
               />
             ))}
-            {/*<div className="w-5 h-5 mr-1 rounded-full bg-red-400" />*/}
-            {/*<div className="w-5 h-5 rounded-full bg-purple-400" />*/}
           </div>
         </div>
-        <p className="text-gray-500 text-base">
-          Lorem ipsum dolor sit amet, consectetur
-          adipisicing elit. Voluptatibus quia,
-          nulla! Maiores et perferendis eaque,
-          exercitationem praesentium nihil.
-        </p>
       </div>
       <div className="px-6 py-4">
         <div className="font-bold text-xl w-full mb-2">
-          Opposing Families
+          Other Houses
         </div>
         <ul className="marker:text-green list-outside list-disc ml-6">
           {planet.houses.map((house, i) => (
@@ -77,11 +63,12 @@ export const Planet = ({
           {planet.planetResources.map(
             (resource, i) => {
               const prefix = Number(
-                resource.initialAmount >
-                  0
+                resource.initialAmount > 0
               )
                 ? '+'
                 : '-';
+              const _include_class_names =
+                'bg-red-600 bg-green-600';
               const badge = `inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-${
                 prefix === '-' ? 'red' : 'green'
               }-600 rounded-full mr-2`;
@@ -91,10 +78,7 @@ export const Planet = ({
                   className="flex items-center mb-2"
                 >
                   <div className={badge}>
-                    +
-                    {
-                      resource.initialAmount.toString()
-                    }
+                    {resource.initialAmount.toString()}
                   </div>
                   <div>
                     {resource.resource.name}
@@ -106,15 +90,16 @@ export const Planet = ({
         </div>
       </div>
       <div className="px-6 pt-4 pb-2">
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-500 mr-2 mb-2">
-          #photography
-        </span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-500 mr-2 mb-2">
-          #travel
-        </span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-500 mr-2 mb-2">
-          #winter
-        </span>
+        <div className="font-bold text-xl w-full mb-2">
+          Terrains
+        </div>
+        {!planet.terrains
+          ? null
+          : planet.terrains.map((terrain) => (
+              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-500 mr-2 mb-2">
+                {terrain.name}
+              </span>
+            ))}
       </div>
     </div>
   );

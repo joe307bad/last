@@ -3,16 +3,18 @@ import type {
   LoaderFunction,
 } from 'remix';
 import { useLoaderData } from 'remix';
-import { AllPlanetsResponse } from '~last/shared/types';
+import { Planet as TPlanet } from '~last/shared/types';
 import { getAllPlanets } from '~last/request/node';
-import { Planet } from '~/components/planet';
 import { sampleSize } from 'lodash';
+import { Planet } from '~/components/planet';
 
 export let loader: LoaderFunction = async () => {
-  return getAllPlanets();
+  const allPlanets = await getAllPlanets();
+  return sampleSize(
+    allPlanets.data?.planets?.edges || [],
+    8
+  );
 };
-
-type IndexData = AllPlanetsResponse;
 
 export let meta: MetaFunction = () => {
   return {
@@ -22,21 +24,20 @@ export let meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  let data = useLoaderData<IndexData>();
-  console.log(data);
-  // return <></>;
+  let planets =
+    useLoaderData<{ node: TPlanet }[]>();
 
-  if (!data?.data?.planets?.edges) {
+  if (!planets) {
     return <></>;
   }
 
   return (
-    <main className="remix__page flex justify-center">
-      {sampleSize(data.data.planets.edges, 4).map(
-        ({ node }, i) => (
+    <main className="remix__page flex  justify-center">
+      <div className="grid grid-cols-4 grid-rows-2 gap-4">
+        {planets.map(({ node }, i) => (
           <Planet key={i} planet={node} />
-        )
-      )}
+        ))}
+      </div>
     </main>
   );
 }

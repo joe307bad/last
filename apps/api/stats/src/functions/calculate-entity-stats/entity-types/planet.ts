@@ -3,6 +3,7 @@ import {
   EventTypes,
   PlanetStoryEventResponse,
 } from '~last/shared/types';
+import { getPlanetById } from '~last/request/node';
 import { parseResourceChange } from '../event-types/resource-change';
 
 export const calculatePlanetStats = async (
@@ -20,43 +21,7 @@ export const calculatePlanetStats = async (
     );
   }
 
-  const plantInfoQuery = `
-  query {
-    planet(
-      id: "${planetId}"
-    ) {
-      name,
-      planetResources {
-        initialAmount
-        resource {
-          id
-          name
-        }
-      }
-    }
-  }
- `;
-
-  const planetInfo = await got
-    .post('http://localhost:3333/graphql', {
-      json: {
-        query: plantInfoQuery,
-      },
-    })
-    .json<{
-      data: {
-        planet: {
-          name: string;
-          planetResources: {
-            initialAmount: number;
-            resource: {
-              name: string;
-              id: string;
-            };
-          }[];
-        };
-      };
-    }>();
+  const planetInfo = await getPlanetById(planetId);
 
   if (!planetInfo?.data?.planet) {
     throw new Error(

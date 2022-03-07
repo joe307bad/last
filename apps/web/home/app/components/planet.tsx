@@ -1,9 +1,10 @@
 import { Planet as TPlanet } from '~last/shared/types';
+import { Link, NavLink } from 'remix';
 
 export const Planet = ({
   planet,
 }: {
-  planet: TPlanet;
+  planet: Partial<TPlanet>;
 }) => {
   return (
     <div className="grid p-4 m-4 border-gray-50 border-4 max-w-sm grid-rows-7">
@@ -41,115 +42,190 @@ export const Planet = ({
           {planet.name}
         </div>
       </div>
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl w-full mb-2">
-          Ruling House
-        </div>
-        <div className="flex justify-between items-center">
-          <span>{planet.rulingHouse.name}</span>
-          <div className="flex">
-            {planet.colors.map((color, i) => (
-              <div
-                key={i}
-                style={{
-                  backgroundColor: color.hex,
-                }}
-                className="w-5 h-5 mr-1 rounded-full bg-red-400"
-              />
-            ))}
+      {!planet?.rulingHouse ? null : (
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl w-full mb-2">
+            Ruling House
+          </div>
+          <div className="flex justify-between items-center">
+            <span>{planet.rulingHouse.name}</span>
+            <div className="flex">
+              {(planet?.colors || []).map(
+                (color, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      backgroundColor: color.hex,
+                    }}
+                    className="w-5 h-5 mr-1 rounded-full bg-red-400"
+                  />
+                )
+              )}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl w-full mb-2">
-          Other Houses
-        </div>
-        <ul className="marker:text-green list-outside list-disc ml-6">
-          {planet.houses.map((house, i) => (
-            <li
-              key={i}
-              className="text-green-400"
-            >
-              <div className="text-gray-500">
-                {house.name}
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl w-full mb-2">
-          Resources
-        </div>
-        <div className="flex text-gray-500 flex-col">
-          {planet.planetResources.map(
-            (resource, i) => {
-              const prefix = Number(
-                resource.initialAmount > 0
-              )
-                ? '+'
-                : '-';
-              const _include_class_names =
-                'bg-red-600 bg-green-600';
-              const badge = `inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-${
-                prefix === '-' ? 'red' : 'green'
-              }-600 rounded-full mr-2`;
-              return (
-                <div
-                  key={i}
-                  className="flex items-center mb-2"
-                >
-                  <div className={badge}>
-                    {resource.initialAmount.toString()}
-                  </div>
-                  <div>
-                    {resource.resource.name}
-                  </div>
+      )}
+      {!planet?.houses ? null : (
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl w-full mb-2">
+            Other Houses
+          </div>
+          <ul className="marker:text-green list-outside list-disc ml-6">
+            {planet.houses.map((house, i) => (
+              <li
+                key={i}
+                className="text-green-400"
+              >
+                <div className="text-gray-500">
+                  {house.name}
                 </div>
-              );
-            }
-          )}
-        </div>
-      </div>
-      <div className="px-6 pt-4 pb-2">
-        <div className="font-bold text-xl w-full mb-2">
-          Terrains
-        </div>
-        {!planet.terrains
-          ? null
-          : planet.terrains.map((terrain) => (
-              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-500 mr-2 mb-2">
-                {terrain.name}
-              </span>
+              </li>
             ))}
+          </ul>
+        </div>
+      )}
+      {!planet?.planetResources ? null : (
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl w-full mb-2">
+            Resources
+          </div>
+          <div className="flex text-gray-500 flex-col">
+            {planet.planetResources.map(
+              (resource, i) => {
+                const prefix = Number(
+                  resource.initialAmount > 0
+                )
+                  ? '+'
+                  : '-';
+                const _include_class_names =
+                  'bg-red-600 bg-green-600';
+                const badge = `inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-${
+                  prefix === '-' ? 'red' : 'green'
+                }-600 rounded-full mr-2`;
+                return (
+                  <div
+                    key={i}
+                    className="flex items-center mb-2"
+                  >
+                    <div className={badge}>
+                      {resource.initialAmount.toString()}
+                    </div>
+                    <div>
+                      {resource.resource.name}
+                    </div>
+                  </div>
+                );
+              }
+            )}
+          </div>
+        </div>
+      )}
+      {!planet?.terrains ? null : (
+        <div className="px-6 pt-4 pb-2">
+          <div className="font-bold text-xl w-full mb-2">
+            Terrains
+          </div>
+          {planet.terrains.map((terrain, i) => (
+            <span
+              key={i}
+              className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-500 mr-2 mb-2"
+            >
+              {terrain.name}
+            </span>
+          ))}
+        </div>
+      )}
+      <div>
+
+        <ol className="relative border-l border-white-200 dark:border-white-700">
+          <li className="mb-10 ml-4">
+            <div
+              className="absolute w-3 h-3 bg-gray-200 rounded-full -left-1.5 border border-white dark:border-gray-900 dark:bg-white-700"></div>
+            <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">February 2022
+            </time>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Application UI code in Tailwind CSS</h3>
+            <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Get access to over 20+ pages
+              including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce &amp; Marketing
+              pages.</p>
+            <a href="#"
+               className="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-lg border border-white-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-white-700">Learn
+              more <svg className="ml-2 w-3 h-3" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                      clip-rule="evenodd"></path>
+              </svg></a>
+          </li>
+          <li className="mb-10 ml-4">
+            <div
+              className="absolute w-3 h-3 bg-gray-200 rounded-full -left-1.5 border border-white dark:border-gray-900 dark:bg-white-700"></div>
+            <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">March 2022</time>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Marketing UI design in Figma</h3>
+            <p className="text-base font-normal text-gray-500 dark:text-gray-400">All of the pages and components are
+              first designed in Figma and we keep a parity between the two versions even as we update the project.</p>
+          </li>
+          <li className="ml-4">
+            <div
+              className="absolute w-3 h-3 bg-gray-200 rounded-full -left-1.5 border border-white dark:border-gray-900 dark:bg-white-700"></div>
+            <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">April 2022</time>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">E-Commerce UI code in Tailwind CSS</h3>
+            <p className="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of web
+              components and interactive elements built on top of Tailwind CSS.</p>
+          </li>
+        </ol>
+
       </div>
       <div className="grow-1  justify-center w-full content-center flex">
-        <button className="inline-flex items-center h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
-          <svg
-            className="w-4 h-4 mr-3 fill-current"
-            viewBox="0 0 512 512"
-            enable-background="new 0 0 512 512"
-          >
-            <path d="M366.781,73.842c-12.021,0-23.321,4.681-31.82,13.18c-17.546,17.545-17.546,46.094,0,63.639
+        <Link to={`/planets/${planet.id}`}>
+          <button className="inline-flex items-center h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
+            <svg
+              className="w-4 h-4 mr-3 fill-current"
+              viewBox="0 0 512 512"
+              enable-background="new 0 0 512 512"
+            >
+              <path
+                d="M366.781,73.842c-12.021,0-23.321,4.681-31.82,13.18c-17.546,17.545-17.546,46.094,0,63.639
 				c8.499,8.5,19.8,13.181,31.82,13.181s23.32-4.681,31.819-13.181c17.546-17.545,17.546-46.094,0-63.639
 				C390.101,78.522,378.801,73.842,366.781,73.842z M377.388,129.448c-2.833,2.833-6.601,4.394-10.606,4.394
 				c-4.007,0-7.774-1.561-10.607-4.394c-5.849-5.849-5.849-15.365,0-21.213c2.833-2.833,6.601-4.393,10.607-4.393
-				s7.773,1.56,10.606,4.393C383.236,114.083,383.236,123.6,377.388,129.448z"/>
-            <path d="M472.704,21.533l-2.393-6.223l-6.224-2.393C441.801,4.346,418.406,0,394.556,0c-50.711,0-98.243,19.604-133.841,55.202
+				s7.773,1.56,10.606,4.393C383.236,114.083,383.236,123.6,377.388,129.448z"
+              />
+              <path
+                d="M472.704,21.533l-2.393-6.223l-6.224-2.393C441.801,4.346,418.406,0,394.556,0c-50.711,0-98.243,19.604-133.841,55.202
 				l-44.928,44.927l-113.138,14.142l-83.364,83.364l70.711,28.285l-15.734,15.735l22.835,22.835l-35.355,49.497l109.895,109.895
 				l49.497-35.356l22.835,22.835l15.734-15.735l28.284,70.711l83.364-83.364l14.141-113.136l44.928-44.929
 				C483.287,172.04,499.885,92.21,472.704,21.533z M72.67,186.679l43.915-43.916l64.65-8.081l-68.159,68.159L72.67,186.679z
 				 M174.878,384.698l-73.953-73.954l17.677-24.748l81.025,81.024L174.878,384.698z M342.858,369.038l-43.915,43.915l-16.163-40.406
 				l68.159-68.159L342.858,369.038z M409.208,203.694l-165.24,165.24L190.934,315.9l116.673-116.672l-21.213-21.213L169.721,294.688
 				l-53.033-53.033l165.24-165.24C311.859,46.484,351.858,30,394.556,30c17.909,0,35.516,2.9,52.435,8.63
-				C466.615,96.637,452.134,160.768,409.208,203.694z"/>
-            <rect x="44.257" y="396.362" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -269.1277 172.9926)" width="59.999" height="30"/>
+				C466.615,96.637,452.134,160.768,409.208,203.694z"
+              />
+              <rect
+                x="44.257"
+                y="396.362"
+                transform="matrix(0.7071 -0.7071 0.7071 0.7071 -269.1277 172.9926)"
+                width="59.999"
+                height="30"
+              />
 
-            <rect x="101.686" y="423.791" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -121.683 857.1786)" width="30" height="59.999"/>
-            <rect x="1.835" y="353.93" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -251.5493 130.5676)" width="59.999" height="30"/>
-          </svg>
-          <span>Visit</span>
-        </button>
+              <rect
+                x="101.686"
+                y="423.791"
+                transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -121.683 857.1786)"
+                width="30"
+                height="59.999"
+              />
+              <rect
+                x="1.835"
+                y="353.93"
+                transform="matrix(0.7071 -0.7071 0.7071 0.7071 -251.5493 130.5676)"
+                width="59.999"
+                height="30"
+              />
+            </svg>
+            <span>Visit</span>
+          </button>
+        </Link>
       </div>
     </div>
   );

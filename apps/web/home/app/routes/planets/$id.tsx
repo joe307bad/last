@@ -1,6 +1,9 @@
-import { useLoaderData } from 'remix';
+import { redirect, useLoaderData } from 'remix';
 import type { LoaderFunction } from 'remix';
-import { getPlanetById } from '~last/request/node';
+import {
+  getPlanetById,
+  resourceChangeByPlanetId,
+} from '~last/request/node';
 import { Planet as TPlanet } from '~last/shared/types';
 import { Planet } from '~/components/planet';
 
@@ -24,7 +27,26 @@ export let loader: LoaderFunction = async ({
   return planet.data.planet;
 };
 
+export async function action({
+  request,
+}: {
+  request: { formData: () => Promise<any> };
+}) {
+  const body = await request.formData();
+  await resourceChangeByPlanetId(
+    body.get("planetId"),
+    body.get("resourceId")
+  );
+  return true; //redirect(`/planets/${body.planetId}`);
+}
+
 export default function PlanetById() {
   let data = useLoaderData<Partial<TPlanet>>();
-  return <Planet planet={data} />;
+
+  return (
+    <Planet
+      actionText="Add Resource"
+      planet={data}
+    />
+  );
 }

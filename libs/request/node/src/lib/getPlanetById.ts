@@ -9,6 +9,7 @@ export const getPlanetById = (
     planet(
       id: "${planetId}"
     ) {
+      id,
       name,
       planetResources {
         initialAmount

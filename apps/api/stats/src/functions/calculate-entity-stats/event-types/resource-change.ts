@@ -13,7 +13,7 @@ export const parseResourceChange = (
         planetEvent.secondaryEntityId
     ) || {};
 
-  if (!initialAmount || !resource) {
+  if (!resource) {
     throw new Error(
       `This resource: ${planetEvent.secondaryEntityId} was not found for this planet ${planetEvent.entityId}`
     );

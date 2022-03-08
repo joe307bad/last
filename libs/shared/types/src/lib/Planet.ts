@@ -13,6 +13,7 @@ export type Planet = {
   planetResources: {
     initialAmount: number;
     resource: {
+      id: string;
       name: string;
     };
   }[];

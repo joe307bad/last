@@ -9,6 +9,7 @@ import {
   useCatch,
 } from 'remix';
 import type { LinksFunction } from 'remix';
+import Logo from './planet-svgrepo-com(1).svg';
 
 import globalStylesUrl from '~/styles/global.css';
 import darkStylesUrl from '~/styles/dark.css';
@@ -40,7 +41,11 @@ export default function App() {
 }
 
 // https://remix.run/docs/en/v1/api/conventions#errorboundary
-export function ErrorBoundary({ error }: { error: Error }) {
+export function ErrorBoundary({
+  error,
+}: {
+  error: Error;
+}) {
   console.error(error);
   return (
     <Document title="Error!">
@@ -50,8 +55,9 @@ export function ErrorBoundary({ error }: { error: Error }) {
           <p>{error.message}</p>
           <hr />
           <p>
-            Hey, developer, you should replace this with what you want your
-            users to see.
+            Hey, developer, you should replace
+            this with what you want your users to
+            see.
           </p>
         </div>
       </Layout>
@@ -68,23 +74,30 @@ export function CatchBoundary() {
     case 401:
       message = (
         <p>
-          Oops! Looks like you tried to visit a page that you do not have access
-          to.
+          Oops! Looks like you tried to visit a
+          page that you do not have access to.
         </p>
       );
       break;
     case 404:
       message = (
-        <p>Oops! Looks like you tried to visit a page that does not exist.</p>
+        <p>
+          Oops! Looks like you tried to visit a
+          page that does not exist.
+        </p>
       );
       break;
 
     default:
-      throw new Error(caught.data || caught.statusText);
+      throw new Error(
+        caught.data || caught.statusText
+      );
   }
 
   return (
-    <Document title={`${caught.status} ${caught.statusText}`}>
+    <Document
+      title={`${caught.status} ${caught.statusText}`}
+    >
       <Layout>
         <h1>
           {caught.status}: {caught.statusText}
@@ -106,7 +119,10 @@ function Document({
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1"
+        />
         {title ? <title>{title}</title> : null}
         <Meta />
         <Links />
@@ -115,14 +131,74 @@ function Document({
         {children}
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === 'development' && <LiveReload />}
+        {process.env.NODE_ENV ===
+          'development' && <LiveReload />}
       </body>
     </html>
   );
 }
 
-function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <>
+      <nav className="flex items-center justify-between flex-wrap p-6">
+        <div className="flex items-center flex-shrink-0 text-white mr-6">
+          <div>
+            <img
+              className="block w-12 h-12 m-2"
+              src={Logo}
+              alt="React Logo"
+            />
+          </div>
+          <span className="font-semibold text-xl tracking-tight">
+            Last
+          </span>
+        </div>
+        <div className="block lg:hidden">
+          <button className="flex items-center px-3 py-2 border rounded text-white-200 border-white-400 hover:text-white hover:border-white">
+            <svg
+              className="fill-current h-3 w-3"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>Menu</title>
+              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+            </svg>
+          </button>
+        </div>
+        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto flex-end">
+          <div className="text-sm lg:flex-grow">
+          </div>
+          <div>
+
+            <Link
+              to={"/"}
+              className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4"
+            >
+              Discover
+            </Link>
+            {/*<a*/}
+            {/*  href="#responsive-header"*/}
+            {/*  className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4"*/}
+            {/*>*/}
+            {/*  Examples*/}
+            {/*</a>*/}
+            {/*<a*/}
+            {/*  href="#responsive-header"*/}
+            {/*  className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white"*/}
+            {/*>*/}
+            {/*  Blog*/}
+            {/*</a>*/}
+          </div>
+        </div>
+      </nav>
+      <div className="m-5 mt-0">{children}</div>
+    </>
+  );
 }
 
 function RemixLogo() {
@@ -138,7 +214,9 @@ function RemixLogo() {
       height="30"
       fill="currentColor"
     >
-      <title id="remix-run-logo-title">Remix Logo</title>
+      <title id="remix-run-logo-title">
+        Remix Logo
+      </title>
       <path d="M0 161V136H45.5416C53.1486 136 54.8003 141.638 54.8003 145V161H0Z M133.85 124.16C135.3 142.762 135.3 151.482 135.3 161H92.2283C92.2283 158.927 92.2653 157.03 92.3028 155.107C92.4195 149.128 92.5411 142.894 91.5717 130.304C90.2905 111.872 82.3473 107.776 67.7419 107.776H54.8021H0V74.24H69.7918C88.2407 74.24 97.4651 68.632 97.4651 53.784C97.4651 40.728 88.2407 32.816 69.7918 32.816H0V0H77.4788C119.245 0 140 19.712 140 51.2C140 74.752 125.395 90.112 105.665 92.672C122.32 96 132.057 105.472 133.85 124.16Z" />
       <path d="M229.43 120.576C225.59 129.536 218.422 133.376 207.158 133.376C194.614 133.376 184.374 126.72 183.35 112.64H263.478V101.12C263.478 70.1437 243.254 44.0317 205.11 44.0317C169.526 44.0317 142.902 69.8877 142.902 105.984C142.902 142.336 169.014 164.352 205.622 164.352C235.83 164.352 256.822 149.76 262.71 123.648L229.43 120.576ZM183.862 92.6717C185.398 81.9197 191.286 73.7277 204.598 73.7277C216.886 73.7277 223.542 82.4317 224.054 92.6717H183.862Z" />
       <path d="M385.256 66.5597C380.392 53.2477 369.896 44.0317 349.672 44.0317C332.52 44.0317 320.232 51.7117 314.088 64.2557V47.1037H272.616V161.28H314.088V105.216C314.088 88.0638 318.952 76.7997 332.52 76.7997C345.064 76.7997 348.136 84.9917 348.136 100.608V161.28H389.608V105.216C389.608 88.0638 394.216 76.7997 408.04 76.7997C420.584 76.7997 423.4 84.9917 423.4 100.608V161.28H464.872V89.5997C464.872 65.7917 455.656 44.0317 424.168 44.0317C404.968 44.0317 391.4 53.7597 385.256 66.5597Z" />

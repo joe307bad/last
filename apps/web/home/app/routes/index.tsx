@@ -12,7 +12,7 @@ export let loader: LoaderFunction = async () => {
   const allPlanets = await getAllPlanets();
   return sampleSize(
     allPlanets.data?.planets?.edges || [],
-    3
+    6
   );
 };
 
@@ -32,7 +32,7 @@ export default function Index() {
   }
 
   return (
-    <div className="flex">
+    <div className="flex flex-wrap justify-center">
       {planets.map(({ node }, i) => (
         <Planet
           linkText="Visit"

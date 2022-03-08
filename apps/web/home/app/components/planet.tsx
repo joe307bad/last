@@ -11,7 +11,7 @@ export const Planet = ({
   linkText: string;
 }>) => {
   return (
-    <div className="grid p-4 mr-4 border-gray-50 border-4 max-w-sm grid-rows-7 w-full">
+    <div className="grid p-4 mr-4 border-gray-50 border-4 max-w-sm grid-rows-7 w-full mb-4">
       <div className="flex justify-center w-full content-center">
         <svg
           className="p-4 w-20 h-20 mr-3 fill-current"

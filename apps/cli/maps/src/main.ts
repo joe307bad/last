@@ -8,26 +8,24 @@ import { parseString, Builder } from 'xml2js';
     'utf-8'
   );
 
-  parseString(
-    data,
-    async (err, result) => {
-      if (err) {
-        throw err;
-      }
-
-      result.svg.g['0'].path.forEach((p) => {
-        p.$.id = uuidv4();
-        p.text = "2";
-      });
-
-      const builder = new Builder();
-      const xml = builder.buildObject(result);
-      const svgFileName = Date.now();
-      await writeFile(
-        `${process.cwd()}/apps/web/home/public/maps/${svgFileName}.svg`,
-        xml
-      );
-      console.log(svgFileName);
+  parseString(data, async (err, result) => {
+    if (err) {
+      throw err;
     }
-  );
+
+    result.svg.g['0'].path.forEach((p) => {
+      p.$.id = uuidv4();
+      p.$.fill = '#4338ca';
+      p.$['fill-opacity'] = '1';
+    });
+
+    const builder = new Builder();
+    const xml = builder.buildObject(result);
+    const svgFileName = Date.now();
+    await writeFile(
+      `${process.cwd()}/apps/web/home/public/maps/${svgFileName}.svg`,
+      xml
+    );
+    console.log(svgFileName);
+  });
 })();

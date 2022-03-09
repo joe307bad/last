@@ -26,6 +26,14 @@ export default function Battle() {
         ).forEach((c) => {
           c.addEventListener('click', (e) => {
             // @ts-ignore
+            if(e.target.style.fill === "blue") {
+              // @ts-ignore
+              e.target.style.fill = "";
+            } else {
+              // @ts-ignore
+              e.target.style.fill = "blue";
+            }
+            // @ts-ignore
             console.log(e.target.id);
           });
         });
@@ -36,10 +44,8 @@ export default function Battle() {
         console.log(svg);
       }}
       beforeInjection={(svg) => {
-        svg.classList.add('svg-class-name');
-        svg.setAttribute('style', 'width: 200px');
       }}
-      className="wrapper-class-name"
+      className="battle-map"
       evalScripts="always"
       fallback={() => <span>Error!</span>}
       httpRequestWithCredentials={true}
@@ -48,9 +54,8 @@ export default function Battle() {
         console.log('wrapper onClick');
       }}
       renumerateIRIElements={false}
-      src="../maps/1646798815831.svg"
+      src="../maps/1646800935170.svg"
       useRequestCache={false}
-      wrapper="span"
     />
   );
 }

@@ -196,7 +196,7 @@ function Layout({
           </div>
         </div>
       </nav>
-      <div className="m-5 mt-0">{children}</div>
+      <div className="m-5 mt-0 h-full">{children}</div>
     </>
   );
 }

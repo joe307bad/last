@@ -4,6 +4,7 @@
     "api-graphql": "apps/api/graphql",
     "api-stats": "apps/api/stats",
     "api-story": "apps/api/story",
+    "cli-maps": "apps/cli/maps",
     "cli-story": "apps/cli/story",
     "request-node": "libs/request/node",
     "shared-types": "libs/shared/types",

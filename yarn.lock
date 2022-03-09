@@ -1092,7 +1092,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.12.5", "@babel/runtime@^7.16.7":
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.16.7", "@babel/runtime@^7.17.2":
   version "7.17.2"
   resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.17.2.tgz"
   integrity sha512-hzeyJyMA1YGdJTuWU0e/j4wKXrU4OMFvY2MSlaI9B7VQb0r5cxTE3EAIS2Q7Tn2RIcDkRvTA/v2JsAEhxe99uw==
@@ -3356,6 +3356,15 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
+"@tanem/svg-injector@^10.1.18":
+  version "10.1.19"
+  resolved "https://registry.yarnpkg.com/@tanem/svg-injector/-/svg-injector-10.1.19.tgz#95404a79c12ea3356cd2f95dcb0e4619785be96c"
+  integrity sha512-NMinibCvnuc4LFxk+zrF88+uS5U13yOQqLjVTwiMLPP6fXshkB8SKkn8uPU5Rt4o00D8fesy0Ede1JdYlmQclQ==
+  dependencies:
+    "@babel/runtime" "^7.17.2"
+    content-type "^1.0.4"
+    tslib "^2.3.1"
+
 "@testing-library/dom@^8.0.0":
   version "8.11.3"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-8.11.3.tgz#38fd63cbfe14557021e88982d931e33fb7c1a808"
@@ -3797,7 +3806,7 @@
   resolved "https://registry.npmjs.org/@types/prettier/-/prettier-2.4.3.tgz"
   integrity sha512-QzSuZMBuG5u8HqYz01qtMdg/Jfctlnvj1z/lYnIDXs/golxw0fxtRAHd9KrzjR7Yxz1qVeI00o0kiO3PmVdJ9w==
 
-"@types/prop-types@*":
+"@types/prop-types@*", "@types/prop-types@^15.7.4":
   version "15.7.4"
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.4.tgz"
   integrity sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==
@@ -6258,7 +6267,7 @@ content-disposition@0.5.4, content-disposition@^0.5.4:
   dependencies:
     safe-buffer "5.2.1"
 
-content-type@~1.0.4:
+content-type@^1.0.4, content-type@~1.0.4:
   version "1.0.4"
   resolved "https://registry.npmjs.org/content-type/-/content-type-1.0.4.tgz"
   integrity sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==
@@ -14756,7 +14765,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.7.2:
+prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -14978,6 +14987,16 @@ react-shallow-renderer@^16.13.1:
   dependencies:
     object-assign "^4.1.1"
     react-is "^16.12.0 || ^17.0.0"
+
+react-svg@^14.1.13:
+  version "14.1.13"
+  resolved "https://registry.yarnpkg.com/react-svg/-/react-svg-14.1.13.tgz#416d6c891a2afd40e14c4ccab126a08803110926"
+  integrity sha512-qqauSt5Dpy0ocCVgPAW51zcG3XGjNiXGBN3S+UWg8H6w98LMgq+knvxGPlqcaooYNcZTGzwym5Whc7QxwfFRFQ==
+  dependencies:
+    "@babel/runtime" "^7.17.2"
+    "@tanem/svg-injector" "^10.1.18"
+    "@types/prop-types" "^15.7.4"
+    prop-types "^15.8.1"
 
 react-test-renderer@17.0.2:
   version "17.0.2"
@@ -18335,7 +18354,7 @@ xml2js@0.4.19:
 
 xml2js@^0.4.23:
   version "0.4.23"
-  resolved "https://registry.npmjs.org/xml2js/-/xml2js-0.4.23.tgz"
+  resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.23.tgz#a0c69516752421eb2ac758ee4d4ccf58843eac66"
   integrity sha512-ySPiMjM0+pLDftHgXY4By0uswI3SPKLDw/i3UXbnO8M/p28zqexCUoPmQFrYD+/1BzhGJSs2i1ERWKJAtiLrug==
   dependencies:
     sax ">=0.6.0"

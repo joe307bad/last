@@ -176,6 +176,13 @@ function Layout({
           <div>
 
             <Link
+              to={"/battle"}
+              className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4"
+            >
+              Battle
+            </Link>
+
+            <Link
               to={"/"}
               className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4"
             >

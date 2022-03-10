@@ -4,7 +4,7 @@ import { parseString, Builder } from 'xml2js';
 
 (async () => {
   const data = await readFile(
-    `${process.cwd()}/maps/voronoi_svg_export.svg`,
+    `${process.cwd()}/maps/1646800935170.svg`,
     'utf-8'
   );
 
@@ -13,8 +13,11 @@ import { parseString, Builder } from 'xml2js';
       throw err;
     }
 
+    const regionIds = [];
     result.svg.g['0'].path.forEach((p) => {
-      p.$.id = uuidv4();
+      const regionId = uuidv4();
+      regionIds.push(regionId)
+      p.$.id = regionId;
       p.$.fill = '#4338ca';
       p.$['fill-opacity'] = '1';
     });
@@ -25,6 +28,10 @@ import { parseString, Builder } from 'xml2js';
     await writeFile(
       `${process.cwd()}/apps/web/home/public/maps/${svgFileName}.svg`,
       xml
+    );
+    await writeFile(
+      `${process.cwd()}/apps/web/home/public/maps/${svgFileName}.json`,
+      JSON.stringify(regionIds, null, 4)
     );
     console.log(svgFileName);
   });

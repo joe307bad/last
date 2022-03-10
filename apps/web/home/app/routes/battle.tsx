@@ -2,10 +2,19 @@ import type {
   MetaFunction,
   LoaderFunction,
 } from 'remix';
-import { ReactSVG } from 'react-svg';
+import MapSvg from '~/components/map';
+import { getAllPlanets } from '~last/request/node';
+import { sampleSize } from 'lodash';
+import { useLoaderData } from 'remix';
+import { Planet as TPlanet } from '~last/shared/types';
+import { Planet } from '~/components/planet';
 
 export let loader: LoaderFunction = async () => {
-  return Promise.resolve(null);
+  const allPlanets = await getAllPlanets();
+  return sampleSize(
+    allPlanets.data?.planets?.edges || [],
+    2
+  );
 };
 
 export let meta: MetaFunction = () => {
@@ -16,46 +25,15 @@ export let meta: MetaFunction = () => {
 };
 
 export default function Battle() {
+  let planets =
+    useLoaderData<{ node: TPlanet }[]>();
   return (
-    <ReactSVG
-      afterInjection={(error, svg) => {
-        Array.from(
-          (svg || undefined)?.getElementById(
-            'svg_g_bezier_cells'
-          ).children || []
-        ).forEach((c) => {
-          c.addEventListener('click', (e) => {
-            // @ts-ignore
-            if(e.target.style.fill === "blue") {
-              // @ts-ignore
-              e.target.style.fill = "";
-            } else {
-              // @ts-ignore
-              e.target.style.fill = "blue";
-            }
-            // @ts-ignore
-            console.log(e.target.id);
-          });
-        });
-        if (error) {
-          console.error(error);
-          return;
-        }
-        console.log(svg);
-      }}
-      beforeInjection={(svg) => {
-      }}
-      className="battle-map"
-      evalScripts="always"
-      fallback={() => <span>Error!</span>}
-      httpRequestWithCredentials={true}
-      loading={() => <span>Loading</span>}
-      onClick={() => {
-        console.log('wrapper onClick');
-      }}
-      renumerateIRIElements={false}
-      src="../maps/1646800935170.svg"
-      useRequestCache={false}
-    />
+    <div className=" flex content-center justify-center items-center">
+      <Planet planet={planets[0].node} />
+      <div className={'flex-1 content-center'}>
+        <MapSvg />
+      </div>
+      <Planet planet={planets[1].node} />
+    </div>
   );
 }

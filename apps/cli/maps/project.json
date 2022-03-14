@@ -41,11 +41,11 @@
         ]
       }
     },
-    "start": {
+    "exec": {
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
       "options": {
-        "command": "node dist/apps/cli/maps/main.js"
+        "command": "ts-node --project ./apps/cli/maps/tsconfig.json ./apps/cli/maps/src/main.ts"
       }
     },
     "test": {

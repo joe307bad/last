@@ -125,15 +125,24 @@ const regions = [
   },
 ];
 
+const findSeedByRegionElement = (
+  regionElement: SVGGeometryElement
+) => {
+  return (
+    regions.find((r) => {
+      return regionElement?.isPointInFill({
+        x: r.x,
+        y: r.y,
+      });
+    }) || { id: null, x: null, y: null }
+  );
+};
+
 const MapSvg = () => {
   const onRegionClick = (e: any) => {
-    const { id } =
-      regions.find((r) => {
-        return e.target.isPointInFill({
-          x: r.x,
-          y: r.y,
-        });
-      }) || {};
+    const { id } = findSeedByRegionElement(
+      e.target
+    );
 
     setRegionsState((prevState) => {
       const b = prevState.map((el) => {
@@ -156,7 +165,25 @@ const MapSvg = () => {
     useState<any[]>([]);
 
   useEffect(() => {
-    setRegionsState(regions);
+    setRegionsState(
+      regions.map((r) => ({
+        ...r,
+        color: 'black',
+      }))
+    );
+
+    regionIds.forEach((rid) => {
+      const region = document.getElementById(rid);
+
+      const { id, y, x } =
+        findSeedByRegionElement(
+          region as unknown as SVGGeometryElement
+        );
+
+      if (x && x > 350 && !!region) {
+        region.style.fill = 'green';
+      }
+    });
   }, []);
 
   return (
@@ -165,7 +192,7 @@ const MapSvg = () => {
       xmlns="http://www.w3.org/2000/svg"
       width="920"
       height="480"
-      style={{ display: 'block', margin: 'auto'}}
+      style={{ display: 'block', margin: 'auto' }}
     >
       <g id="svg_g_bezier_cells">
         <path
@@ -296,166 +323,20 @@ const MapSvg = () => {
           stroke-width="2"
         />
       </g>
-      <g id="svg_g_seeds">
-        <circle
-          id="c_0"
-          cx="465.11197791978185"
-          cy="369.18885146095613"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-        <circle
-          id="c_1"
-          cx="904.2545473581984"
-          cy="263.3306909950219"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-        <circle
-          id="c_2"
-          cx="29.138244960174127"
-          cy="82.28652917524371"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-        <circle
-          id="c_3"
-          cx="346.34245249153815"
-          cy="69.72434116510297"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-        <circle
-          id="c_4"
-          cx="195.06035397343126"
-          cy="428.4967220486614"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-        <circle
-          id="c_5"
-          cx="697.7398707106858"
-          cy="19.81302820803389"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-        <circle
-          id="c_6"
-          cx="734.6538565365373"
-          cy="329.84821943045563"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-        <circle
-          id="c_7"
-          cx="26.64418891433046"
-          cy="284.24192338259434"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-        <circle
-          id="c_8"
-          cx="170.5608226647212"
-          cy="60.54536850320073"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-        <circle
-          id="c_9"
-          cx="697.7804890352235"
-          cy="462.7953382925425"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-        <circle
-          id="c_10"
-          cx="27.45412858968267"
-          cy="463.62451618979674"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-        <circle
-          id="c_11"
-          cx="488.3611860925294"
-          cy="181.04024626593628"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-        <circle
-          id="c_12"
-          cx="529.0463943881513"
-          cy="24.349714193428014"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-        <circle
-          id="c_13"
-          cx="225.07690544813644"
-          cy="197.6099941199362"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-        <circle
-          id="c_14"
-          cx="912.2005765613332"
-          cy="5.986118649651431"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-        <circle
-          id="c_15"
-          cx="336.73548046400026"
-          cy="297.71481882212305"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-        <circle
-          id="c_16"
-          cx="828.4743408752713"
-          cy="432.97142296097934"
-          r="3"
-          stroke="black"
-          stroke-width="2"
-          fill="#4338ca"
-        />
-      </g>
       {regionsState.map((r, i) => {
         const x = Number(r.x) > 900 ? 870 : r.x;
         const y = Number(r.y) < 10 ? 30 : r.y;
         return (
           <g>
+            <circle
+              id="c_0"
+              cx={x}
+              cy={y}
+              r="3"
+              stroke="black"
+              stroke-width="2"
+              fill="#4338ca"
+            />
             <text
               fill={r.color || 'black'}
               key={r.id}

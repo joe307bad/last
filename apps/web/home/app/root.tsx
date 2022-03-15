@@ -14,6 +14,8 @@ import Logo from './planet-svgrepo-com(1).svg';
 import globalStylesUrl from '~/styles/global.css';
 import darkStylesUrl from '~/styles/dark.css';
 import styles from '~/tailwind.css';
+import MapSvgFromJson from '~/components/mapSvgFromJson';
+import map2 from '~/map2.svg.json';
 
 // https://remix.run/api/app#links
 export let links: LinksFunction = () => {
@@ -138,73 +140,69 @@ function Document({
   );
 }
 
+function Nav() {
+  return (
+    <nav className="flex items-center justify-between flex-wrap p-6">
+      <div className="flex items-center flex-shrink-0 text-white mr-6">
+        <div>
+          <img
+            className="block w-12 h-12 m-2"
+            src={Logo}
+            alt="React Logo"
+          />
+        </div>
+        <span className="font-semibold text-xl tracking-tight">
+          Last
+        </span>
+      </div>
+      <div className="block lg:hidden">
+        <button className="flex items-center px-3 py-2 border rounded text-white-200 border-white-400 hover:text-white hover:border-white">
+          <svg
+            className="fill-current h-3 w-3"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </button>
+      </div>
+      <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto flex-end">
+        <div className="text-sm lg:flex-grow"></div>
+        <div>
+          <Link
+            to={'/battle'}
+            className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4"
+          >
+            Battle
+          </Link>
+
+          <Link
+            to={'/'}
+            className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4"
+          >
+            Discover
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
 function Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <nav className="flex items-center justify-between flex-wrap p-6">
-        <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <div>
-            <img
-              className="block w-12 h-12 m-2"
-              src={Logo}
-              alt="React Logo"
-            />
-          </div>
-          <span className="font-semibold text-xl tracking-tight">
-            Last
-          </span>
-        </div>
-        <div className="block lg:hidden">
-          <button className="flex items-center px-3 py-2 border rounded text-white-200 border-white-400 hover:text-white hover:border-white">
-            <svg
-              className="fill-current h-3 w-3"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-            </svg>
-          </button>
-        </div>
-        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto flex-end">
-          <div className="text-sm lg:flex-grow">
-          </div>
-          <div>
-
-            <Link
-              to={"/battle"}
-              className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4"
-            >
-              Battle
-            </Link>
-
-            <Link
-              to={"/"}
-              className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4"
-            >
-              Discover
-            </Link>
-            {/*<a*/}
-            {/*  href="#responsive-header"*/}
-            {/*  className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4"*/}
-            {/*>*/}
-            {/*  Examples*/}
-            {/*</a>*/}
-            {/*<a*/}
-            {/*  href="#responsive-header"*/}
-            {/*  className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white"*/}
-            {/*>*/}
-            {/*  Blog*/}
-            {/*</a>*/}
-          </div>
-        </div>
-      </nav>
-      <div className="m-5 mt-0 h-full">{children}</div>
-    </>
+    <div className="flex flex-col h-full w-full">
+      <div>
+        <Nav />
+      </div>
+      <div className="flex-1">
+        {children}
+      </div>
+    </div>
   );
 }
 

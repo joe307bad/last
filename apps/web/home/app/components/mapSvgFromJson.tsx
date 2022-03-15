@@ -9,9 +9,10 @@ const MapSvgFromJson = ({
     <svg
       id="main_svg"
       xmlns="http://www.w3.org/2000/svg"
-      width="920"
-      height="480"
-      style={{ display: 'block', margin: 'auto' }}
+      viewBox="0 0 920 1000"
+      height="100%"
+      width="100%"
+      preserveAspectRatio="none"
     >
       <g id="svg_g_bezier_cells">
         {map.paths.map((p) => (

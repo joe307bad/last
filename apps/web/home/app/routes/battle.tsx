@@ -20,7 +20,7 @@ export let loader: LoaderFunction = async () => {
       allPlanets.data?.planets?.edges || [],
       2
     ),
-    map: await getMapSvg(`public/maps/map1.svg.json`),
+    map: await getMapSvg(`public/maps/map2.svg.json`),
   };
 };
 

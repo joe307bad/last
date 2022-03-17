@@ -46,7 +46,7 @@ import { getSvgData } from '../utils';
   //     regionIds.push(regionId);
   //     p.$.id = regionId;
   //     p.$.fill = '#4338ca';
-  //     p.$['fill-opacity'] = '1';
+  //     p.$['fillOpacity'] = '1';
   //   });
   //
   //   const builder = new Builder();

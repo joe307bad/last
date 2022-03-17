@@ -20,7 +20,7 @@ export const Planet = ({
         <svg
           className="p-4 w-20 h-20 mr-3 fill-current"
           viewBox="0 0 512 512"
-          enable-background="new 0 0 512 512"
+          enableBackground="new 0 0 512 512"
         >
           <path
             d="M502.075,9.956c-19.625-19.624-54.304-5.007-65.7-0.204c-22.804,9.611-50.523,26.083-82.448,48.98
@@ -150,7 +150,7 @@ export const Planet = ({
               <svg
                 className="w-4 h-4 mr-3 fill-current"
                 viewBox="0 0 512 512"
-                enable-background="new 0 0 512 512"
+                enableBackground="new 0 0 512 512"
               >
                 <path
                   d="M366.781,73.842c-12.021,0-23.321,4.681-31.82,13.18c-17.546,17.545-17.546,46.094,0,63.639
@@ -207,7 +207,7 @@ export const Planet = ({
               <svg
                 className="w-4 h-4 mr-3 fill-current"
                 viewBox="0 0 512 512"
-                enable-background="new 0 0 512 512"
+                enableBackground="new 0 0 512 512"
               >
                 <path
                   d="M366.781,73.842c-12.021,0-23.321,4.681-31.82,13.18c-17.546,17.545-17.546,46.094,0,63.639

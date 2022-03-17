@@ -80,7 +80,7 @@
                         "cy": "2.0802990231021568",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -255,7 +255,7 @@
                         "cy": "2.9904333076747847",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -443,7 +443,7 @@
                         "cy": "10.381561653859563",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -631,7 +631,7 @@
                         "cy": "82.68060948554321",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -832,7 +832,7 @@
                         "cy": "94.1071168235434",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -1033,7 +1033,7 @@
                         "cy": "112.54779975192204",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -1410,7 +1410,7 @@
                         "cy": "132.3815079619858",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -1598,7 +1598,7 @@
                         "cy": "139.262795820202",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -1799,7 +1799,7 @@
                         "cy": "164.61955363850777",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -2000,7 +2000,7 @@
                         "cy": "205.05938781710046",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -2188,7 +2188,7 @@
                         "cy": "223.50103934558865",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -2376,7 +2376,7 @@
                         "cy": "264.99827628776035",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -2577,7 +2577,7 @@
                         "cy": "274.10409930392296",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -2765,7 +2765,7 @@
                         "cy": "295.97089037826845",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -2953,7 +2953,7 @@
                         "cy": "302.400892990473",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -3154,7 +3154,7 @@
                         "cy": "324.0990243308594",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -3355,7 +3355,7 @@
                         "cy": "346.3190659351188",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -3556,7 +3556,7 @@
                         "cy": "353.66859187812855",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -3757,7 +3757,7 @@
                         "cy": "363.291627124097",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -3945,7 +3945,7 @@
                         "cy": "447.77675689326736",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -4146,7 +4146,7 @@
                         "cy": "452.23173238920333",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -4321,7 +4321,7 @@
                         "cy": "453.56563564503523",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -4496,7 +4496,7 @@
                         "cy": "455.19058861411355",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }
@@ -4671,7 +4671,7 @@
                         "cy": "473.0271808709438",
                         "r": "3",
                         "stroke": "black",
-                        "stroke-width": "2",
+                        "strokeWidth": "2",
                         "fill": "#1F7BFD"
                     }
                 }

@@ -2,8 +2,10 @@ import { VoronoiPolygon } from '@vx/voronoi';
 import { Group } from '@vx/group';
 // @ts-ignore
 import { Delaunay } from 'd3-delaunay';
-
-export const VxVoronoi = ({
+// TODO
+// does it make sense to convert this to this https://airbnb.io/visx/voronoi
+// made the mistake of using @vx instead of @visx
+export const Voronoi = ({
   regions,
 }: {
   regions: { id: string; x: number; y: number }[];

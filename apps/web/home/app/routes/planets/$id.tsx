@@ -6,7 +6,8 @@ import {
 } from '~last/request/node';
 import { Planet as TPlanet } from '~last/shared/types';
 import { Planet } from '~/components/planet';
-import { VxVoronoi } from '~/components/vxVoronoi';
+import { Voronoi } from '~/components/voronoi';
+import { VisxVoronoi } from '~/components/visx';
 
 export let loader: LoaderFunction = async ({
   params,
@@ -115,7 +116,7 @@ export default function PlanetById() {
         </div>
         <div className="relative w-full h-full">
           <div className="absolute bottom-3 top-0 right-0 left-0">
-            <VxVoronoi regions={regions} />
+            <VisxVoronoi regions={regions} />
           </div>
         </div>
       </div>

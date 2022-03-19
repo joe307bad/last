@@ -3,6 +3,7 @@ export type Planet = {
   name: string;
   enabled: boolean;
   level: number;
+  mapId: string;
   created: string;
   updated: string;
   description: string;

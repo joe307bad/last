@@ -46,6 +46,11 @@ Classic administration tools to claim planets, visualize trends for claimed enti
 ```
 ### Mini-games and daily engagement
 How do we keep users engaged on a daily basis? Pipe connecting games, path drawing, risk style to challenge other houses and planets
+#### Risk based gameplay with RPG elements
+Level up a claimed house to defend your planet and attack other planets. Daily troop and territory bonuses.
+- **Map Editor** - create your own risk map with terrains and territories, secret underground tunnels. defence mechanisms.
+- **Build an attacking force** - complete daily challenges to build a force to challenge other planet
+- **Covert operations** - allow for spying on other planets, assassinating leaders, faking alliances to infiltrate houses.
 ### Apps and libs
 ```
 ```

@@ -58,7 +58,6 @@ export const Planet = ({
   planet = {},
   link,
   linkText,
-  onActionClick,
   actionText,
 }: Partial<{
   planet: Partial<TPlanet>;
@@ -203,9 +202,16 @@ export const Planet = ({
               <IconButton label={linkText} />
             </Link>
 
-            <Link className="ml-3" to={`${link}/map/edit`}>
-              <IconButton label={'Map Editor'} />
-            </Link>
+            {!planet?.mapId ? null : (
+              <Link
+                className="ml-3"
+                to={`${link}/map/edit`}
+              >
+                <IconButton
+                  label={'Map Editor'}
+                />
+              </Link>
+            )}
           </>
         )}
       </div>

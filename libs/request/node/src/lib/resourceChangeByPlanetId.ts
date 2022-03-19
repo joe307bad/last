@@ -4,7 +4,7 @@ export const resourceChangeByPlanetId = (
   planetId: string,
   resourceId: string
 ) => {
-  got
+  return got
     .post('http://localhost:3077/api', {
       json: [
         {
@@ -17,5 +17,4 @@ export const resourceChangeByPlanetId = (
       ],
     })
     .json<any>();
-  return Promise.resolve();
 };

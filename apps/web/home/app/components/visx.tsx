@@ -26,13 +26,14 @@ export type VoronoiProps = {
 };
 
 export const VisxVoronoi = ({
+  height,
+  width,
   regions,
 }: {
+  height: number;
+  width: number;
   regions: any;
 }) => {
-  const width = 920;
-  const height = 1000;
-
   const voronoiLayout = useMemo(
     () =>
       voronoi<Datum>({
@@ -53,9 +54,11 @@ export const VisxVoronoi = ({
     Set<string>
   >(new Set());
 
+  const viewBox = `0 0 ${width} ${height + 80}`;
+
   return (
     <svg
-      viewBox="0 0 920 1000"
+      viewBox={viewBox}
       height="100%"
       width="100%"
       ref={svgRef}

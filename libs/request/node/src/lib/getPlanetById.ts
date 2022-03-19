@@ -11,6 +11,7 @@ export const getPlanetById = (
     ) {
       id,
       name,
+      mapId,
       planetResources {
         initialAmount
         resource {

@@ -9,8 +9,9 @@
     "postinstall": "remix setup node",
     "start": "nx serve",
     "test": "nx test",
-    "serve": "concurrently \"nx start web-home\" \"nx serve api-story\" \"nx serve api-graphql\" \"nx serve api-stats\"",
-    "serve:basic": "concurrently \"nx start web-home\" \"nx serve api-graphql\""
+    "serve": "concurrently \"nx start web-home\" \"nx serve api-story\" \"nx serve api-graphql\" \"nx serve api-stats\" \"nx serve api-map\"",
+    "serve:basic": "concurrently \"nx start web-home\" \"nx serve api-graphql\"",
+    "serve:content": "concurrently \"nx serve api-map\" \"nx serve api-graphql\""
   },
   "resolutions": {
     "nano": "9.0.3"

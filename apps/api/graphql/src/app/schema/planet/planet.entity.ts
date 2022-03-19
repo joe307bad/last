@@ -29,6 +29,9 @@ export class PlanetEntity extends BaseEntity {
   @Column({ nullable: true })
   level!: number;
 
+  @Column({ nullable: true })
+  mapId!: string;
+
   @ManyToOne(
     (): ObjectType<PlanetarySystemEntity> =>
       PlanetarySystemEntity,

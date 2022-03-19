@@ -5,7 +5,6 @@ import {
 } from '@nestjs-query/query-graphql';
 import {
   Field,
-  ID,
   InputType,
   ObjectType,
   OmitType,
@@ -20,7 +19,6 @@ import {
   FocusDto,
   PlanetarySystemDto,
   TerrainDto,
-  ResourceDto,
   ColorDto,
   PlanetResourceDto,
 } from '../dtos';
@@ -92,6 +90,9 @@ export class PlanetDto extends BaseDto {
 
   @FilterableField({ nullable: true })
   rulingHouseId!: string;
+
+  @FilterableField({ nullable: true })
+  mapId!: string;
 }
 
 @InputType()

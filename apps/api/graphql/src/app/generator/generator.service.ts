@@ -11,6 +11,7 @@ import { ResourceEntity } from '../schema/resource/resource.entity';
 import { ColorEntity } from '../schema/color/color.entity';
 import { HouseEntity } from '../schema/house/house.entity';
 import { TerrainEntity } from '../schema/terrain/terrain.entity';
+import { createManyMaps } from '~last/request/node';
 
 const capitalizeAllFirstLetters = (
   s: string[]
@@ -180,6 +181,14 @@ export class GeneratorService {
       []
     );
 
+    const maps = await createManyMaps(
+      planetNames.length
+    ).catch(() => null);
+
+    if (!maps) {
+      return 'Error making request to api-map service';
+    }
+
     const resourceEntities =
       await this.resources.createMany(
         resources.map((resource) => ({
@@ -220,6 +229,7 @@ export class GeneratorService {
           name: planetName,
           enabled: true,
           level: 0,
+          mapId: maps.splice(0, 1)[0].id,
           initialAlignment: 50,
           planetResources: [
             {

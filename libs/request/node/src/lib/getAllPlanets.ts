@@ -5,7 +5,7 @@ export const getAllPlanets =
   async (): Promise<AllPlanetsResponse> => {
     const plantInfoQuery = `
 query {
-  planets {
+  planets(paging: {first:100}) {
     edges {
       node {
         id
@@ -17,6 +17,7 @@ query {
         initialAlignment
         population
         level
+        mapId
         planetarySystem {
           name
         }

@@ -14,8 +14,6 @@ import Logo from './planet-svgrepo-com(1).svg';
 import globalStylesUrl from '~/styles/global.css';
 import darkStylesUrl from '~/styles/dark.css';
 import styles from '~/tailwind.css';
-import MapSvgFromJson from '~/components/mapSvgFromJson';
-import map2 from '~/map2.svg.json';
 
 // https://remix.run/api/app#links
 export let links: LinksFunction = () => {
@@ -142,7 +140,7 @@ function Document({
 
 function Nav() {
   return (
-    <nav className="flex items-center justify-between flex-wrap p-6">
+    <nav className="flex items-center justify-between flex-wrap p-5">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <div>
           <img

@@ -6,8 +6,6 @@ import {
 } from '~last/request/node';
 import { Planet as TPlanet } from '~last/shared/types';
 import { Planet } from '~/components/planet';
-import { Voronoi } from '~/components/voronoi';
-import { VisxVoronoi } from '~/components/visx';
 
 export let loader: LoaderFunction = async ({
   params,
@@ -25,18 +23,8 @@ export let loader: LoaderFunction = async ({
       status: 404,
     });
   }
-
-  const regions = new Array(150)
-    .fill(null)
-    .map(() => ({
-      x: Math.random() * 920,
-      y: Math.random() * 1000,
-      id: Math.random().toString(36).slice(2),
-    }));
-
   return {
     planet: planet.data.planet,
-    regions,
   };
 };
 
@@ -75,50 +63,6 @@ export default function PlanetById() {
       </div>
       <div className="flex h-full">
         <Planet planet={planet} />
-        <div className="w-72 mt-0 pt-0 min-w-[200px] p-4 mr-4 border-gray-50 grid-flow-col grid-rows-7">
-          <span className="font-semibold text-xl mb-4 block">
-            Map tools
-          </span>
-          <span className="font-semibold text-l mb-4 block">
-            Draw
-          </span>
-          <div className="grid grid-cols-5 gap-4 flex-nowrap auto-cols-max">
-            <input
-              className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label
-              className="col-span-4 form-check-label flex-nowrap text-white"
-              htmlFor="flexCheckDefault"
-            >
-              Lorem ipsum dolor sit amet
-            </label>
-          </div>
-          <span className="font-semibold text-l mb-4 block">
-            Place
-          </span>
-          <div className="grid grid-cols-5 gap-4 flex-nowrap auto-cols-max">
-            <input
-              className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label
-              className="col-span-4 form-check-label flex-nowrap text-white"
-              htmlFor="flexCheckDefault"
-            >
-              Lorem ipsum dolor sit amet
-            </label>
-          </div>
-        </div>
-        <div className="relative w-full h-full">
-          <div className="absolute bottom-3 top-0 right-0 left-0">
-            <VisxVoronoi regions={regions} />
-          </div>
-        </div>
       </div>
     </div>
   );

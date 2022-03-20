@@ -5,7 +5,10 @@ import {
   getPlanetById,
   resourceChangeByPlanetId,
 } from '~last/request/node';
-import { Planet as TPlanet } from '~last/shared/types';
+import {
+  MapResponse,
+  Planet as TPlanet,
+} from '~last/shared/types';
 import { VisxVoronoi } from '~/components/visx';
 
 export let loader: LoaderFunction = async ({
@@ -27,12 +30,6 @@ export let loader: LoaderFunction = async ({
   const map = await getMapById(
     planet?.data?.planet?.mapId || ''
   ).catch(() => null);
-
-  // const map = {
-  //   height: 0,
-  //   width: 0,
-  //   territories: '[]',
-  // };
 
   return {
     planet: planet.data.planet,
@@ -56,12 +53,7 @@ export async function action({
 export default function MapEdit() {
   let { planet, map } = useLoaderData<{
     planet: Partial<TPlanet>;
-    map: {
-      _id: string;
-      height: number;
-      width: number;
-      territories: string;
-    } | null;
+    map: MapResponse | null;
   }>();
 
   const { height, width, territories } =

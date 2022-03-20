@@ -1,7 +1,11 @@
 import { Planet as TPlanet } from '~last/shared/types';
 import { Link, Form } from 'remix';
 
-const IconButton = ({ label }) => {
+const IconButton = ({
+  label,
+}: {
+  label?: string;
+}) => {
   return (
     <button className="inline-flex items-center h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
       <svg
@@ -59,15 +63,19 @@ export const Planet = ({
   link,
   linkText,
   actionText,
+  className = '',
 }: Partial<{
   planet: Partial<TPlanet>;
   link: string;
   linkText: string;
   onActionClick: () => void;
   actionText: string;
+  className: string;
 }>) => {
+  const containerClassName = `${className} grid p-4 mr-4 border-gray-50 border-4 max-w-sm grid-rows-7 w-full mb-4`;
+
   return (
-    <div className="grid p-4 mr-4 border-gray-50 border-4 max-w-sm grid-rows-7 w-full mb-4">
+    <div className={containerClassName}>
       <div className="flex justify-center w-full content-center">
         <svg
           className="p-4 w-20 h-20 mr-3 fill-current"

@@ -12,7 +12,7 @@ import {
 } from '~last/shared/types';
 import { VisxVoronoi } from '~/components/visx';
 import { MapEditorToolbar } from '~/components/map-editor-toolbar';
-import { useSubject } from 'react-mlyn';
+import Mlyn, { useSubject } from 'react-mlyn';
 
 export let loader: LoaderFunction = async ({
   params,
@@ -76,19 +76,24 @@ export default function MapEdit() {
         </span>
       </div>
       <div className="relative w-full h-full">
-        <div className="z-0 absolute p-5 pb-0 top-0 bottom-0 left-0 right-0">
+        <div>
           {!map ? (
             <span className="block w-full text-center text-red-500 text-xl font-bold">
               No Map
             </span>
           ) : (
-            <VisxVoronoi
-              height={height || 0}
-              width={width || 0}
-              regions={JSON.parse(
-                territories || '[]'
+            <Mlyn.Div className="z-0 absolute p-5 pb-0 top-0 bottom-0 left-0 right-0">
+              {() => (
+                <VisxVoronoi
+                  selectedTerrain={selectedTerrain$()}
+                  height={height || 0}
+                  width={width || 0}
+                  regions={JSON.parse(
+                    territories || '[]'
+                  )}
+                />
               )}
-            />
+            </Mlyn.Div>
           )}
         </div>
       </div>

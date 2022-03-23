@@ -1,4 +1,4 @@
 export type SelectedTerrain =
-  | 'river'
+  | 'water'
   | 'mountain'
   | 'none';

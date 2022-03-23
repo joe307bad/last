@@ -4,6 +4,7 @@ import Mlyn, {
   seal,
   useSubjectValue,
 } from 'react-mlyn';
+import { useCallback } from 'react';
 
 export const MapEditorToolbar = ({
   selectedTerrain$,
@@ -66,7 +67,7 @@ export const MapEditorToolbar = ({
       <div className="flex grid grid-cols-5 justify-center">
         <TwoCheckBoxes
           selectedTerrain$={selectedTerrain$}
-          one="River"
+          one="Water"
           two="Mountain"
         />
       </div>
@@ -84,9 +85,23 @@ const TwoCheckBoxes = seal(
     one: string;
     two: string;
   }) => {
-    const value = useSubjectValue(
+    const selectedTerrain = useSubjectValue(
       selectedTerrain$
     );
+
+    const toggleSelectedTerrain = useCallback(
+      (newSelectedTerrain: SelectedTerrain) => {
+        if (
+          selectedTerrain === newSelectedTerrain
+        ) {
+          selectedTerrain$('none');
+        } else {
+          selectedTerrain$(newSelectedTerrain);
+        }
+      },
+      [selectedTerrain]
+    );
+
     console.log(selectedTerrain$());
     return (
       <div>
@@ -94,43 +109,37 @@ const TwoCheckBoxes = seal(
           <input
             className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
             type="checkbox"
-            onClick={() => {
-              if (value === 'river') {
-                selectedTerrain$('none');
-              } else {
-                selectedTerrain$('river');
-              }
-            }}
-            checked={value === 'river'}
+            onClick={() =>
+              toggleSelectedTerrain('water')
+            }
+            checked={selectedTerrain === 'water'}
           />
           <label
-            onClick={() => {
-              if (value === 'river') {
-                selectedTerrain$('none');
-              } else {
-                selectedTerrain$('river');
-              }
-            }}
+            onClick={() =>
+              toggleSelectedTerrain('water')
+            }
             className="form-check-label inline-block text-white-800"
             htmlFor="flexCheckDefault"
           >
             {one}
           </label>
         </div>
-        <Mlyn.Input
-          className="text-red-600"
-          bindValue={selectedTerrain$}
-        />
         <div className="form-check">
           <input
             className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
             type="checkbox"
             value=""
+            onClick={() =>
+              toggleSelectedTerrain('mountain')
+            }
             checked={
-              selectedTerrain$() === 'mountain'
+              selectedTerrain === 'mountain'
             }
           />
           <label
+            onClick={() =>
+              toggleSelectedTerrain('mountain')
+            }
             className="form-check-label inline-block text-white-800"
             htmlFor="flexCheckChecked"
           >

@@ -8,31 +8,23 @@ import {
   voronoi,
   VoronoiPolygon,
 } from '@visx/voronoi';
+import { SelectedTerrain } from '~last/shared/types';
 type Datum = {
   x: number;
   y: number;
   id: string;
 };
 
-export type VoronoiProps = {
-  width: number;
-  height: number;
-  margin?: {
-    top: number;
-    right: number;
-    bottom: number;
-    left: number;
-  };
-};
-
 export const VisxVoronoi = ({
   height,
   width,
   regions,
+  selectedTerrain,
 }: {
   height: number;
   width: number;
   regions: any;
+  selectedTerrain: SelectedTerrain;
 }) => {
   const voronoiLayout = useMemo(
     () =>
@@ -51,6 +43,12 @@ export const VisxVoronoi = ({
     string | null
   >(null);
   const [neighborIds, setNeighborIds] = useState<
+    Set<string>
+  >(new Set());
+  const [rivers, setRivers] = useState<
+    Set<string>
+  >(new Set());
+  const [mountains, setMountains] = useState<
     Set<string>
   >(new Set());
 
@@ -92,45 +90,67 @@ export const VisxVoronoi = ({
                   ];
                 if (!cell) return;
 
-                cell.halfedges.forEach(
-                  (index) => {
-                    const edge =
-                      voronoiLayout.edges[index];
-                    const { left, right } = edge;
-                    if (left && left !== closest)
-                      neighbors.add(left.data.id);
-                    else if (
-                      right &&
-                      right !== closest
-                    )
-                      neighbors.add(
-                        right.data.id
-                      );
-                  }
-                );
+                // cell.halfedges.forEach(
+                //   (index) => {
+                //     const edge =
+                //       voronoiLayout.edges[index];
+                //     const { left, right } = edge;
+                //     if (left && left !== closest)
+                //       neighbors.add(left.data.id);
+                //     else if (
+                //       right &&
+                //       right !== closest
+                //     )
+                //       neighbors.add(
+                //         right.data.id
+                //       );
+                //   }
+                // );
 
                 setNeighborIds(neighbors);
                 setHoveredId(closest.data.id);
+
+                if (selectedTerrain === 'water') {
+                  setRivers((prevState) =>
+                    prevState.add(closest.data.id)
+                  );
+                } else if (
+                  selectedTerrain === 'mountain'
+                ) {
+                  setMountains((prevState) =>
+                    prevState.add(closest.data.id)
+                  );
+                }
               }
             }}
             key={`polygon-${polygon.data.id}`}
             polygon={polygon}
             fill={
-              hoveredId &&
-              (polygon.data.id === hoveredId ||
-                neighborIds.has(polygon.data.id))
-                ? 'green'
-                : '#4338ca'
+              (() => {
+                if (rivers.has(polygon.data.id)) {
+                  return 'blue';
+                }
+                if (mountains.has(polygon.data.id)) {
+                  return '#754400';
+                }
+
+                return '#4338ca';
+              })()
+              // hoveredId &&
+              // (polygon.data.id === hoveredId ||
+              //   neighborIds.has(polygon.data.id))
+              //   ? 'green'
+              //   : '#4338ca'
             }
             id={polygon.data.id}
             stroke="black"
             strokeWidth={2}
-            fillOpacity={
-              hoveredId &&
-              neighborIds.has(polygon.data.id)
-                ? 0.5
-                : 1
-            }
+            // fillOpacity={
+            //   hoveredId &&
+            //   neighborIds.has(polygon.data.id)
+            //     ? 0.5
+            //     : 1
+            // }
           />
         ))}
         {regions.map(({ x, y, id }) => (

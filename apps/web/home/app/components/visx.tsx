@@ -9,6 +9,7 @@ import {
   VoronoiPolygon,
 } from '@visx/voronoi';
 import { SelectedTerrain } from '~last/shared/types';
+import { useMapContext } from '~/directory/MapContext';
 type Datum = {
   x: number;
   y: number;
@@ -45,12 +46,10 @@ export const VisxVoronoi = ({
   const [neighborIds, setNeighborIds] = useState<
     Set<string>
   >(new Set());
-  const [rivers, setRivers] = useState<
-    Set<string>
-  >(new Set());
-  const [mountains, setMountains] = useState<
-    Set<string>
-  >(new Set());
+  const {
+    state: mapState,
+    dispatch: mapDispatch,
+  } = useMapContext();
 
   const viewBox = `0 0 ${width} ${height + 80}`;
 
@@ -69,7 +68,7 @@ export const VisxVoronoi = ({
                 event.nativeEvent.target;
 
               const point = regions.find((p) => {
-                return p.id === region.id;
+                return p.id === region?.id;
               });
 
               const closest = voronoiLayout.find(
@@ -111,15 +110,17 @@ export const VisxVoronoi = ({
                 setHoveredId(closest.data.id);
 
                 if (selectedTerrain === 'water') {
-                  setRivers((prevState) =>
-                    prevState.add(closest.data.id)
-                  );
+                  mapDispatch({
+                    type: 'addWater',
+                    payload: closest.data.id,
+                  });
                 } else if (
                   selectedTerrain === 'mountain'
                 ) {
-                  setMountains((prevState) =>
-                    prevState.add(closest.data.id)
-                  );
+                  mapDispatch({
+                    type: 'addMountain',
+                    payload: closest.data.id,
+                  });
                 }
               }
             }}
@@ -127,11 +128,19 @@ export const VisxVoronoi = ({
             polygon={polygon}
             fill={
               (() => {
-                if (rivers.has(polygon.data.id)) {
+                if (
+                  mapState.water.has(
+                    polygon.data.id
+                  )
+                ) {
                   return 'blue';
                 }
-                if (mountains.has(polygon.data.id)) {
-                  return '#754400';
+                if (
+                  mapState.mountains.has(
+                    polygon.data.id
+                  )
+                ) {
+                  return '#817668';
                 }
 
                 return '#4338ca';

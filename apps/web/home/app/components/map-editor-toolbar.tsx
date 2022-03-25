@@ -4,7 +4,11 @@ import Mlyn, {
   seal,
   useSubjectValue,
 } from 'react-mlyn';
-import { useCallback } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 
 export const MapEditorToolbar = ({
   selectedTerrain$,
@@ -75,44 +79,45 @@ export const MapEditorToolbar = ({
   );
 };
 
-const TwoCheckBoxes = seal(
-  ({
-    selectedTerrain$,
-    one,
-    two,
-  }: {
-    selectedTerrain$: Subject<SelectedTerrain>;
-    one: string;
-    two: string;
-  }) => {
-    const selectedTerrain = useSubjectValue(
-      selectedTerrain$
-    );
+const TwoCheckBoxes = ({
+  selectedTerrain$,
+  one,
+  two,
+}: {
+  selectedTerrain$: Subject<SelectedTerrain>;
+  one: string;
+  two: string;
+}) => {
+  const selectedTerrain = useSubjectValue(
+    selectedTerrain$
+  );
 
-    const toggleSelectedTerrain = useCallback(
-      (newSelectedTerrain: SelectedTerrain) => {
-        if (
-          selectedTerrain === newSelectedTerrain
-        ) {
-          selectedTerrain$('none');
-        } else {
-          selectedTerrain$(newSelectedTerrain);
-        }
-      },
-      [selectedTerrain]
-    );
+  const toggleSelectedTerrain = useCallback(
+    (newSelectedTerrain: SelectedTerrain) => {
+      if (
+        selectedTerrain === newSelectedTerrain
+      ) {
+        selectedTerrain$('none');
+      } else {
+        selectedTerrain$(newSelectedTerrain);
+      }
+    },
+    [selectedTerrain]
+  );
 
-    console.log(selectedTerrain$());
-    return (
-      <div>
+  return (
+    <div>
         <div className="form-check">
           <input
+            autoComplete="off"
             className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
             type="checkbox"
             onClick={() =>
               toggleSelectedTerrain('water')
             }
-            checked={selectedTerrain === 'water'}
+            checked={
+              selectedTerrain$() === 'water'
+            }
           />
           <label
             onClick={() =>
@@ -126,6 +131,7 @@ const TwoCheckBoxes = seal(
         </div>
         <div className="form-check">
           <input
+            autoComplete="off"
             className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
             type="checkbox"
             value=""
@@ -146,7 +152,6 @@ const TwoCheckBoxes = seal(
             {two}
           </label>
         </div>
-      </div>
-    );
-  }
-);
+    </div>
+  );
+};

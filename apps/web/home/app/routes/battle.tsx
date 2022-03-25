@@ -72,8 +72,8 @@ export default function Battle() {
         <div className="absolute top-0 bottom-0 w-full h-full">
           {!map ? (
             <span className="block w-full text-center text-red-500 text-xl font-bold">
-            No Map
-          </span>
+              No Map
+            </span>
           ) : (
             <VisxVoronoi
               height={height || 0}
@@ -81,6 +81,7 @@ export default function Battle() {
               regions={JSON.parse(
                 territories || '[]'
               )}
+              selectedTerrain="none"
             />
           )}
         </div>

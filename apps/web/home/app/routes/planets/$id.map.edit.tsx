@@ -1,17 +1,22 @@
-import { useLoaderData } from 'remix';
+import {
+  ActionFunction,
+  json,
+  redirect,
+  useActionData,
+  useLoaderData,
+} from 'remix';
 import type { LoaderFunction } from 'remix';
 import {
   getMapById,
   getPlanetById,
-  resourceChangeByPlanetId,
 } from '~last/request/node';
 import {
   MapResponse,
   Planet as TPlanet,
-  SelectedTerrain,
 } from '~last/shared/types';
 import { MapProvider } from '~/directory/MapContext';
 import { MapEditor } from '~/components/map-editor';
+import { saveMapState } from '~last/request/node';
 
 export let loader: LoaderFunction = async ({
   params,
@@ -39,25 +44,27 @@ export let loader: LoaderFunction = async ({
   };
 };
 
-export async function action({
+export const action: ActionFunction = async ({
   request,
-}: {
-  request: { formData: () => Promise<any> };
-}) {
+}) => {
   const body = await request.formData();
-  console.log({ saveMap: body.get('mapState') });
-  // await resourceChangeByPlanetId(
-  //   body.get('planetId'),
-  //   body.get('resourceId')
-  // );
-  return true; //redirect(`/planets/${body.planetId}`);
-}
+  return json({
+    mapStateId: await saveMapState({
+      mapId: Math.random().toString(),
+      mapState:
+        (body.get('mapState') as string) || '',
+    }),
+  });
+};
 
 export default function MapEdit() {
   let { planet, map } = useLoaderData<{
     planet: Partial<TPlanet>;
     map: MapResponse | null;
   }>();
+  const actionData = useActionData();
+
+  console.log(actionData);
 
   return (
     <MapProvider>

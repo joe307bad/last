@@ -1,20 +1,21 @@
 import { Subject } from 'mlyn';
 import { SelectedTerrain } from '~last/shared/types';
-import Mlyn, {
-  seal,
-  useSubjectValue,
-} from 'react-mlyn';
-import {
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
+import { useSubjectValue } from 'react-mlyn';
+import { useCallback } from 'react';
+import { SubmitButton } from '~/components/button';
+import { useMapContext } from '~/directory/MapContext';
+import { Form } from 'remix';
 
 export const MapEditorToolbar = ({
   selectedTerrain$,
 }: {
   selectedTerrain$: Subject<SelectedTerrain>;
 }) => {
+  const {
+    state: mapState,
+    dispatch: mapDispatch,
+  } = useMapContext();
+
   return (
     <div className="pb-5 w-[600px] m-auto">
       {/**
@@ -74,6 +75,19 @@ export const MapEditorToolbar = ({
           one="Water"
           two="Mountain"
         />
+
+        <Form method="post">
+          <input
+            name="mapState"
+            type="hidden"
+            value={JSON.stringify(
+              Array.from(mapState.water).join(
+                ', '
+              )
+            )}
+          />
+          <SubmitButton>Save Map</SubmitButton>
+        </Form>
       </div>
     </div>
   );
@@ -107,51 +121,47 @@ const TwoCheckBoxes = ({
 
   return (
     <div>
-        <div className="form-check">
-          <input
-            autoComplete="off"
-            className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-            type="checkbox"
-            onClick={() =>
-              toggleSelectedTerrain('water')
-            }
-            checked={
-              selectedTerrain$() === 'water'
-            }
-          />
-          <label
-            onClick={() =>
-              toggleSelectedTerrain('water')
-            }
-            className="form-check-label inline-block text-white-800"
-            htmlFor="flexCheckDefault"
-          >
-            {one}
-          </label>
-        </div>
-        <div className="form-check">
-          <input
-            autoComplete="off"
-            className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-            type="checkbox"
-            value=""
-            onClick={() =>
-              toggleSelectedTerrain('mountain')
-            }
-            checked={
-              selectedTerrain === 'mountain'
-            }
-          />
-          <label
-            onClick={() =>
-              toggleSelectedTerrain('mountain')
-            }
-            className="form-check-label inline-block text-white-800"
-            htmlFor="flexCheckChecked"
-          >
-            {two}
-          </label>
-        </div>
+      <div className="form-check">
+        <input
+          autoComplete="off"
+          className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+          type="checkbox"
+          onClick={() =>
+            toggleSelectedTerrain('water')
+          }
+          checked={selectedTerrain$() === 'water'}
+        />
+        <label
+          onClick={() =>
+            toggleSelectedTerrain('water')
+          }
+          className="form-check-label inline-block text-white-800"
+          htmlFor="flexCheckDefault"
+        >
+          {one}
+        </label>
+      </div>
+      <div className="form-check">
+        <input
+          autoComplete="off"
+          className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+          type="checkbox"
+          value=""
+          onClick={() =>
+            toggleSelectedTerrain('mountain')
+          }
+          checked={selectedTerrain === 'mountain'}
+        />
+        <label
+          onClick={() =>
+            toggleSelectedTerrain('mountain')
+          }
+          className="form-check-label inline-block text-white-800"
+          htmlFor="flexCheckChecked"
+        >
+          {two}
+        </label>
+      </div>
     </div>
   );
 };

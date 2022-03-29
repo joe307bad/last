@@ -5,3 +5,4 @@ export * from './lib/Planet';
 export * from './lib/SvgData';
 export * from './lib/MapResponse';
 export * from './lib/SelectedTerrain';
+export * from './lib/SaveMapStateRequest';

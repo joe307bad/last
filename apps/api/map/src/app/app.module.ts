@@ -3,7 +3,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CouchDbModule } from 'nest-couchdb';
-import { MapEntity } from './map.entity';
+import { MapEntity } from './entity/map.entity';
+import { MapStateEntity } from './entity/map-state.entity';
 
 @Module({
   imports: [
@@ -13,7 +14,10 @@ import { MapEntity } from './map.entity';
       userpass: 'password',
       requestDefaults: { jar: true },
     }),
-    CouchDbModule.forFeature([MapEntity]),
+    CouchDbModule.forFeature([
+      MapEntity,
+      MapStateEntity,
+    ]),
   ],
   controllers: [AppController],
   providers: [AppService],

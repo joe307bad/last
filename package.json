@@ -9,7 +9,7 @@
     "postinstall": "remix setup node",
     "start": "nx serve",
     "test": "nx test",
-    "serve": "concurrently \"nx start web-home\" \"nx serve api-story\" \"nx serve api-graphql\" \"nx serve api-stats\" \"nx serve api-map\"",
+    "serve": "nx run-many --target=serve --projects=web-home,api-story,api-graphql,api-stats,api-map --parallel=5",
     "serve:basic": "concurrently \"nx start web-home\" \"nx serve api-graphql\"",
     "serve:content": "concurrently \"nx serve api-map\" \"nx serve api-graphql\""
   },

@@ -6,8 +6,6 @@ import {
   Planet,
   SelectedTerrain,
 } from '~last/shared/types';
-import { useMapContext } from '~/directory/MapContext';
-import { SubmitButton } from '~/components/button';
 
 export const MapEditor = ({
   planet,
@@ -21,17 +19,6 @@ export const MapEditor = ({
 
   const { height, width, territories } =
     map || {};
-
-  const {
-    state: mapState,
-    dispatch: mapDispatch,
-  } = useMapContext();
-
-  console.log(
-    JSON.stringify(
-      Array.from(mapState.water)
-    ).toString()
-  );
 
   return (
     <div className="flex flex-col w-full h-full">
@@ -72,16 +59,6 @@ export const MapEditor = ({
           />
         )}
       </Mlyn.Div>
-      <form method="post">
-        <input
-          name="mapState"
-          type="hidden"
-          value={JSON.stringify(
-            Array.from(mapState.water).join(", ")
-          )}
-        />
-        <SubmitButton>Save Map</SubmitButton>
-      </form>
     </div>
   );
 };

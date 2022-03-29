@@ -4,13 +4,17 @@ import {
   InjectRepository,
   Repository,
 } from 'nest-couchdb';
-import { MapEntity } from './map.entity';
+import { MapEntity } from './entity/map.entity';
+import { MapStateEntity } from './entity/map-state.entity';
+import { SaveMapStateRequest } from './dto/SaveMapStateRequest';
 
 @Injectable()
 export class AppService {
   constructor(
     @InjectRepository(MapEntity)
-    private readonly mapRepo: Repository<MapEntity>
+    private readonly mapRepo: Repository<MapEntity>,
+    @InjectRepository(MapStateEntity)
+    private readonly mapStateRepo: Repository<MapStateEntity>
   ) {}
 
   createManyMaps(
@@ -41,5 +45,15 @@ export class AppService {
 
   getMapById(mapId: string) {
     return this.mapRepo.get(mapId);
+  }
+
+  saveMapState({
+    mapState,
+    mapId,
+  }: SaveMapStateRequest) {
+    return this.mapStateRepo.insert({
+      mapId,
+      mapState,
+    });
   }
 }

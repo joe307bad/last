@@ -1,13 +1,16 @@
 import {
+  Body,
   Controller,
   Get,
   Param,
+  Post,
   Query,
   ValidationPipe,
 } from '@nestjs/common';
 
 import { AppService } from './app.service';
 import { NewMapRequestDto } from './dto/NewMapRequest';
+import { SaveMapStateRequest } from '~last/shared/types';
 
 @Controller()
 export class AppController {
@@ -45,5 +48,12 @@ export class AppController {
   @Get('/map/:id')
   getMapById(@Param() params: { id: string }) {
     return this.appService.getMapById(params.id);
+  }
+
+  @Post('/map')
+  saveMapState(
+    @Body() mapState: SaveMapStateRequest
+  ) {
+    return this.appService.saveMapState(mapState);
   }
 }

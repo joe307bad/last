@@ -3,3 +3,4 @@ export * from './lib/getPlanetById';
 export * from './lib/resourceChangeByPlanetId';
 export * from './lib/createManyMaps';
 export * from './lib/getMapById';
+export * from './lib/saveMapState';

@@ -7,6 +7,7 @@
     "api-story": "apps/api/story",
     "cli-maps": "apps/cli/maps",
     "cli-story": "apps/cli/story",
+    "request-core": "libs/request/core",
     "request-node": "libs/request/node",
     "shared-types": "libs/shared/types",
     "story-gen": "libs/story/gen",

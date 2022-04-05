@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "~last/request/core": [
+        "libs/request/core/src/index.ts"
+      ],
       "~last/request/node": [
         "libs/request/node/src/index.ts"
       ],

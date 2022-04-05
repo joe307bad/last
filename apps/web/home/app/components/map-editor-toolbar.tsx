@@ -75,16 +75,11 @@ export const MapEditorToolbar = ({
           one="Water"
           two="Mountain"
         />
-
         <Form method="post">
           <input
             name="mapState"
             type="hidden"
-            value={JSON.stringify(
-              Array.from(mapState.water).join(
-                ', '
-              )
-            )}
+            value={JSON.stringify(mapState)}
           />
           <SubmitButton>Save Map</SubmitButton>
         </Form>

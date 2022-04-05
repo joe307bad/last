@@ -6,7 +6,7 @@ import {
 } from 'nest-couchdb';
 import { MapEntity } from './entity/map.entity';
 import { MapStateEntity } from './entity/map-state.entity';
-import { SaveMapStateRequest } from './dto/SaveMapStateRequest';
+// import { SaveMapStateRequest } from './dto/SaveMapStateRequest';
 
 @Injectable()
 export class AppService {
@@ -47,10 +47,7 @@ export class AppService {
     return this.mapRepo.get(mapId);
   }
 
-  saveMapState({
-    mapState,
-    mapId,
-  }: SaveMapStateRequest) {
+  saveMapState({ mapState, mapId }: any) {
     return this.mapStateRepo.insert({
       mapId,
       mapState,

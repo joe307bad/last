@@ -1,7 +1,6 @@
 import {
   ActionFunction,
   json,
-  redirect,
   useActionData,
   useLoaderData,
 } from 'remix';
@@ -17,6 +16,7 @@ import {
 import { MapProvider } from '~/directory/MapContext';
 import { MapEditor } from '~/components/map-editor';
 import { saveMapState } from '~last/request/node';
+import { useEffect } from 'react';
 
 export let loader: LoaderFunction = async ({
   params,
@@ -63,6 +63,10 @@ export default function MapEdit() {
     map: MapResponse | null;
   }>();
   const actionData = useActionData();
+
+  useEffect(() => {
+
+  }, [actionData])
 
   console.log(actionData);
 

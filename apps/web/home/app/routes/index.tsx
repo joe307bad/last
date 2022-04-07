@@ -1,4 +1,3 @@
-
 import type {
   MetaFunction,
   LoaderFunction,
@@ -7,11 +6,12 @@ import { useLoaderData } from 'remix';
 import { Planet as TPlanet } from '~last/shared/types';
 import { sampleSize } from 'lodash';
 import { Planet } from '~/components/planet';
-import request from '~last/request/node';
+import { services } from '~last/request/core';
 
 export let loader: LoaderFunction = async () => {
-  const allPlanets =
-    await request.service.graphql.getAllPlanets();
+  const allPlanets = await services(
+    {}
+  ).service.graphql.getAllPlanets();
   return sampleSize(
     allPlanets.data?.planets?.edges || [],
     6

@@ -1,2 +1,1 @@
-import registryFactory from './lib';
-export default registryFactory;
+export * from './lib';

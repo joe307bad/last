@@ -1,4 +1,4 @@
-import "reflect-metadata"
+import 'reflect-metadata';
 
 import {
   autoInjectable,
@@ -20,9 +20,12 @@ class BaseService {
   constructor(private _serviceUrl: string) {}
 
   post(data: any) {
-    return got.post(this._serviceUrl, {
-      json: data,
-    });
+    return got.post(
+      'http://localhost:3333/graphql',
+      {
+        json: data,
+      }
+    );
   }
 }
 
@@ -36,19 +39,26 @@ class EnvironmentService {
   }
 }
 
+/**
+ * TODO I donn't think tsyringe is compatible with browser's which is why uncommenting
+ * autoInjectable and attempting to use it will throw an error when trying to load the web app
+ * perhaps https://inversify.io/ would work better
+ */
 @autoInjectable()
-export class GraphQlService extends BaseService {
-  constructor(
-    @inject('EnvironmentService')
-    private _env?: EnvironmentService
-  ) {
+class GraphQlService extends BaseService {
+  constructor() {
+    // private _env?: EnvironmentService // @inject('EnvironmentService')
     super(
-      _env.getServiceConfiguration()
-        .graphql_service_url
+      // _env.getServiceConfiguration()
+      //   .graphql_service_url
+      ''
     );
   }
 
   getAllPlanets(): Promise<AllPlanetsResponse> {
+    //   graphql_service_url:
+    //     'http://localhost:3333/graphql',
+    // }
     const plantInfoQuery = `
 query {
   planets(paging: {first:100}) {
@@ -100,29 +110,29 @@ query {
   }
 }
 
-export default (
+const services = (
   serviceConfig: ServiceConfiguration
 ) => {
-  container.register(
-    'EnvironmentService',
-    EnvironmentService
-  );
-
-  container.register('EnvironmentService', {
-    useFactory:
-      instanceCachingFactory<EnvironmentService>(
-        () => {
-          return new EnvironmentService(
-            serviceConfig
-          );
-        }
-      ),
-  });
-
-  container.register(
-    'GraphQlService',
-    GraphQlService
-  );
+  // container.register(
+  //   'EnvironmentService',
+  //   EnvironmentService
+  // );
+  //
+  // container.register('EnvironmentService', {
+  //   useFactory:
+  //     instanceCachingFactory<EnvironmentService>(
+  //       () => {
+  //         return new EnvironmentService(
+  //           serviceConfig
+  //         );
+  //       }
+  //     ),
+  // });
+  //
+  // container.register(
+  //   'GraphQlService',
+  //   GraphQlService
+  // );
 
   return {
     service: {
@@ -130,3 +140,5 @@ export default (
     },
   };
 };
+
+export { services };

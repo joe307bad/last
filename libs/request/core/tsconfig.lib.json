@@ -7,5 +7,7 @@
     "types": ["node"]
   },
   "exclude": ["**/*.spec.ts", "**/*.test.ts"],
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts"],
+  "experimentalDecorators": true,
+  "emitDecoratorMetadata": true
 }

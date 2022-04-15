@@ -16,6 +16,12 @@ type ServiceConfiguration = {
   story_service_url?: string;
 };
 
+/**
+ * TODO the implementation of this base service should
+ * be platform specific. the interface is generic, but
+ * the implementation would use got for node and ky for
+ * browser based
+ */
 class BaseService {
   constructor(private _serviceUrl: string) {}
 
@@ -100,7 +106,7 @@ query {
   }
 }
 
-const services = (
+const request = (
   serviceConfig: ServiceConfiguration
 ) => {
   container.register(
@@ -125,10 +131,8 @@ const services = (
   );
 
   return {
-    service: {
-      graphql: new GraphQlService(),
-    },
+    graphql: new GraphQlService(),
   };
 };
 
-export { services };
+export { request };

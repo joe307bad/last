@@ -64,9 +64,7 @@ export default function MapEdit() {
   }>();
   const actionData = useActionData();
 
-  useEffect(() => {
-
-  }, [actionData])
+  useEffect(() => {}, [actionData]);
 
   console.log(actionData);
 

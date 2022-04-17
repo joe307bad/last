@@ -60,8 +60,6 @@ export default function Battle() {
     map: MapResponse;
   }>();
 
-  console.log(map);
-
   const { height, width, territories } =
     map || {};
 

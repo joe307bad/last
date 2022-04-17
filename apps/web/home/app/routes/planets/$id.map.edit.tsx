@@ -66,8 +66,6 @@ export default function MapEdit() {
 
   useEffect(() => {}, [actionData]);
 
-  console.log(actionData);
-
   return (
     <MapProvider>
       <MapEditor map={map} planet={planet} />

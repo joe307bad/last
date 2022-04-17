@@ -1,9 +1,6 @@
 import { useLoaderData } from 'remix';
 import type { LoaderFunction } from 'remix';
-import {
-  getPlanetById,
-  resourceChangeByPlanetId,
-} from '~last/request/node';
+import r from '~/utils/request.server';
 import { Planet as TPlanet } from '~last/shared/types';
 import { Planet } from '~/components/planet';
 
@@ -16,7 +13,7 @@ export let loader: LoaderFunction = async ({
     });
   }
 
-  const planet = await getPlanetById(params.id);
+  const planet = await r.getPlanetById(params.id);
 
   if (!planet?.data?.planet) {
     throw new Response('Not Found', {
@@ -34,7 +31,7 @@ export async function action({
   request: { formData: () => Promise<any> };
 }) {
   const body = await request.formData();
-  await resourceChangeByPlanetId(
+  await r.resourceChangeByPlanetId(
     body.get('planetId'),
     body.get('resourceId')
   );

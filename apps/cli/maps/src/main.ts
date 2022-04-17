@@ -22,7 +22,6 @@ import { getSvgData } from '../utils';
     }).argv;
 
   const svgData = await getSvgData(svgFileName);
-  console.log(svgData);
 
   await writeFile(
     `${process.cwd()}/apps/web/home/public/maps/${svgFileName}.json`,

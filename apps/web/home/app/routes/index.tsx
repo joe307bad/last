@@ -12,7 +12,7 @@ export let loader: LoaderFunction = async () => {
   const allPlanets =
     await r.request.graphql.getAllPlanets();
   return sampleSize(
-    allPlanets.data?.planets?.edges || [],
+    allPlanets.planets?.edges || [],
     6
   );
 };

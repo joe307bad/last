@@ -1,6 +1,6 @@
 import { container } from 'tsyringe';
 import { GraphQlService } from './services/graphql';
-import { IHttpService } from './HttpService';
+import { IHttpService } from './IHttpService';
 import { HttpService } from '~last/request/node';
 
 export type ServiceConfiguration = {
@@ -13,7 +13,6 @@ export type ServiceConfiguration = {
 const request = (
   httpServiceFactory: () => IHttpService<any>
 ) => {
-
   container.register('HttpService', {
     useValue: httpServiceFactory(),
   });

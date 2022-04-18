@@ -2,10 +2,7 @@ import type {
   MetaFunction,
   LoaderFunction,
 } from 'remix';
-import {
-  getAllPlanets,
-  getMapById,
-} from '~last/request/node';
+import r from '~/utils/request.server';
 import { sampleSize } from 'lodash';
 import { useLoaderData } from 'remix';
 import {
@@ -14,17 +11,19 @@ import {
 } from '~last/shared/types';
 import { Planet } from '~/components/planet';
 import { VisxVoronoi } from '~/components/visx';
+import { MapProvider } from '~/directory/MapContext';
 
 export let loader: LoaderFunction = async () => {
-  const allPlanets = await getAllPlanets();
+  const allPlanets =
+    await r.request.graphql.getAllPlanets();
   const twoRandomPlanets = sampleSize(
-    allPlanets.data?.planets?.edges || [],
+    allPlanets.planets?.edges || [],
     2
   );
 
   const map = await (() => {
     const getMap = (mapId: string) =>
-      getMapById(mapId);
+      r.getMapById(mapId);
 
     if (twoRandomPlanets[0].node.mapId) {
       return getMap(
@@ -64,27 +63,29 @@ export default function Battle() {
     map || {};
 
   return (
-    <div className="flex content-center justify-center items-center h-full">
-      <Planet planet={planets[0].node} />
-      <div className="relative w-[50%] h-full">
-        <div className="absolute top-0 bottom-0 w-full h-full">
-          {!map ? (
-            <span className="block w-full text-center text-red-500 text-xl font-bold">
-              No Map
-            </span>
-          ) : (
-            <VisxVoronoi
-              height={height || 0}
-              width={width || 0}
-              regions={JSON.parse(
-                territories || '[]'
-              )}
-              selectedTerrain="none"
-            />
-          )}
+    <MapProvider>
+      <div className="flex content-center justify-center items-center h-full">
+        <Planet planet={planets[0].node} />
+        <div className="relative w-[50%] h-full">
+          <div className="absolute top-0 bottom-0 w-full h-full">
+            {!map ? (
+              <span className="block w-full text-center text-red-500 text-xl font-bold">
+                No Map
+              </span>
+            ) : (
+              <VisxVoronoi
+                height={height || 0}
+                width={width || 0}
+                regions={JSON.parse(
+                  territories || '[]'
+                )}
+                selectedTerrain="none"
+              />
+            )}
+          </div>
         </div>
+        <Planet planet={planets[1].node} />
       </div>
-      <Planet planet={planets[1].node} />
-    </div>
+    </MapProvider>
   );
 }

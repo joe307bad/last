@@ -1,9 +1,6 @@
 import got from 'got';
 import { IHttpService } from '~last/request/core';
-import {
-  GraphQLClient,
-  gql,
-} from 'graphql-request';
+import { GraphQLClient } from 'graphql-request';
 
 /**
  * TODO the implementation of this base service should

@@ -55,11 +55,6 @@ export class GraphQlService {
     private _http?: IHttpService<any>
   ) {}
 
-  // TODO this should be converted to using
-  // grapql request. The HttpService should have
-  // a grapql.query method probably. graphql-request
-  // supports both browsers and node. Then we could use
-  // GraphQL-Codegen plugin to generate a strong typed sdk
   getAllPlanets(): Promise<AllPlanetsResponse> {
     return this._http.query(query);
 

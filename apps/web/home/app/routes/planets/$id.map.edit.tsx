@@ -5,18 +5,11 @@ import {
   useLoaderData,
 } from 'remix';
 import type { LoaderFunction } from 'remix';
-import {
-  getMapById,
-  getPlanetById,
-} from '~last/request/node';
-import {
-  MapResponse,
-  Planet as TPlanet,
-} from '~last/shared/types';
+import r from '~/utils/request.server';
 import { MapProvider } from '~/directory/MapContext';
 import { MapEditor } from '~/components/map-editor';
-import { saveMapState } from '~last/request/node';
 import { useEffect } from 'react';
+import { MapResponse, Planet } from '~last/shared/types';
 
 export let loader: LoaderFunction = async ({
   params,
@@ -27,16 +20,16 @@ export let loader: LoaderFunction = async ({
     });
   }
 
-  const planet = await getPlanetById(params.id);
+  const planet = await r.getPlanetById(params.id);
 
   if (!planet?.data?.planet) {
     throw new Response('Not Found', {
       status: 404,
     });
   }
-  const map = await getMapById(
-    planet?.data?.planet?.mapId || ''
-  ).catch(() => null);
+  const map = await r
+    .getMapById(planet?.data?.planet?.mapId || '')
+    .catch(() => null);
 
   return {
     planet: planet.data.planet,
@@ -49,7 +42,7 @@ export const action: ActionFunction = async ({
 }) => {
   const body = await request.formData();
   return json({
-    mapStateId: await saveMapState({
+    mapStateId: await r.saveMapState({
       mapId: Math.random().toString(),
       mapState:
         (body.get('mapState') as string) || '',
@@ -59,7 +52,7 @@ export const action: ActionFunction = async ({
 
 export default function MapEdit() {
   let { planet, map } = useLoaderData<{
-    planet: Partial<TPlanet>;
+    planet: Partial<Planet>;
     map: MapResponse | null;
   }>();
   const actionData = useActionData();

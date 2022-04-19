@@ -14,7 +14,6 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    //"strict": true,
     "paths": {
       "~last/request/core": [
         "libs/request/core/src/index.ts"

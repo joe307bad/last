@@ -77,10 +77,10 @@
     "@types/node" "^10.1.0"
     long "^4.0.0"
 
-"@apollographql/apollo-tools@^0.5.1":
-  version "0.5.2"
-  resolved "https://registry.npmjs.org/@apollographql/apollo-tools/-/apollo-tools-0.5.2.tgz"
-  integrity sha512-KxZiw0Us3k1d0YkJDhOpVH5rJ+mBfjXcgoRoCcslbgirjgLotKMzOcx4PZ7YTEvvEROmvG7X3Aon41GvMmyGsw==
+"@apollographql/apollo-tools@^0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@apollographql/apollo-tools/-/apollo-tools-0.5.3.tgz#ba241d50f0849150ca0de54fd2927160033bc0bc"
+  integrity sha512-VcsXHfTFoCodDAgJZxN04GdFK1kqOhZQnQY/9Fa147P+I8xfvOSz5d+lKAPB+hwSgBNyd7ncAKGIs4+utbL+yA==
 
 "@apollographql/graphql-playground-html@1.6.29":
   version "1.6.29"
@@ -1207,7 +1207,15 @@
   resolved "https://registry.npmjs.org/@gar/promisify/-/promisify-1.1.2.tgz"
   integrity sha512-82cpyJyKRoQoRi+14ibCeGPu0CwypgtBAdBhq1WfvagpCZNKqwXbKwXllYSMG91DhmG4jt9gN8eP6lGOtozuaw==
 
-"@graphql-tools/merge@8.2.2", "@graphql-tools/merge@^8.2.1":
+"@graphql-tools/merge@8.2.8":
+  version "8.2.8"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-8.2.8.tgz#6ed65c29b963b4d76b59a9d329fdf20ecef19a42"
+  integrity sha512-e4kpzgEIlA0sC0NjJlMwUL73Iz/HoP2OgAUReDDsupvWCqW3PMxjNoviS8xmcklVnv1w8Vmr8U2tao+x40ypLA==
+  dependencies:
+    "@graphql-tools/utils" "8.6.7"
+    tslib "~2.3.0"
+
+"@graphql-tools/merge@^8.2.1":
   version "8.2.2"
   resolved "https://registry.npmjs.org/@graphql-tools/merge/-/merge-8.2.2.tgz"
   integrity sha512-2DyqhIOMUMKbCPqo8p6xSdll2OBcBxGdOrxlJJlFQvinsSaYqp/ct3dhAxNtzaIcvSVgXvttQqfD7O2ziFtE7Q==
@@ -1225,7 +1233,17 @@
     fast-json-stable-stringify "^2.1.0"
     tslib "~2.3.0"
 
-"@graphql-tools/schema@8.3.1", "@graphql-tools/schema@^8.0.0", "@graphql-tools/schema@^8.2.0", "@graphql-tools/schema@^8.3.1":
+"@graphql-tools/schema@8.3.8":
+  version "8.3.8"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-8.3.8.tgz#68f35d733487732c522a1b47d27faf8809cce95a"
+  integrity sha512-Bba60ali4fLOKJz/Kk39RcBrDUBtu0Wy7pjpIOmFIKQKwUBNNB0eAmfpvrjnFhRAVdO2kOkPpc8DQY+SCG+lWw==
+  dependencies:
+    "@graphql-tools/merge" "8.2.8"
+    "@graphql-tools/utils" "8.6.7"
+    tslib "~2.3.0"
+    value-or-promise "1.0.11"
+
+"@graphql-tools/schema@^8.0.0", "@graphql-tools/schema@^8.2.0", "@graphql-tools/schema@^8.3.1":
   version "8.3.1"
   resolved "https://registry.npmjs.org/@graphql-tools/schema/-/schema-8.3.1.tgz"
   integrity sha512-3R0AJFe715p4GwF067G5i0KCr/XIdvSfDLvTLEiTDQ8V/hwbOHEKHKWlEBHGRQwkG5lwFQlW1aOn7VnlPERnWQ==
@@ -1235,7 +1253,14 @@
     tslib "~2.3.0"
     value-or-promise "1.0.11"
 
-"@graphql-tools/utils@8.6.1", "@graphql-tools/utils@^8.5.1", "@graphql-tools/utils@^8.6.0":
+"@graphql-tools/utils@8.6.7":
+  version "8.6.7"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.6.7.tgz#0e21101233743eb67a5782a5a40919d85ddb1021"
+  integrity sha512-Qi3EN95Rt3hb8CyDKpPKFWOPrnc00P18cpVTXEgtKxetSP39beJBeEEtLB0R53eP/6IolsyTZOTgkET1EaERaw==
+  dependencies:
+    tslib "~2.3.0"
+
+"@graphql-tools/utils@^8.5.1", "@graphql-tools/utils@^8.6.0":
   version "8.6.1"
   resolved "https://registry.npmjs.org/@graphql-tools/utils/-/utils-8.6.1.tgz"
   integrity sha512-uxcfHCocp4ENoIiovPxUWZEHOnbXqj3ekWc0rm7fUhW93a1xheARNHcNKhwMTR+UKXVJbTFQdGI1Rl5XdyvDBg==
@@ -2090,13 +2115,14 @@
     tslib "^2.1.0"
     uuid "^8.3.2"
 
-"@nestjs/apollo@^10.0.0":
-  version "10.0.0"
-  resolved "https://registry.npmjs.org/@nestjs/apollo/-/apollo-10.0.0.tgz"
-  integrity sha512-iLBPv5KIDD1tx/QC1GmpE8wktjR3+Qj9RLOKJb0Z6uz49txqr8SYdm09MPpYHnCmqLVrujjU8SvFol/qMxABng==
+"@nestjs/apollo@^10.0.9":
+  version "10.0.9"
+  resolved "https://registry.yarnpkg.com/@nestjs/apollo/-/apollo-10.0.9.tgz#03e406d1b31e18455fc0de5082aa6f3491341e03"
+  integrity sha512-1UmqDhyA+hvJrlbvvWGsY+eaYmlQVWWezT3JeBHIO6YcbkDGyfm/anPYCOE3fh4zeu45oFrLoh13ikyEYDvDKg==
   dependencies:
-    "@graphql-tools/utils" "8.6.1"
+    iterall "1.3.0"
     lodash.omit "4.5.0"
+    tslib "2.3.1"
 
 "@nestjs/bull@^0.5.0":
   version "0.5.0"
@@ -2147,20 +2173,19 @@
     tslib "2.3.1"
     uuid "8.3.2"
 
-"@nestjs/graphql@^10.0.0":
-  version "10.0.0"
-  resolved "https://registry.npmjs.org/@nestjs/graphql/-/graphql-10.0.0.tgz"
-  integrity sha512-fsOsoK2nMqmnBisrno+S+Yj/Qr/GLh2b3QCDEx4eooOEGM0+/NjCwmJ19iQ6nBLW6n4K8ZUvuCDMjg9ecaTZ+Q==
+"@nestjs/graphql@^10.0.9":
+  version "10.0.9"
+  resolved "https://registry.yarnpkg.com/@nestjs/graphql/-/graphql-10.0.9.tgz#28112485c64d4b07c82999ff868956b10cc710ca"
+  integrity sha512-Req7OTIUhgg/igXihIyjPknXq5bxiDR1u3XuEPzRp28TVOEAStBzCzvHTfFIvDgx7TPCoT4Vl0aCI4+X87Ti9A==
   dependencies:
-    "@graphql-tools/merge" "8.2.2"
-    "@graphql-tools/schema" "8.3.1"
-    "@graphql-tools/utils" "8.6.1"
+    "@graphql-tools/merge" "8.2.8"
+    "@graphql-tools/schema" "8.3.8"
+    "@graphql-tools/utils" "8.6.7"
     "@nestjs/mapped-types" "1.0.1"
     chokidar "3.5.3"
     fast-glob "3.2.11"
     graphql-tag "2.12.6"
     graphql-ws "5.5.5"
-    iterall "1.3.0"
     lodash "4.17.21"
     normalize-path "3.0.0"
     subscriptions-transport-ws "0.11.0"
@@ -4676,10 +4701,10 @@ apollo-datasource@^3.3.1:
     apollo-server-caching "^3.3.0"
     apollo-server-env "^4.2.1"
 
-apollo-reporting-protobuf@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.npmjs.org/apollo-reporting-protobuf/-/apollo-reporting-protobuf-3.3.0.tgz"
-  integrity sha512-51Jwrg0NvHJfKz7TIGU8+Os3rUAqWtXeKRsRtKYtTeMSBPNhzz8UoGjAB3XyVmUXRE3IRmLtDPDRFL7qbxMI/w==
+apollo-reporting-protobuf@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/apollo-reporting-protobuf/-/apollo-reporting-protobuf-3.3.1.tgz#8c8761f9ac4375fd8490262d6144057cec6ce0b3"
+  integrity sha512-tyvj3Vj71TCh6c8PtdHOLgHHBSJ05DF/A/Po3q8yfHTBkOPcOJZE/GGN/PT/pwKg7HHxKcAeHDw7+xciVvGx0w==
   dependencies:
     "@apollo/protobufjs" "1.2.2"
 
@@ -4690,23 +4715,23 @@ apollo-server-caching@^3.3.0:
   dependencies:
     lru-cache "^6.0.0"
 
-apollo-server-core@^3.6.3:
-  version "3.6.3"
-  resolved "https://registry.npmjs.org/apollo-server-core/-/apollo-server-core-3.6.3.tgz"
-  integrity sha512-TFJmAlI6vPp1MHOSXqYkE6leAyMekWv/D/3ma11uETkcd3EPjERGmxtTXPJElMVEkOK9BEElYKthCrH7bjYLuw==
+apollo-server-core@^3.6.7:
+  version "3.6.7"
+  resolved "https://registry.yarnpkg.com/apollo-server-core/-/apollo-server-core-3.6.7.tgz#6a52ce48fe1a79da9691c3fff4ea1031e9225602"
+  integrity sha512-OnZ9vu7LrYy2rvEu+nbgqucw6VyTSIPAEjK87c4rkzlVOxpwtGUaQ4FMWD9zBIj7yLq9q22b638E8LdYoaTAjQ==
   dependencies:
-    "@apollographql/apollo-tools" "^0.5.1"
+    "@apollographql/apollo-tools" "^0.5.3"
     "@apollographql/graphql-playground-html" "1.6.29"
     "@graphql-tools/mock" "^8.1.2"
     "@graphql-tools/schema" "^8.0.0"
     "@josephg/resolvable" "^1.0.0"
     apollo-datasource "^3.3.1"
-    apollo-reporting-protobuf "^3.3.0"
+    apollo-reporting-protobuf "^3.3.1"
     apollo-server-caching "^3.3.0"
     apollo-server-env "^4.2.1"
     apollo-server-errors "^3.3.1"
-    apollo-server-plugin-base "^3.5.1"
-    apollo-server-types "^3.5.1"
+    apollo-server-plugin-base "^3.5.2"
+    apollo-server-types "^3.5.2"
     async-retry "^1.2.1"
     fast-json-stable-stringify "^2.1.0"
     graphql-tag "^2.11.0"
@@ -4728,10 +4753,10 @@ apollo-server-errors@^3.3.1:
   resolved "https://registry.npmjs.org/apollo-server-errors/-/apollo-server-errors-3.3.1.tgz"
   integrity sha512-xnZJ5QWs6FixHICXHxUfm+ZWqqxrNuPlQ+kj5m6RtEgIpekOPssH/SD9gf2B4HuWV0QozorrygwZnux8POvyPA==
 
-apollo-server-express@^3.6.3:
-  version "3.6.3"
-  resolved "https://registry.npmjs.org/apollo-server-express/-/apollo-server-express-3.6.3.tgz"
-  integrity sha512-3CjahZ+n+1T7pHH1qW1B6Ns0BzwOMeupAp2u0+M8ruOmE/e7VKn0OSOQQckZ8Z2AcWxWeno9K89fIv3PoSYgYA==
+apollo-server-express@^3.6.7:
+  version "3.6.7"
+  resolved "https://registry.yarnpkg.com/apollo-server-express/-/apollo-server-express-3.6.7.tgz#9b83ba088cc40ea98bc0f903f9bfed41ea98fdf8"
+  integrity sha512-B4gH5j8t3XxTCIa9bl7Iq/F3YFzMxX/LV4Sc+L/3xkHm648u576G5Lkskl8HsoTGSzzyeVcVsPDoYHiBjCAN0Q==
   dependencies:
     "@types/accepts" "^1.3.5"
     "@types/body-parser" "1.19.2"
@@ -4739,25 +4764,25 @@ apollo-server-express@^3.6.3:
     "@types/express" "4.17.13"
     "@types/express-serve-static-core" "4.17.28"
     accepts "^1.3.5"
-    apollo-server-core "^3.6.3"
-    apollo-server-types "^3.5.1"
+    apollo-server-core "^3.6.7"
+    apollo-server-types "^3.5.2"
     body-parser "^1.19.0"
     cors "^2.8.5"
     parseurl "^1.3.3"
 
-apollo-server-plugin-base@^3.5.1:
-  version "3.5.1"
-  resolved "https://registry.npmjs.org/apollo-server-plugin-base/-/apollo-server-plugin-base-3.5.1.tgz"
-  integrity sha512-wgDHz3lLrCqpecDky3z6AOQ0vik0qs0Cya/Ti6n3ESYXJ9MdK3jE/QunATIrOYYJaa+NKl9V7YwU+/bojNfFuQ==
+apollo-server-plugin-base@^3.5.2:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/apollo-server-plugin-base/-/apollo-server-plugin-base-3.5.2.tgz#18a08353f5ea207a07f2c1e66dd7ef2335ce8c84"
+  integrity sha512-SwIf1waDmNDb0kmn57QR++InwK6Iv/X2slpm/aFIoqFBe91r6uJfakJvQZuh8dLEgk68gxqFsT8zHRpxBclE+g==
   dependencies:
-    apollo-server-types "^3.5.1"
+    apollo-server-types "^3.5.2"
 
-apollo-server-types@^3.5.1:
-  version "3.5.1"
-  resolved "https://registry.npmjs.org/apollo-server-types/-/apollo-server-types-3.5.1.tgz"
-  integrity sha512-zG7xLl4mmHuZMAYOfjWKHY/IC/GgIkJ3HnYuR7FRrnPpRA9Yt5Kf1M1rjm1Esuqzpb/dt8pM7cX40QaIQObCYQ==
+apollo-server-types@^3.5.2:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/apollo-server-types/-/apollo-server-types-3.5.2.tgz#903d499a70b9010764cbab4d704ddb8c086aa06f"
+  integrity sha512-vhcbIWsBkoNibABOym4AAPBoNDjokhjUQokKYdwZMeqrb850PMQdNJFrGyXT5onP408Ghv4O8PfgBuPQmeJhVQ==
   dependencies:
-    apollo-reporting-protobuf "^3.3.0"
+    apollo-reporting-protobuf "^3.3.1"
     apollo-server-caching "^3.3.0"
     apollo-server-env "^4.2.1"
 
@@ -9439,7 +9464,7 @@ graphql-ws@5.5.5:
 
 graphql@^16.3.0:
   version "16.3.0"
-  resolved "https://registry.npmjs.org/graphql/-/graphql-16.3.0.tgz"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.3.0.tgz#a91e24d10babf9e60c706919bb182b53ccdffc05"
   integrity sha512-xm+ANmA16BzCT5pLjuXySbQVFwH3oJctUVdy81w1sV0vBU0KgDdBGtxQOUd5zqOBk/JayAFeG8Dlmeq74rjm/A==
 
 "growl@~> 1.10.0":

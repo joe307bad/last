@@ -3,6 +3,7 @@
   "projects": {
     "api-graphql": "apps/api/graphql",
     "api-map": "apps/api/map",
+    "api-map-gql": "apps/api/map-gql",
     "api-stats": "apps/api/stats",
     "api-story": "apps/api/story",
     "cli-maps": "apps/cli/maps",

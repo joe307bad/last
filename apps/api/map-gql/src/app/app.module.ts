@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { GraphQLModule } from '@nestjs/graphql';
 import {
   ApolloDriver,
-  ApolloDriverConfig,
+  ApolloDriverConfig, ApolloFederationDriver
 } from '@nestjs/apollo';
 import { NestjsQueryGraphQLModule } from '@nestjs-query/query-graphql';
 import { MapDto } from './map/map.dto';
@@ -34,7 +34,7 @@ import { MapEntity } from './map/map.entity';
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       autoSchemaFile: true,
-      driver: ApolloDriver,
+      driver: ApolloFederationDriver,
     }),
   ],
   controllers: [AppController],

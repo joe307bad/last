@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "api-gqlf": "apps/api/gqlf",
     "api-graphql": "apps/api/graphql",
     "api-map": "apps/api/map",
     "api-map-gql": "apps/api/map-gql",

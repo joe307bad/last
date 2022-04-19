@@ -1,0 +1,54 @@
+{
+  "root": "apps/api/gqlf",
+  "sourceRoot": "apps/api/gqlf/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/api/gqlf",
+        "main": "apps/api/gqlf/src/main.ts",
+        "tsConfig": "apps/api/gqlf/tsconfig.app.json",
+        "assets": ["apps/api/gqlf/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/api/gqlf/src/environments/environment.ts",
+              "with": "apps/api/gqlf/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "api-gqlf:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/api/gqlf/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/api/gqlf"],
+      "options": {
+        "jestConfig": "apps/api/gqlf/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import {
   ApolloDriver,
-  ApolloDriverConfig,
+  ApolloDriverConfig, ApolloFederationDriver
 } from '@nestjs/apollo';
 import { NestjsQueryGraphQLModule } from '@nestjs-query/query-graphql';
 import { NestjsQueryTypeOrmModule } from '@nestjs-query/query-typeorm';
@@ -104,7 +104,7 @@ import { GeneratorService } from './generator/generator.service';
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       autoSchemaFile: true,
-      driver: ApolloDriver,
+      driver: ApolloFederationDriver,
     }),
   ],
   controllers: [AppController],

@@ -3,39 +3,30 @@ import { AppController } from './app.controller';
 import { GraphQLModule } from '@nestjs/graphql';
 import {
   ApolloDriver,
-  ApolloDriverConfig, ApolloFederationDriver
+  ApolloDriverConfig,
+  ApolloFederationDriver
 } from '@nestjs/apollo';
-import { NestjsQueryGraphQLModule } from '@nestjs-query/query-graphql';
-import { MapDto } from './map/map.dto';
 import { AppService } from './app.service';
-import { MapService } from './map/map.service';
-import { CouchDbModule } from 'nest-couchdb';
-import { MapEntity } from './map/map.entity';
+import { AuthModule } from './auth/auth.module';
+import { MapModule } from './map/map.module';
+
+interface HeadersContainer {
+  headers?: Record<string, string>;
+}
+interface ContextArgs {
+  req?: HeadersContainer;
+  connection?: { context: HeadersContainer };
+}
 
 @Module({
   imports: [
-    NestjsQueryGraphQLModule.forFeature({
-      services: [MapService],
-      resolvers: [
-        {
-          DTOClass: MapDto,
-          ServiceClass: MapService,
-        },
-      ],
-      imports: [
-        CouchDbModule.forRoot({
-          url: 'http://localhost:5984',
-          username: 'admin',
-          userpass: 'password',
-          requestDefaults: { jar: true },
-        }),
-        CouchDbModule.forFeature([MapEntity]),
-      ],
-    }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
       autoSchemaFile: true,
-      driver: ApolloFederationDriver,
+      installSubscriptionHandlers: true
     }),
+    AuthModule,
+    MapModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -2,9 +2,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { GraphQLModule } from '@nestjs/graphql';
 import {
-  ApolloDriver,
   ApolloDriverConfig,
-  ApolloFederationDriver
+  ApolloFederationDriver,
 } from '@nestjs/apollo';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
@@ -21,9 +20,9 @@ interface ContextArgs {
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
+      driver: ApolloFederationDriver,
       autoSchemaFile: true,
-      installSubscriptionHandlers: true
+      installSubscriptionHandlers: false,
     }),
     AuthModule,
     MapModule,

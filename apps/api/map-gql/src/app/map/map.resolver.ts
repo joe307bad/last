@@ -32,30 +32,34 @@ import { MapQuery } from './map.query';
 
 @Resolver(() => MapDto)
 @UseInterceptors(AuthorizerInterceptor(MapDto))
-export class MapResolver {
-  constructor(readonly service: MapService) {}
-  // Set the return type to the TodoItemConnection
-  @Query(() => MapConnection)
-  async maps(
-    @Args() query: MapQuery,
-    @AuthorizerFilter()
-    authFilter: Filter<MapDto>
-  ): Promise<ConnectionType<MapDto>> {
-    // add the completed filter the user provided filter
-    debugger;
-    const filter: Filter<MapDto> = mergeFilter(
-      query.filter ?? {},
-      {
-        height: { eq: 123 },
-      }
-    );
-    const uncompletedQuery = mergeQuery(query, {
-      filter: mergeFilter(filter, authFilter),
-    });
-    return MapConnection.createFromPromise(
-      (q) => this.service.query(q),
-      uncompletedQuery,
-      (q) => this.service.count(q)
-    );
+export class MapResolver extends CRUDResolver(
+  MapDto
+) {
+  constructor(readonly service: MapService) {
+    super(service);
   }
+  // Set the return type to the TodoItemConnection
+  // @Query(() => MapConnection)
+  // async maps(
+  //   @Args() query: MapQuery,
+  //   @AuthorizerFilter()
+  //   authFilter: Filter<MapDto>
+  // ): Promise<ConnectionType<MapDto>> {
+  //   // add the completed filter the user provided filter
+  //   debugger;
+  //   const filter: Filter<MapDto> = mergeFilter(
+  //     query.filter ?? {},
+  //     {
+  //       height: { eq: 123 },
+  //     }
+  //   );
+  //   const uncompletedQuery = mergeQuery(query, {
+  //     filter: mergeFilter(filter, authFilter),
+  //   });
+  //   return MapConnection.createFromPromise(
+  //     (q) => this.service.query(q),
+  //     uncompletedQuery,
+  //     (q) => this.service.count(q)
+  //   );
+  // }
 }

@@ -6,19 +6,15 @@ import { MapDto } from './map.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { MapEntity } from './map.entity';
 import { PassportModule } from '@nestjs/passport';
+import { MapResolver } from './map.resolver';
 
 @Module({
+  providers: [MapResolver],
   imports: [
-    PassportModule,
     NestjsQueryGraphQLModule.forFeature({
       services: [MapService],
-      resolvers: [
-        {
-          DTOClass: MapDto,
-          ServiceClass: MapService,
-          guards: [JwtAuthGuard],
-        },
-      ],
+      resolvers: [],
+      dtos: [{ DTOClass: MapDto }],
       imports: [
         CouchDbModule.forRoot({
           url: 'http://localhost:5984',
@@ -31,4 +27,31 @@ import { PassportModule } from '@nestjs/passport';
     }),
   ],
 })
+// @Module({
+//   imports: [
+//     CouchDbModule.forRoot({
+//       url: 'http://localhost:5984',
+//       username: 'admin',
+//       userpass: 'password',
+//       requestDefaults: { jar: true },
+//     }),
+//     CouchDbModule.forFeature([MapEntity]),
+//   ],
+//   providers: [MapService, MapResolver],
+//   exports: [MapService]
+//   //   NestjsQueryGraphQLModule.forFeature({
+//   //     services: [MapService],
+//   //     imports: [
+//   //       MapResolver,
+//   //       CouchDbModule.forRoot({
+//   //         url: 'http://localhost:5984',
+//   //         username: 'admin',
+//   //         userpass: 'password',
+//   //         requestDefaults: { jar: true },
+//   //       }),
+//   //       CouchDbModule.forFeature([MapEntity]),
+//   //     ],
+//   //   }),
+//   // ],
+// })
 export class MapModule {}

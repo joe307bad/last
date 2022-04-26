@@ -5,17 +5,8 @@ import {
   ApolloDriverConfig,
   ApolloFederationDriver,
 } from '@nestjs/apollo';
-import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { MapModule } from './map/map.module';
-
-interface HeadersContainer {
-  headers?: Record<string, string>;
-}
-interface ContextArgs {
-  req?: HeadersContainer;
-  connection?: { context: HeadersContainer };
-}
 
 @Module({
   imports: [
@@ -28,6 +19,6 @@ interface ContextArgs {
     MapModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [],
 })
 export class AppModule {}

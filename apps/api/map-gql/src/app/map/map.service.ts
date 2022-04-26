@@ -12,7 +12,14 @@ import {
   Repository,
 } from 'nest-couchdb';
 import { MapEntity } from './map.entity';
+import {
+  AuthorizerFilter,
+  AuthorizerInterceptor,
+  OperationGroup,
+} from '@nestjs-query/query-graphql';
+import { Injectable, UseInterceptors } from '@nestjs/common';
 
+@Injectable()
 export class MapService extends NoOpQueryService<MapDto> {
   constructor(
     @InjectRepository(MapEntity)
@@ -32,14 +39,19 @@ export class MapService extends NoOpQueryService<MapDto> {
     return Promise.resolve([]);
   }
 
-  query(query: Query<MapDto>): Promise<MapDto[]> {
+  query(
+    query: Query<MapDto>
+  ): Promise<MapDto[]> {
     // TODO we dont get paging or sorting out of the box here
     // that would all have to be implemented in this method
-    return this.mapRepo.find({
-      selector: { _id: { $gt: null } },
-    }).then(res => {
-      return res.docs;
-    }) as unknown as Promise<MapDto[]>;
+    debugger;
+    return this.mapRepo
+      .find({
+        selector: { _id: { $gt: null } },
+      })
+      .then((res) => {
+        return res.docs;
+      }) as unknown as Promise<MapDto[]>;
   }
 
   findById(

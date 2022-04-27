@@ -1,0 +1,13 @@
+{
+  "include": ["main.ts"],
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ES2019"],
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "target": "ES2019",
+    "baseUrl": ".",
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "root": "libs/query-nano",
+  "sourceRoot": "libs/query-nano/src",
+  "projectType": "library",
+  "targets": {
+    "start": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "ts-node --project libs/query-nano/tsconfig.spec.json libs/query-nano/main.ts"
+      }
+    },
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/query-nano",
+        "tsConfig": "libs/query-nano/tsconfig.lib.json",
+        "packageJson": "libs/query-nano/package.json",
+        "main": "libs/query-nano/src/index.ts",
+        "assets": ["libs/query-nano/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/query-nano/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/query-nano"],
+      "options": {
+        "jestConfig": "libs/query-nano/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

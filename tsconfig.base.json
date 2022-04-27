@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "~last/query-nano": [
+        "libs/query-nano/src/index.ts"
+      ],
       "~last/request/core": [
         "libs/request/core/src/index.ts"
       ],

@@ -10,7 +10,7 @@
         "outputPath": "dist/apps/api/map-gql",
         "main": "apps/api/map-gql/src/main.ts",
         "tsConfig": "apps/api/map-gql/tsconfig.app.json",
-        "assets": ["apps/api/map-gql/src/assets"]
+        "assets": []
       },
       "configurations": {
         "production": {

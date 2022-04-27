@@ -9,6 +9,7 @@
     "api-story": "apps/api/story",
     "cli-maps": "apps/cli/maps",
     "cli-story": "apps/cli/story",
+    "query-nano": "libs/query-nano",
     "request-core": "libs/request/core",
     "request-node": "libs/request/node",
     "shared-types": "libs/shared/types",

@@ -26,7 +26,7 @@ export class HttpService
     return this;
   }
 
-  query(
+  qlQuery(
     query?: any,
     variables?: Record<string, string>
   ): Promise<any> {

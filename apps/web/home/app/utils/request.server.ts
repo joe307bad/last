@@ -1,2 +1,2 @@
-import * as request from '~last/request/node';
+import {request} from '~last/request/node';
 export default request;

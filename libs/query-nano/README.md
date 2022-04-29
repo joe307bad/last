@@ -1,7 +1,7 @@
-# query-nano
+# qlQuery-nano
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test query-nano` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test qlQuery-nano` to execute the unit tests via [Jest](https://jestjs.io).

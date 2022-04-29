@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'query-nano',
+  displayName: 'qlQuery-nano',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -17,5 +17,5 @@ module.exports = {
     'jsx',
   ],
   coverageDirectory:
-    '../../coverage/libs/query-nano',
+    '../../coverage/libs/qlQuery-nano',
 };

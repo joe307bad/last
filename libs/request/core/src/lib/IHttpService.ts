@@ -1,6 +1,6 @@
 export interface IHttpService<T> {
   post(data: any): Promise<any>;
-  query(
+  qlQuery(
     query?: any,
     variables?: Record<string, string>
   ): Promise<any>;

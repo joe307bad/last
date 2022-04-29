@@ -1,18 +1,18 @@
 import { Module } from '@nestjs/common';
 import { NestjsQueryGraphQLModule } from '@nestjs-query/query-graphql';
 import { CouchDbModule } from 'nest-couchdb';
-import { MapService } from './map.service';
-import { MapDto } from './map.dto';
-import { MapEntity } from './map.entity';
-import { MapResolver } from './map.resolver';
+import { MapStateService } from './map-state.service';
+import { MapStateDto } from './map-state.dto';
+import { MapStateEntity } from './map-state.entity';
+import { MapStateResolver } from './map-state.resolver';
 
 @Module({
-  providers: [MapResolver],
+  providers: [MapStateResolver],
   imports: [
     NestjsQueryGraphQLModule.forFeature({
-      services: [MapService],
+      services: [MapStateService],
       resolvers: [],
-      dtos: [{ DTOClass: MapDto }],
+      dtos: [{ DTOClass: MapStateDto }],
       imports: [
         CouchDbModule.forRoot({
           url: 'http://localhost:5984',
@@ -20,9 +20,9 @@ import { MapResolver } from './map.resolver';
           userpass: 'password',
           requestDefaults: { jar: true },
         }),
-        CouchDbModule.forFeature([MapEntity]),
+        CouchDbModule.forFeature([MapStateEntity]),
       ],
     }),
   ],
 })
-export class MapModule {}
+export class MapStateModule {}

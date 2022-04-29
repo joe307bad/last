@@ -6,11 +6,11 @@ import { useLoaderData } from 'remix';
 import { Planet as TPlanet } from '~last/shared/types';
 import { sampleSize } from 'lodash';
 import { Planet } from '~/components/planet';
-import r from '~/utils/request.server';
+import request from '~/utils/request.server';
 
 export let loader: LoaderFunction = async () => {
   const allPlanets =
-    await r.request.graphql.getAllPlanets();
+    await request.graphql.getAllPlanets();
   return sampleSize(
     allPlanets.planets?.edges || [],
     6

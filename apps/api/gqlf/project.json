@@ -10,19 +10,13 @@
         "outputPath": "dist/apps/api/gqlf",
         "main": "apps/api/gqlf/src/main.ts",
         "tsConfig": "apps/api/gqlf/tsconfig.app.json",
-        "assets": ["apps/api/gqlf/src/assets"]
+        "assets": []
       },
       "configurations": {
         "production": {
           "optimization": true,
           "extractLicenses": true,
-          "inspect": false,
-          "fileReplacements": [
-            {
-              "replace": "apps/api/gqlf/src/environments/environment.ts",
-              "with": "apps/api/gqlf/src/environments/environment.prod.ts"
-            }
-          ]
+          "inspect": false
         }
       }
     },

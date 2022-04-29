@@ -7,6 +7,7 @@ import {
 } from '@nestjs/apollo';
 import { AuthModule } from './auth/auth.module';
 import { MapModule } from './map/map.module';
+import { MapStateModule } from './map-state/map-state.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { MapModule } from './map/map.module';
     }),
     AuthModule,
     MapModule,
+    MapStateModule,
   ],
   controllers: [AppController],
   providers: [],

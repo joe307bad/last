@@ -9,12 +9,13 @@ import { Planet } from '~/components/planet';
 import request from '~/utils/request.server';
 
 export let loader: LoaderFunction = async () => {
-  const allPlanets =
-    await request.graphql.getAllPlanets();
-  return sampleSize(
-    allPlanets.planets?.edges || [],
-    6
-  );
+  // const allPlanets =
+  //   ''//await request.services.graphql.getAllPlanets();
+  // return sampleSize(
+  //   allPlanets.planets?.edges || [],
+  //   6
+  // );
+  return Promise.resolve(null);
 };
 
 export let meta: MetaFunction = () => {

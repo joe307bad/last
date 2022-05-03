@@ -24,6 +24,12 @@ services:
     image: redis:6.2-alpine
     ports:
       - '6379:6379'
+  nginx:
+    image: nginx
+    volumes:
+      - ./dist/libs/shared/assets:/usr/share/nginx/html:ro
+    ports:
+      - '8888:80'
 volumes:
   couchdb_data:
     driver: local

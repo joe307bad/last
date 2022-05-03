@@ -2,7 +2,7 @@ import type {
   MetaFunction,
   LoaderFunction,
 } from 'remix';
-import r from '~/utils/request.server';
+import request from "~/utils/request.server";
 import { sampleSize } from 'lodash';
 import { useLoaderData } from 'remix';
 import {
@@ -15,7 +15,7 @@ import { MapProvider } from '~/directory/MapContext';
 
 export let loader: LoaderFunction = async () => {
   const allPlanets =
-    await r.request.graphql.getAllPlanets();
+    await request.services.graphql.getAllPlanets();
   const twoRandomPlanets = sampleSize(
     allPlanets.planets?.edges || [],
     2
@@ -23,7 +23,7 @@ export let loader: LoaderFunction = async () => {
 
   const map = await (() => {
     const getMap = (mapId: string) =>
-      r.getMapById(mapId);
+      request.getMapById(mapId);
 
     if (twoRandomPlanets[0].node.mapId) {
       return getMap(

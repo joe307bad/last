@@ -10,7 +10,7 @@ const serviceConfiguration: ServiceConfiguration =
       "http://localhost:3333/graphql",
   };
 
-export const request = r(
+export const services = r(
   () =>
     new HttpService(
       serviceConfiguration.graphql_service_url

@@ -12,8 +12,10 @@
     "query-nano": "libs/query-nano",
     "request-core": "libs/request/core",
     "request-node": "libs/request/node",
+    "shared-assets": "libs/shared/assets",
     "shared-types": "libs/shared/types",
     "story-gen": "libs/story/gen",
+    "web-docs": "apps/web/docs",
     "web-home": "apps/web/home"
   }
 }

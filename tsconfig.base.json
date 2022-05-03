@@ -24,6 +24,9 @@
       "~last/request/node": [
         "libs/request/node/src/index.ts"
       ],
+      "~last/shared/assets": [
+        "libs/shared/assets/src/index.ts"
+      ],
       "~last/shared/types": [
         "libs/shared/types/src/index.ts"
       ],

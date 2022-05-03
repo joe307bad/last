@@ -43,3 +43,7 @@ apps/**/build
 apps/**/.cache
 
 schema.gql
+
+# Generated Docusaurus files
+.docusaurus/
+.cache-loader/

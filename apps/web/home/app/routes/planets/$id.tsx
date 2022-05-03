@@ -1,12 +1,12 @@
-import { useLoaderData } from 'remix';
-import type { LoaderFunction } from 'remix';
-import r from '~/utils/request.server';
-import { Planet as TPlanet } from '~last/shared/types';
-import { Planet } from '~/components/planet';
+import {useLoaderData} from 'remix';
+import type {LoaderFunction} from 'remix';
+import {Planet as TPlanet} from '~last/shared/types';
+import {Planet} from '~/components/planet';
+import r from "~/utils/request.server";
 
 export let loader: LoaderFunction = async ({
-  params,
-}) => {
+                                             params,
+                                           }) => {
   if (!params?.id) {
     throw new Response('Not Found', {
       status: 404,
@@ -26,8 +26,8 @@ export let loader: LoaderFunction = async ({
 };
 
 export async function action({
-  request,
-}: {
+                               request,
+                             }: {
   request: { formData: () => Promise<any> };
 }) {
   const body = await request.formData();
@@ -39,7 +39,7 @@ export async function action({
 }
 
 export default function PlanetById() {
-  let { planet, regions } = useLoaderData<{
+  let {planet, regions} = useLoaderData<{
     planet: Partial<TPlanet>;
     regions: {
       id: string;
@@ -59,7 +59,7 @@ export default function PlanetById() {
         </span>
       </div>
       <div className="flex h-full">
-        <Planet planet={planet} />
+        <Planet planet={planet}/>
       </div>
     </div>
   );

@@ -5,9 +5,7 @@
   "targets": {
     "build": {
       "executor": "@nrwl/next:build",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
         "root": "apps/web/docs",
@@ -19,10 +17,21 @@
       }
     },
     "serve": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "@nrwl/next:server",
+      "defaultConfiguration": "development",
       "options": {
-        "command": "npx next dev",
-        "cwd": "apps/web/docs"
+        "buildTarget": "web-docs:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "web-docs:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "web-docs:build:production",
+          "dev": false
+        }
       }
     },
     "export": {
@@ -33,9 +42,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/web/docs"
-      ],
+      "outputs": ["coverage/apps/web/docs"],
       "options": {
         "jestConfig": "apps/web/docs/jest.config.ts",
         "passWithNoTests": true
@@ -43,9 +50,7 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
           "apps/web/docs/**/*.{ts,tsx,js,jsx}"

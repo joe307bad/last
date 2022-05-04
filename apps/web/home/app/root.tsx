@@ -132,7 +132,7 @@ function Document({
     <ScrollRestoration/>
     <Scripts/>
     {process.env.NODE_ENV ===
-    'development' && <LiveReload />}
+    'development' && <LiveReload/>}
     </body>
     </html>
   );

@@ -47,3 +47,5 @@ schema.gql
 # Generated Docusaurus files
 .docusaurus/
 .cache-loader/
+
+apps/web/docs/.next

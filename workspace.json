@@ -15,6 +15,7 @@
     "shared-assets": "libs/shared/assets",
     "shared-types": "libs/shared/types",
     "story-gen": "libs/story/gen",
+    "theme-react": "libs/theme/react",
     "web-docs": "apps/web/docs",
     "web-home": "apps/web/home"
   }

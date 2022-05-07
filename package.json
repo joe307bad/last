@@ -96,6 +96,7 @@
     "react-svg": "^14.1.13",
     "reflect-metadata": "^0.1.13",
     "regenerator-runtime": "0.13.7",
+    "remark-gfm": "^3.0.1",
     "remix": "^1.4.3",
     "rxjs": "^7.0.0",
     "serverless": "^3.2.1",

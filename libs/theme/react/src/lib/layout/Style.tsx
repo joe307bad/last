@@ -180,15 +180,15 @@ const Style = (props) => (
       padding: 8px;
     }
     h1 {
-      font-size: 30px;
+      font-size: 40px;
       font-weight: bold;
     }
     h2 {
-      font-size: 20px;
+      font-size: 30px;
       font-weight: bold;
     }
     h3 {
-      font-size: 16px;
+      font-size: 20px;
       font-weight: bold;
     }
     h1,

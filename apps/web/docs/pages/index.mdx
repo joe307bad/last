@@ -1,7 +1,43 @@
 import { Assets } from '~last/shared/assets'
 
 # An exploration game
+<br />
 ## Project Overview
-This project has two main purposes:
-- Building and facilitating an unpredictable digital universe
+### Project Purpose
+- Building and facilitating an **unpredictable digital universe**
 - Maintaining a scalable and collaborative code base
+### Latest development goals
+* [ ] Build out documentation theme
+  - Ensure layout parity with [Bitbucket markdown syntax](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html)
+  - Code highlighting
+  -
+* [ ] Brainstorm real time strategy game integration
+<br />
+## Development
+### Steps for running local environment
+1. Clone repo
+2. Run `docker-compose up -d`
+### Opening a PR
+Some good advice from [Atlassian](https://www.atlassian.com/blog/git/written-unwritten-guide-pull-requests):
+>Making smaller pull requests is the #1 way to speed up your review time. Because they are so small, it’s easier for the reviewers to understand the context and reason with the logic.
+### Common commands using the Last CLI
+Here is an example of claiming a planet:
+```javascript
+var oldUnload = window.onbeforeunload;
+window.onbeforeunload = function() {
+    saveCoverage();
+    if (oldUnload) {
+        return oldUnload.apply(this, arguments);
+    }
+};
+```
+<br />
+## Assets
+<img height={30} width={30} src={Assets.logo} />
+<br />
+## Tables
+Here is an example of a table:
+| Day     | Meal    | Price |
+| --------|---------|-------|
+| Monday  | pasta   | $6    |
+| Tuesday | chicken | $8    |

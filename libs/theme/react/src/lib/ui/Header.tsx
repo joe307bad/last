@@ -1,37 +1,32 @@
 import React from 'react';
-import config from '../layout/blog.config';
-import { MDXProvider } from '@mdx-js/react';
-import { Box, Heading } from 'theme-ui';
-import Nav from './Nav';
+import {
+  Box,
+  Heading,
+  useThemeUI,
+} from 'theme-ui';
 import { Assets } from '~last/shared/assets';
 
-const Header = (props) => (
-  <MDXProvider>
+const Header = (props) => {
+  const { theme } = useThemeUI();
+  return (
     <Box
-      as="header"
       sx={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: 10,
-        p: 10
+        p: 10,
+        backgroundColor: theme.colors.primary,
       }}
     >
-      <img
-        height={30}
-        width={30}
-        src={Assets.logo}
-      />
-      <Heading
-        sx={{
-          fontSize: 3,
-        }}
-        as="h1"
+      <Box
+        sx={{ maxWidth: 1000, margin: '0 auto' }}
       >
-        {config.title}
-      </Heading>
-      {/*<Nav />*/}
+        <img
+          height={30}
+          width={30}
+          style={{ display: 'block' }}
+          src={Assets.logo}
+        />
+      </Box>
     </Box>
-  </MDXProvider>
-);
+  );
+};
 
 export default Header;

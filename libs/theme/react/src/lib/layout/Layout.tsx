@@ -1,65 +1,67 @@
 import React from 'react';
-import { useEffect } from "react"
-import theme from "./Theme"
-import { Box } from "theme-ui"
-import Head from "./Head"
-import Style from "./Style"
-import Header from "../ui/Header"
-import Main from "../ui/Main"
-import Footer from "../ui/Footer"
-
-// inject inline styles on the body before the page is rendered to avoid the flash of light if we are in dark mode
-let codeToRunOnClient = false
-if (theme.colors.modes && theme.colors.modes.length !== 0) {
-  codeToRunOnClient = `
-  (function() {
-    const theme = ${JSON.stringify(theme)}
-
-    let mode = localStorage.getItem("theme-ui-color-mode")
-
-    if (!mode) {
-      const mql = window.matchMedia('(prefers-color-scheme: dark)')
-      if (typeof mql.matches === 'boolean' && mql.matches) {
-        mode = "dark"
-      }
-    }
-
-    if (mode && typeof theme.colors.modes === "object" && typeof theme.colors.modes[mode] === "object") {
-      const root = document.documentElement
-      Object.keys(theme.colors.modes[mode]).forEach((colorName) => {
-        document.body.style.setProperty("--theme-ui-colors-"+colorName, "var(--theme-ui-colors-primary,"+theme.colors.modes[mode][colorName]+")")
-      })
-    }
-  })()`
-}
+import { useEffect } from 'react';
+import { Box, useThemeUI } from 'theme-ui';
+import Head from './Head';
+import Style from './Style';
+import Main from '../ui/Main';
+import Footer from '../ui/Footer';
+import { useColorMode } from 'theme-ui';
+import Header from '../ui/Header';
+import Nav from '../ui/Nav';
+import { children } from 'hastscript/lib/jsx-classic';
 
 const Layout = (props) => {
+  const [color, setColorMode] = useColorMode();
+  const { theme } = useThemeUI();
   useEffect(() => {
     // the theme styles will be applied by theme ui after hydration, so remove the inline style we injected on page load
-    document.body.removeAttribute("style")
-  }, [])
+    document.body.removeAttribute('style');
+    setColorMode('lite');
+  }, []);
 
   return (
     <>
       <Head {...props} />
-      {codeToRunOnClient && (
-        <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />
-      )}
       <Box
         sx={{
-          display: "flex",
-          minHeight: "100vh",
-          flexDirection: "column",
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
         <Header />
-        <Main>{props.children}</Main>
-        <Footer />
+        <Box
+          sx={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'row',
+            overflow: 'hidden',
+            maxWidth: 1000,
+            margin: "0 auto"
+          }}
+        >
+          <Box
+            sx={{
+              height: '100%',
+            }}
+          >
+            <Nav />
+          </Box>
+          <Box
+            sx={{
+              flex: 1,
+              height: '100%',
+              overflow: 'auto',
+            }}
+          >
+            <Main>{props.children}</Main>
+          </Box>
+        </Box>
+
+        <Style />
       </Box>
-
-      <Style />
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

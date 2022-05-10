@@ -74,6 +74,7 @@
     "graphql-tag": "^2.12.6",
     "graphql-tools": "^8.2.0",
     "gray-matter": "^4.0.3",
+    "hastscript": "^7.0.2",
     "ky": "^0.29.0",
     "lodash": "^4.17.21",
     "mathjs": "^10.1.1",
@@ -96,6 +97,7 @@
     "react-svg": "^14.1.13",
     "reflect-metadata": "^0.1.13",
     "regenerator-runtime": "0.13.7",
+    "remark-directive": "^2.0.1",
     "remark-gfm": "^3.0.1",
     "remix": "^1.4.3",
     "rxjs": "^7.0.0",
@@ -104,6 +106,7 @@
     "tslib": "^2.0.0",
     "tsyringe": "^4.6.0",
     "typeorm": "^0.2.41",
+    "unist-util-visit": "^4.1.0",
     "uuid": "^8.3.2",
     "xml2js": "^0.4.23"
   },

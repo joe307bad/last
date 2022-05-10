@@ -12,6 +12,7 @@ const DocHead = (props) => (
         href="/favicon.ico"
       />
       <link rel="canonical" href={props.url} />
+
       <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
@@ -22,7 +23,7 @@ const DocHead = (props) => (
         crossOrigin
       />
       <link
-        href="https://fonts.googleapis.com/css2?family=Inika:wght@700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700;800&display=swap"
         rel="stylesheet"
       />
       <meta

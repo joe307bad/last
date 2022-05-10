@@ -1,9 +1,12 @@
 export default {
   useCustomProperties: true,
   useColorSchemeMediaQuery: true,
+  config: {
+    initialColorModeName: 'light',
+  },
   fonts: {
     body: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif`,
-    heading: "Inika, serif",
+    heading: "Open Sans, serif",
   },
   fontSizes: [16, 18, 20, 24, 30, 36, 40, 48, 64, 72, 96],
   fontWeights: {
@@ -17,7 +20,7 @@ export default {
   },
   colors: {
     primary: "#4169e1",
-    secondary: "#27a727",
+    secondary: "#8E6FEB",
     background: "#fff",
     text: "#1b1e21",
     blue: "#4169e1",

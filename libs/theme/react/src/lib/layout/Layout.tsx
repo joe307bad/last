@@ -37,7 +37,7 @@ const Layout = (props) => {
             flexDirection: 'row',
             overflow: 'hidden',
             maxWidth: 1000,
-            margin: "0 auto"
+            margin: '0 auto',
           }}
         >
           <Box
@@ -54,7 +54,18 @@ const Layout = (props) => {
               overflow: 'auto',
             }}
           >
-            <Main>{props.children}</Main>
+            <Box
+              sx={{
+                boxShadow:
+                  '0px -11px 32px #31313114',
+                border: '2px solid #31313114',
+                padding: 60,
+                paddingTop: 50,
+                margin: 30,
+              }}
+            >
+              <Main>{props.children}</Main>
+            </Box>
           </Box>
         </Box>
 

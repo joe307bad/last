@@ -13,6 +13,7 @@ const Header = (props) => {
       sx={{
         p: 10,
         backgroundColor: theme.colors.primary,
+        borderBottom: `2px solid ${theme.colors.secondary}`,
       }}
     >
       <Box

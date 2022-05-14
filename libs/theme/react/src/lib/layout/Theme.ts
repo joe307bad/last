@@ -20,7 +20,7 @@ export default {
   },
   colors: {
     primary: "#4169e1",
-    secondary: "#8E6FEB",
+    secondary: "indigo",
     background: "#fff",
     text: "#1b1e21",
     blue: "#4169e1",

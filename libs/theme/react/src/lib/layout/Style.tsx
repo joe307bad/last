@@ -221,7 +221,6 @@ const Style = (props) => (
     }
 
     h1 {
-      padding-top: 20px;
       font-size: 40px;
       font-weight: bold;
     }
@@ -242,7 +241,6 @@ const Style = (props) => (
     h4,
     h5,
     h6 {
-      font-weight: 900;
       text-rendering: optimizelegibility;
       margin: 0 0 16px;
       font-family: ${theme.fonts.heading};

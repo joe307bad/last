@@ -48,6 +48,9 @@ svg {
   shape-rendering: auto;
   text-rendering: optimizeLegibility;
 }
+hr {
+  border-bottom: 2px solid #31313114;
+}
 pre {
   background-color: rgba(55, 65, 81, 1);
   border-radius: 0.25rem;
@@ -455,4 +458,8 @@ summary svg {
       minmax(0, 1fr)
     );
   }
+}
+
+hr {
+  border-bottom:
 }

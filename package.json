@@ -81,7 +81,7 @@
     "mlyn": "^0.5.3",
     "mysql": "^2.18.1",
     "nano": "^10.0.0",
-    "nest-couchdb": "git://github.com/tosscaster/nest-couchdb",
+    "nest-couchdb": "https://github.com/tosscaster/nest-couchdb",
     "next": "12.1.5",
     "nextra": "^1.1.0",
     "nextra-theme-docs": "^1.2.6",

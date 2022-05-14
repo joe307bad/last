@@ -18527,9 +18527,9 @@ neo-async@^2.5.0, neo-async@^2.6.2:
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-"nest-couchdb@git://github.com/tosscaster/nest-couchdb":
+"nest-couchdb@https://github.com/tosscaster/nest-couchdb":
   version "0.1.0"
-  resolved "git://github.com/tosscaster/nest-couchdb#b6f22b6b3c118d79545e0f1a52eda24ff9737fab"
+  resolved "https://github.com/tosscaster/nest-couchdb#b6f22b6b3c118d79545e0f1a52eda24ff9737fab"
   dependencies:
     "@nestjs/common" "6.5.2"
     "@nestjs/core" "6.5.2"

@@ -59,8 +59,8 @@ const Layout = (props) => {
                 boxShadow:
                   '0px -11px 32px #31313114',
                 border: '2px solid #31313114',
-                padding: 60,
-                paddingTop: 50,
+                //padding: 60,
+                //paddingTop: 50,
                 margin: 30,
               }}
             >

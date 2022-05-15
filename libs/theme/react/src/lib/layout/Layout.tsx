@@ -4,11 +4,9 @@ import { Box, useThemeUI } from 'theme-ui';
 import Head from './Head';
 import Style from './Style';
 import Main from '../ui/Main';
-import Footer from '../ui/Footer';
 import { useColorMode } from 'theme-ui';
 import Header from '../ui/Header';
 import Nav from '../ui/Nav';
-import { children } from 'hastscript/lib/jsx-classic';
 
 const Layout = (props) => {
   const [color, setColorMode] = useColorMode();

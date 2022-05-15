@@ -11,7 +11,7 @@ const DocHead = (props) => (
         type="image/x-icon"
         href="/favicon.ico"
       />
-      <link rel="canonical" href={props.url} />
+      <link rel="canonical" href={props.url}/>
 
       <link
         rel="preconnect"
@@ -24,6 +24,10 @@ const DocHead = (props) => (
       />
       <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700;800&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         rel="stylesheet"
       />
       <meta

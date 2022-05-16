@@ -1,0 +1,26 @@
+{
+  "Technical": {
+    "Overview": {
+      "label": "Overview",
+      "link": "/"
+    },
+    "DevLog": {
+      "label": "Dev Log",
+      "link": "/dev-log"
+    },
+    "Documentation": {
+      "label": "Documentation",
+      "link": "/docs"
+    },
+    "Architecture": {
+      "label": "Architecture",
+      "link": "/architecture"
+    }
+  },
+  "Game": {
+    "Concepts": {
+      "label": "Concepts",
+      "link": "/concepts"
+    }
+  }
+}

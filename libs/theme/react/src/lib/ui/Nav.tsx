@@ -1,123 +1,115 @@
 import { useRouter } from 'next/router';
 import { Box, useThemeUI } from 'theme-ui';
+import Link from 'next/link';
 import React from 'react';
 
-const Technical = [
-  'Overview',
-  'Dev Log',
-  'Documentation',
-  'Architecture',
-];
-
-const Game = ['Concepts'];
-
-const NavItem = ({
-  i,
-  navItem,
-  noActive = false,
-}) => {
+const NavItem = ({ i, navItem }) => {
+  const { asPath } = useRouter();
   const { theme } = useThemeUI();
+
+  const active = asPath === navItem.link;
+
   const borderLeftColor = (
-    i === 0 && !noActive
+    active
       ? theme.colors.primary
       : theme.colors.background
   ) as string;
-  const fontWeight =
-    i === 0 && !noActive ? 800 : 0;
+  const fontWeight = active ? 800 : 0;
+
   return (
-    <li
-      key={i}
-      style={{
-        padding: 5,
-        paddingLeft: 20,
-        marginTop: 20,
-        marginBottom: 20,
-        borderLeftWidth: 5,
-        fontWeight,
-        borderLeftColor,
-      }}
-    >
-      {navItem}
+    <li key={i}>
+      <Box
+        sx={{
+          display: 'block',
+          paddingLeft: 20,
+          marginTop: 20,
+          marginBottom: 20,
+          borderLeftWidth: 5,
+          fontWeight,
+          borderLeftColor,
+        }}
+      >
+        <Link href={navItem.link}>
+          {navItem.label}
+        </Link>
+      </Box>
     </li>
   );
 };
 
 const Nav = (props) => {
-  const router = useRouter();
   return (
     <>
-      <h4
-        style={{
-          textTransform: 'uppercase',
-          fontWeight: '900',
-          color: '#a0a0ca',
-          paddingTop: 20,
-        }}
-      >
-        Technical
-      </h4>
-      <ul
-        style={{
-          maxWidth: 200,
-          listStyle: 'none',
-          padding: 0,
-          margin: 0,
-          marginRight: 20,
-        }}
-      >
-        {Technical.map((navItem, i) => (
-          <NavItem
-            navItem={navItem}
-            key={i}
-            i={i}
-          />
-        ))}
-      </ul>
-      <h4
-        style={{
-          textTransform: 'uppercase',
-          fontWeight: '900',
-          color: '#a0a0ca',
-          paddingTop: 20,
-        }}
-      >
-        Game
-      </h4>
-      <ul
-        style={{
-          maxWidth: 200,
-          listStyle: 'none',
-          padding: 0,
-          margin: 0,
-          marginRight: 20,
-        }}
-      >
-        {Game.map((navItem, i) => (
-          <NavItem
-            noActive={true}
-            navItem={navItem}
-            key={i}
-            i={i}
-          />
-        ))}
-      </ul>
+      {Object.keys(props.nav).map(
+        (navCategory, i) => (
+          <div key={i}>
+            <h4
+              style={{
+                textTransform: 'uppercase',
+                fontWeight: '900',
+                color: '#a0a0ca',
+                paddingTop: 20,
+              }}
+            >
+              {navCategory}
+            </h4>
+            <ul
+              style={{
+                maxWidth: 200,
+                listStyle: 'none',
+                padding: 0,
+                margin: 0,
+                marginRight: 20,
+              }}
+            >
+              {Object.keys(
+                props.nav[navCategory]
+              ).map((navItem, i) => (
+                <NavItem
+                  navItem={
+                    props.nav[navCategory][
+                      navItem
+                    ]
+                  }
+                  key={i}
+                  i={i}
+                />
+              ))}
+            </ul>
+          </div>
+        )
+      )}
       <div
         style={{
           display: 'flex',
           gap: 20,
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop: 50
+          marginTop: 50,
         }}
       >
-        <i
-          style={{ fontSize: 20 }}
-          className="fa-brands fa-github"
-        ></i>
-        <i
-          style={{ fontSize: 20 }}
-          className="fa-brands fa-twitter"
-        ></i>
+        <a
+          href={
+            'https://github.com/joe307bad/last'
+          }
+        >
+          <i
+            style={{ fontSize: 20 }}
+            className="fa-brands fa-github"
+          >
+          </i>
+        </a>
+        <a
+          href={
+            'https://twitter.com/joe307bad'
+          }
+        >
+          <i
+            style={{ fontSize: 20 }}
+            className="fa-brands fa-twitter"
+          >
+          </i>
+        </a>
       </div>
     </>
   );

@@ -34,7 +34,8 @@ const Layout = (props) => {
             display: 'flex',
             flexDirection: 'row',
             overflow: 'hidden',
-            maxWidth: 1000,
+            width: 1000,
+            maxWidth: "100%",
             margin: '0 auto',
           }}
         >
@@ -43,7 +44,7 @@ const Layout = (props) => {
               height: '100%',
             }}
           >
-            <Nav />
+            <Nav nav={props.nav} />
           </Box>
           <Box
             sx={{

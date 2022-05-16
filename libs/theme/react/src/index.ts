@@ -3,7 +3,6 @@ import Head from './lib/layout/Head';
 import Layout from './lib/layout/Layout';
 import Style from './lib/layout/Style';
 import Theme from './lib/layout/Theme';
-import Wrapper from './lib/layout/Wrapper';
 
 import Button from './lib/ui/Button';
 import ButtonLink from './lib/ui/ButtonLink';
@@ -23,7 +22,6 @@ export {
   Layout,
   Style,
   Theme,
-  Wrapper,
   Button,
   ButtonLink,
   CodeBlock,

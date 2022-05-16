@@ -70,9 +70,6 @@ pre {
 .rounded {
   border-radius: 1.5rem;
 }
-.wrapper {
-  width: 100%;
-}
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -460,6 +457,3 @@ summary svg {
   }
 }
 
-hr {
-  border-bottom:
-}

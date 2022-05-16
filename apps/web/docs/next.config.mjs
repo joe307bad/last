@@ -33,6 +33,7 @@ const withMDX = nextMDX({
   options: {
     remarkPlugins: [remarkGfm, remarkDirective, callOuts],
     rehypePlugins: [],
+    providerImportSource: '@mdx-js/react',
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",
   },

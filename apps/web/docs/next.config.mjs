@@ -1,6 +1,7 @@
 import remarkGfm from 'remark-gfm'
 import nextMDX from '@next/mdx'
 import remarkDirective from 'remark-directive';
+import toc from '@jsdevtools/rehype-toc';
 
 import {visit} from 'unist-util-visit'
 import {h} from 'hastscript'
@@ -32,7 +33,7 @@ const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [remarkGfm, remarkDirective, callOuts],
-    rehypePlugins: [],
+    rehypePlugins: [toc],
     providerImportSource: '@mdx-js/react',
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",

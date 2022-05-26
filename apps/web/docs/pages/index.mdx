@@ -3,12 +3,16 @@ import {InPageNav} from '~last/theme/react';
 
 <div style={{ padding: 50 }}>
 # Last: an exploration game
-🕑 &nbsp; Last updated 2 days ago
+🕑 &nbsp; Last updated 2ss days ago
 </div>
 <hr />
 <div style={{ padding: 50, paddingTop: 0 }}>
+<aside>TABLE_OF_CONTENTS</aside>
 <InPageNav/>
 <br/>
+## In page table of contents
+- Using `@joe307bad/rehype-toc`, we can debug an implementation of replacing a placeholder text (eg. TABLE_OF_CONTENTS) to a TOC
+- The `@joe307bad/rehype-toc` will only run if there is no `.next` cache in `dist/apps/web/docs/` (so this may have to be deleted in order to debug)
 ## Navigation brainstorm
 - Documentation - set up development environment and building blocks of application
 - Architecture - explanation of each project in the monorepo
@@ -26,9 +30,6 @@ import {InPageNav} from '~last/theme/react';
   - https://github.com/vercel/next.js/discussions/11419
   - might be able to use this for loading external mdx files https://github.com/vercel/next.js/discussions/12149#discussioncomment-314338
 * [ ] Brainstorm real time strategy game integration
-:::note{.warning}
-This is a note i guess
-:::
 <br/>
 ## Development
 ### Steps for running local environment

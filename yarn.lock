@@ -3158,6 +3158,13 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
+"@joe307bad/rehype-toc@3.1.10":
+  version "3.1.10"
+  resolved "https://npm.pkg.github.com/download/@joe307bad/rehype-toc/3.1.10/26ac889d922ad6e4e7fccd3bdd5ae5d8acfc4d6f19c9ccc4d87f4be7c25f25fe#2a0a929bc87fea9baeb70084158c269ec70d994d"
+  integrity sha512-QgDmhFIk9zGNor/4yfKgsqs0fnDXSEF/t/Mvn85L7k0wVdBWg8AIDa403/pLegIYnMziYgZYk48fXjptUSD09A==
+  dependencies:
+    unist-util-visit "2.0.1"
+
 "@josephg/resolvable@^1.0.0", "@josephg/resolvable@^1.0.1":
   version "1.0.1"
   resolved "https://registry.npmjs.org/@josephg/resolvable/-/resolvable-1.0.1.tgz"
@@ -3201,11 +3208,6 @@
   dependencies:
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
-
-"@jsdevtools/rehype-toc@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@jsdevtools/rehype-toc/-/rehype-toc-3.0.2.tgz#29c32e6b40cd4b5dafd96cb90d5057ac5dab4a51"
-  integrity sha512-n5JEf16Wr4mdkRMZ8wMP/wN9/sHmTjRPbouXjJH371mZ2LEGDl72t8tEsMRNFerQN/QJtivOxqK1frdGa4QK5Q==
 
 "@juggle/resize-observer@^3.3.1":
   version "3.3.1"
@@ -24741,6 +24743,15 @@ unist-util-visit-parents@^5.0.0:
   dependencies:
     "@types/unist" "^2.0.0"
     unist-util-is "^5.0.0"
+
+unist-util-visit@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-2.0.1.tgz#b4e1c1cb414250c6b3cb386b8e461d79312108ae"
+  integrity sha512-bEDa5S/O8WRDeI1mLaMoKuFFi89AjF+UAoMNxO+bbVdo06q+53Vhq4iiv1PenL6Rx1ZxIpXIzqZoc5HD2I1oMA==
+  dependencies:
+    "@types/unist" "^2.0.0"
+    unist-util-is "^4.0.0"
+    unist-util-visit-parents "^3.0.0"
 
 unist-util-visit@2.0.3, unist-util-visit@^2.0.0, unist-util-visit@^2.0.1, unist-util-visit@^2.0.2, unist-util-visit@^2.0.3:
   version "2.0.3"

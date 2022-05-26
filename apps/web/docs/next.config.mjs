@@ -1,7 +1,7 @@
 import remarkGfm from 'remark-gfm'
 import nextMDX from '@next/mdx'
 import remarkDirective from 'remark-directive';
-import toc from '@jsdevtools/rehype-toc';
+import {toc} from '@joe307bad/rehype-toc';
 
 import {visit} from 'unist-util-visit'
 import {h} from 'hastscript'
@@ -33,14 +33,11 @@ const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [remarkGfm, remarkDirective, callOuts],
-    rehypePlugins: [toc],
-    providerImportSource: '@mdx-js/react',
-    // If you use `MDXProvider`, uncomment the following line.
-    // providerImportSource: "@mdx-js/react",
+    rehypePlugins: [[toc, {placeholder: "TABLE_OF_CONTENTS"}]],
+    providerImportSource: '@mdx-js/react'
   },
 });
 export default withMDX({
-  // Append the default value with md extensions
   pageExtensions: [
     'ts',
     'tsx',

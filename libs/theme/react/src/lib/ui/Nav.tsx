@@ -38,6 +38,7 @@ const NavItem = ({ i, navItem }) => {
 };
 
 const Nav = (props) => {
+  const {theme} = useThemeUI();
   return (
     <>
       {Object.keys(props.nav).map(
@@ -47,7 +48,7 @@ const Nav = (props) => {
               style={{
                 textTransform: 'uppercase',
                 fontWeight: '900',
-                color: '#a0a0ca',
+                color: theme.colors.primary,
                 paddingTop: 20,
               }}
             >

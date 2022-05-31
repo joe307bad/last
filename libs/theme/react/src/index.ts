@@ -14,7 +14,6 @@ import Header from './lib/ui/Header';
 import Main from './lib/ui/Main';
 import Nav from './lib/ui/Nav';
 import NavLink from './lib/ui/NavLink';
-import ThemeToggle from './lib/ui/ThemeToggle';
 import InPageNav from './lib/ui/InPageNav';
 
 export {
@@ -32,6 +31,5 @@ export {
   Main,
   Nav,
   NavLink,
-  ThemeToggle,
   InPageNav,
 };

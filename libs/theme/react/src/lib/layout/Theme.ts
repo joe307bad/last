@@ -27,8 +27,8 @@ export default {
     },
   },
   colors: {
-    primary: '#4169e1',
-    secondary: 'indigo',
+    primary: '#ED6A5A',
+    secondary: '#36C9C6',
     background: '#fff',
     text: '#1b1e21',
     blue: '#4169e1',
@@ -43,9 +43,12 @@ export default {
     yellow: '#FFDD22',
     lite: '#eee',
     modes: {
+      light: {
+      },
       dark: {
+        secondary: '#F4F1BB',
         text: '#fff',
-        background: '#000',
+        background: '#423E3B',
         lite: '#333',
       },
     },

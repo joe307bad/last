@@ -457,3 +457,19 @@ summary svg {
   }
 }
 
+.toc ol {
+  margin: 0;
+  padding: 20px 0px 0px 0px;
+  list-style: none;
+}
+.toc-item {
+  display: inline-block;
+  padding-bottom: 5px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  border-bottom: 4px solid black;
+}
+
+.toc-item:nth-child(1) {
+  padding-left: 0;
+}

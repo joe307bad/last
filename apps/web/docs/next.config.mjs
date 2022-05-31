@@ -33,7 +33,7 @@ const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [remarkGfm, remarkDirective, callOuts],
-    rehypePlugins: [[toc, {placeholder: "TABLE_OF_CONTENTS"}]],
+    rehypePlugins: [[toc, {placeholder: "TABLE_OF_CONTENTS", "headings": ["h2"]}]],
     providerImportSource: '@mdx-js/react'
   },
 });

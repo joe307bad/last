@@ -49,7 +49,7 @@ const InPageNav = () => {
         position: 'sticky',
         top: 0,
         backgroundColor: theme.colors
-          ?.background as string,
+          ?.background_2 as string,
       }}
     >
       <ul

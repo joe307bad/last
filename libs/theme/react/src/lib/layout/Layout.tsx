@@ -61,7 +61,7 @@ const Layout = (props) => {
                 margin: 30,
               }}
             >
-              <Main>{props.children}</Main>
+              <Main style={{backgroundColor: theme.colors.background_2}}>{props.children}</Main>
             </Box>
           </Box>
         </Box>

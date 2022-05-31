@@ -30,6 +30,7 @@ export default {
     primary: '#ED6A5A',
     secondary: '#36C9C6',
     background: '#fff',
+    background_2: '#fff',
     text: '#1b1e21',
     blue: '#4169e1',
     cyan: '#41b9e1',
@@ -46,9 +47,10 @@ export default {
       light: {
       },
       dark: {
+        background_2: '#423E3B',
         secondary: '#F4F1BB',
         text: '#fff',
-        background: '#423E3B',
+        background: '#333',
         lite: '#333',
       },
     },

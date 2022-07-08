@@ -2,6 +2,7 @@ import remarkGfm from 'remark-gfm'
 import nextMDX from '@next/mdx'
 import remarkDirective from 'remark-directive';
 import {toc} from '@joe307bad/rehype-toc';
+import rehypeSlug from 'rehype-slug'
 
 import {visit} from 'unist-util-visit'
 import {h} from 'hastscript'
@@ -33,7 +34,9 @@ const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [remarkGfm, remarkDirective, callOuts],
-    rehypePlugins: [[toc, {placeholder: "TABLE_OF_CONTENTS", "headings": ["h2"]}]],
+    rehypePlugins: [rehypeSlug, [toc, {
+      placeholder: "TABLE_OF_CONTENTS", "headings": ["h2"]
+    }]],
     providerImportSource: '@mdx-js/react'
   },
 });

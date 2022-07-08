@@ -98,6 +98,7 @@
     "react-svg": "^14.1.13",
     "reflect-metadata": "^0.1.13",
     "regenerator-runtime": "0.13.7",
+    "rehype-slug": "^5.0.1",
     "remark-directive": "^2.0.1",
     "remark-gfm": "^3.0.1",
     "remix": "^1.4.3",

@@ -47,10 +47,10 @@ export default {
       light: {
       },
       dark: {
-        background_2: '#423E3B',
+        background_2: '#121316',
         secondary: '#F4F1BB',
         text: '#fff',
-        background: '#333',
+        background: '#2F323A',
         lite: '#333',
       },
     },

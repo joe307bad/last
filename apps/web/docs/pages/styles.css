@@ -457,10 +457,16 @@ summary svg {
   }
 }
 
+main {
+  padding: 50px;
+}
+
 .toc ol {
   margin: 0;
   padding: 20px 0px 0px 0px;
   list-style: none;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 .toc-item {
   display: inline-block;
@@ -468,6 +474,7 @@ summary svg {
   margin-right: 20px;
   margin-bottom: 10px;
   border-bottom: 4px solid black;
+
 }
 
 .toc-item:nth-child(1) {

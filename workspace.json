@@ -16,6 +16,7 @@
     "shared-types": "libs/shared/types",
     "story-gen": "libs/story/gen",
     "theme-react": "libs/theme/react",
+    "web-blog": "apps/web/blog",
     "web-docs": "apps/web/docs",
     "web-home": "apps/web/home"
   }

@@ -52,3 +52,4 @@ schema.gql
 .cache-loader/
 
 apps/web/docs/.next
+/apps/web/blog/.contentlayer/

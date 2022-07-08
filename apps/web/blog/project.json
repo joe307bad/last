@@ -1,0 +1,70 @@
+{
+  "root": "apps/web/blog",
+  "sourceRoot": "apps/web/blog",
+  "projectType": "application",
+  "targets": {
+    "contentlayer": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "cwd": "apps/web/blog",
+        "command": "../../../node_modules/contentlayer/bin/cli.cjs build"
+      }
+    },
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/web/blog",
+        "outputPath": "dist/apps/web/blog"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "web-blog:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "web-blog:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "web-blog:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "web-blog:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/web/blog"],
+      "options": {
+        "jestConfig": "apps/web/blog/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/web/blog/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

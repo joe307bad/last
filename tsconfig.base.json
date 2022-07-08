@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "~last/theme/react": [
-        "libs/theme/react/src/index.ts"
+      "~last/blog/contentlayer": [
+        "apps/web/blog/.contentlayer"
       ],
       "~last/query-nano": [
         "libs/query-nano/src/index.ts"
@@ -35,6 +35,9 @@
       ],
       "~last/story/gen": [
         "libs/story/gen/src/index.ts"
+      ],
+      "~last/theme/react": [
+        "libs/theme/react/src/index.ts"
       ]
     }
   },

@@ -49,18 +49,6 @@ function CustomApp({
   Component,
   pageProps,
 }: AppProps) {
-  // TODO it would be nice to get the in page nav
-  // items here so we can populate the left sidebar
-  // nav with the in page nav items
-  //
-  // TODO it may be easier to start a new next.js
-  // site that follows this tutorial https://dawchihliou.github.io/articles/build-better-nextjs-static-sites-with-mdx-and-contentlayer
-  // in that tutorial is describes "computed fields" that havbe
-  // access to the raw body of the content, which could be
-  // used to build a table of contents
-  //
-  // this also needs more investigation, this seems like great
-  // practices for building a blog https://github.com/alexcarpenter/alexcarpenter-next
   return (
     <MDXProvider components={components}>
       <ThemeProvider theme={Theme}>
